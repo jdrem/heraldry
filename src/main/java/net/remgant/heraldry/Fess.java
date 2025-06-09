@@ -1,19 +1,22 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
 import java.awt.image.*;
 import java.awt.geom.*;
+import java.lang.management.ThreadInfo;
 
 class Fess implements Drawable, java.io.Serializable {
-    Color color;
+    Tincture tincture;
 
-    public Fess(Color c) {
-        color = c;
+
+    public Fess(Tincture tincture) {
+        this.tincture = tincture;
     }
 
     public void draw(Graphics2D g) {
-        g.setColor(color);
-        g.fill(new Area(new Rectangle2D.Float(0.0f, 70.0f, 200.0f, 60.0f)));
+        tincture.fill(g, new Area(new Rectangle2D.Float(0.0f, 70.0f, 200.0f, 60.0f)));
     }
 
     public void draw(BufferedImage image) {

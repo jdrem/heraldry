@@ -1,5 +1,9 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Argent;
+import net.remgant.heraldry.tinctures.Sable;
+import net.remgant.heraldry.tinctures.Tincture;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,15 +13,8 @@ public class DrawEverything {
         public static void main(String[] args) {
             BufferedImage bufferedImage = new BufferedImage(200, 250, BufferedImage.TYPE_INT_ARGB);
             Builder builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf("argent")
-                .fess("sable")
-//                .pale("sable")
-//                .chief("sable")
-//                .cross("sable")
-//                .bend("sable")
-//                .bendSinister("sable")
-//                .saltire("sable")
-//                    .chevron("sable")
+            builder.fieldOf(Tincture.OR)
+                .fess(Tincture.SABLE)
                     .build(g -> {
                         try {
                             ImageIO.write(bufferedImage, "PNG", new File("fess.png"));
@@ -27,15 +24,8 @@ public class DrawEverything {
                     });
 
             builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf("argent")
-//                .fess("sable")
-                .pale("sable")
-//                .chief("sable")
-//                .cross("sable")
-//                .bend("sable")
-//                .bendSinister("sable")
-//                .saltire("sable")
-//                    .chevron("sable")
+            builder.fieldOf(Tincture.OR)
+                .pale(Tincture.SABLE)
                     .build(g -> {
                         try {
                             ImageIO.write(bufferedImage, "PNG", new File("pale.png"));
@@ -45,15 +35,8 @@ public class DrawEverything {
                     });
 
             builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf("argent")
-//                .fess("sable")
-//                    .pale("sable")
-                .chief("sable")
-//                .cross("sable")
-//                .bend("sable")
-//                .bendSinister("sable")
-//                .saltire("sable")
-//                    .chevron("sable")
+            builder.fieldOf(Tincture.OR)
+                .chief(Tincture.SABLE)
                     .build(g -> {
                         try {
                             ImageIO.write(bufferedImage, "PNG", new File("chief.png"));
@@ -61,15 +44,8 @@ public class DrawEverything {
                             throw new RuntimeException(e);
                         }
                     });           builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf("argent")
-//                .fess("sable")
-//                    .pale("sable")
-//                .chief("sable")
-                .cross("sable")
-//                .bend("sable")
-//                .bendSinister("sable")
-//                .saltire("sable")
-//                    .chevron("sable")
+            builder.fieldOf(Tincture.OR)
+                .cross(Tincture.SABLE)
                     .build(g -> {
                         try {
                             ImageIO.write(bufferedImage, "PNG", new File("cross.png"));
@@ -78,15 +54,8 @@ public class DrawEverything {
                         }
                     });
             builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf("argent")
-//                .fess("sable")
-//                    .pale("sable")
-//                .chief("sable")
-//                .cross("sable")
-                .bend("sable")
-//                .bendSinister("sable")
-//                .saltire("sable")
-//                    .chevron("sable")
+            builder.fieldOf(Tincture.OR)
+                .bend(Tincture.SABLE)
                     .build(g -> {
                         try {
                             ImageIO.write(bufferedImage, "PNG", new File("bend.png"));
@@ -95,15 +64,8 @@ public class DrawEverything {
                         }
                     });
             builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf("argent")
-//                .fess("sable")
-//                    .pale("sable")
-//                .chief("sable")
-//                .cross("sable")
-//                .bend("sable")
-                .bendSinister("sable")
-//                .saltire("sable")
-//                    .chevron("sable")
+            builder.fieldOf(Tincture.OR)
+                .bendSinister(Tincture.SABLE)
                     .build(g -> {
                         try {
                             ImageIO.write(bufferedImage, "PNG", new File("bend-sinister.png"));
@@ -112,15 +74,8 @@ public class DrawEverything {
                         }
                     });
             builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf("argent")
-//                .fess("sable")
-//                    .pale("sable")
-//                .chief("sable")
-//                .cross("sable")
-//                .bend("sable")
-//                .bendSinister("sable")
-                .saltire("sable")
-//                    .chevron("sable")
+            builder.fieldOf(Tincture.OR)
+                .saltire(Tincture.SABLE)
                     .build(g -> {
                         try {
                             ImageIO.write(bufferedImage, "PNG", new File("saltire.png"));
@@ -129,15 +84,8 @@ public class DrawEverything {
                         }
                     });
             builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf("argent")
-//                .fess("sable")
-//                    .pale("sable")
-//                .chief("sable")
-//                .cross("sable")
-//                .bend("sable")
-//                .bendSinister("sable")
-//                .saltire("sable")
-                    .chevron("sable")
+            builder.fieldOf(Tincture.OR)
+                    .chevron(Tincture.SABLE)
                     .build(g -> {
                         try {
                             ImageIO.write(bufferedImage, "PNG", new File("chevron.png"));

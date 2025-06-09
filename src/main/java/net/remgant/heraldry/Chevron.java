@@ -1,14 +1,16 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 
 public class Chevron implements Drawable {
-    Color color;
+    Tincture tincture;
 
-    public Chevron(Color c) {
-        color = c;
+    public Chevron(Tincture tincture) {
+        this.tincture = tincture;
     }
 
     public void draw(Graphics2D g) {
@@ -28,8 +30,7 @@ public class Chevron implements Drawable {
         shield.add(new Area(new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f)));
         shield.add(new Area(new Ellipse2D.Float(0.0f, 50.0f, 200.0f, 200.0f)));
         chevron.intersect(shield);
-        g.setColor(color);
-        g.fill(chevron);
+        tincture.fill(g, chevron);
     }
 
     public void draw(BufferedImage image) {

@@ -1,5 +1,7 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
 import java.awt.image.*;
 import java.awt.geom.*;
@@ -20,10 +22,10 @@ class Shield implements Drawable, java.io.Serializable {
         return image;
     }
 
-    Color color;
+    Tincture tincture;
 
-    public Shield(Color c) {
-        color = c;
+    public Shield(Tincture tincture) {
+        this.tincture = tincture;
     }
 
     public void draw(BufferedImage image) {
@@ -41,7 +43,6 @@ class Shield implements Drawable, java.io.Serializable {
         g.fill(new Rectangle2D.Float(0, 0, 200, 250));
         // unset transperancy
         g.setComposite(AlphaComposite.SrcOver);
-        g.setColor(color);
-        g.fill(area);
+        tincture.fill(g, area);
     }
 }

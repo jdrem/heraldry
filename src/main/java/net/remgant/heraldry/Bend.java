@@ -1,5 +1,7 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
@@ -8,10 +10,10 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 public class Bend implements Drawable {
-    Color color;
+    Tincture tincture;
 
-    public Bend(Color c) {
-        color = c;
+    public Bend(Tincture tincture) {
+        this.tincture = tincture;
     }
 
     public void draw(Graphics2D g) {
@@ -23,8 +25,7 @@ public class Bend implements Drawable {
         shield.add(new Area(new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f)));
         shield.add(new Area(new Ellipse2D.Float(0.0f, 50.0f, 200.0f, 200.0f)));
         bend.intersect(shield);
-        g.setColor(color);
-        g.fill(bend);
+        tincture.fill(g, bend);
     }
 
     public void draw(BufferedImage image) {

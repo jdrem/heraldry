@@ -1,14 +1,13 @@
 package net.remgant.heraldry;
 
-import net.remgant.geom.Line;
-
+import net.remgant.heraldry.tinctures.Tincture;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class Builder {
     final private Graphics2D graphics;
@@ -18,77 +17,74 @@ public class Builder {
         list = new ArrayList<>();
     }
 
-    Map<String, Color> colorMap = Map.of(
-            "or", Color.YELLOW,
-            "argent", Color.WHITE,
-            "gules", Color.RED,
-            "azure", Color.BLUE,
-            "sable", Color.BLACK,
-            "vert", Color.GREEN,
-            "purpure", Color.MAGENTA
-    );
-    public Builder fieldOf(String color) {
-        list.add(new Shield(colorMap.get(color)));
+    public Builder fieldOf(Tincture tincture) {
+        list.add(new Shield(tincture));
         return this;
     }
 
-    public Builder perPale(String color1, String color2) {
+    public Builder perPale(Tincture color1, Tincture color2) {
         return this;
     }
 
-    public Builder perFess(String color1, String color2) {
+    public Builder perFess(Tincture color1, Tincture color2) {
         return this;
     }
 
-    public Builder fess(String color) {
-        list.add(new Fess(colorMap.get(color)));
+    public Builder fess(Tincture tincture) {
+        list.add(new Fess(tincture));
         return this;
     }
 
-    public Builder fess(String color, LineType lineType) {
+    public Builder pale(Tincture tincture) {
+        list.add(new Pale(tincture));
         return this;
     }
 
-    public Builder pale(String color) {
-        list.add(new Pale(colorMap.get(color)));
+    public Builder chief(Tincture tincture) {
+        list.add(new Chief(tincture));
         return this;
     }
 
-    public Builder chief(String color) {
-        list.add(new Chief(colorMap.get(color)));
+    public Builder cross(Tincture tincture) {
+        list.add(new Cross(tincture));
         return this;
     }
 
-    public Builder cross(String color) {
-        list.add(new Cross(colorMap.get(color)));
+    public Builder bend(Tincture tincture) {
+        list.add(new Bend(tincture));
         return this;
     }
 
-    public Builder bend(String color) {
-        list.add(new Bend(colorMap.get(color)));
+    public Builder bendSinister(Tincture tincture) {
+        list.add(new BendSinister(tincture));
         return this;
     }
 
-    public Builder bendSinister(String color) {
-        list.add(new BendSinister(colorMap.get(color)));
+    public Builder saltire(Tincture tincture) {
+        list.add(new Saltire(tincture));
         return this;
     }
 
-    public Builder saltire(String color) {
-        list.add(new Saltire(colorMap.get(color)));
+    public Builder chevron(Tincture tincture) {
+        list.add(new Chevron(tincture));
         return this;
     }
 
-    public Builder chevron(String color) {
-        list.add(new Chevron(colorMap.get(color)));
+    public Builder border(Tincture tincture) {
         return this;
     }
 
-    public Builder border(String color) {
+    public Builder border(Tincture tincture, LineType lineType) {
         return this;
     }
 
-    public Builder border(String color, LineType lineType) {
+    public Builder add(Function<Tincture,Drawable> function, Tincture tincture) {
+        list.add(function.apply(tincture));
+        return this;
+    }
+
+    public Builder add(Drawable drawable) {
+        list.add(drawable);
         return this;
     }
 
