@@ -8,7 +8,11 @@ public abstract class Tincture {
     public abstract boolean isMetal();
     public abstract boolean isColor();
     public abstract boolean isFur();
-    final public static Tincture ARGENT = new Argent();
-    final public static Tincture SABLE = new Sable();
-    final public static Tincture OR = new Or();
+    final public static Tincture ARGENT = new Metal(java.awt.Color.WHITE);
+    final public static Tincture OR = new Metal(java.awt.Color.YELLOW);
+    final public static Tincture GULES = new Color(java.awt.Color.RED);
+    final public static Tincture AZURE = new Color(java.awt.Color.BLUE);
+    final public static Tincture SABLE = new Color(java.awt.Color.BLACK);
+    final public static Tincture VERT = new Color(java.awt.Color.GREEN);
+    final public static Tincture PURPURE = new Color(new java.awt.Color(128, 0, 128));
 }
