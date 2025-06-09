@@ -1,6 +1,21 @@
 package net.remgant.heraldry.tinctures;
 
-public abstract class Metal extends Tincture {
+import java.awt.*;
+import java.awt.geom.Area;
+
+public class Metal extends Tincture {
+    java.awt.Color color;
+
+    Metal(java.awt.Color color) {
+        this.color = color;
+    }
+
+    @Override
+    public void fill(Graphics2D graphics, Area area) {
+        graphics.setColor(color);
+        graphics.fill(area);
+    }
+
     @Override
     public boolean isMetal() {
         return true;

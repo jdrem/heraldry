@@ -1,7 +1,5 @@
 package net.remgant.heraldry;
 
-import net.remgant.heraldry.tinctures.Argent;
-import net.remgant.heraldry.tinctures.Sable;
 import net.remgant.heraldry.tinctures.Tincture;
 
 import javax.imageio.ImageIO;
