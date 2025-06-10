@@ -19,7 +19,7 @@ public class Roundel extends Charge {
     }
 
     @Override
-    protected Shape getShape() {
+    public Shape getShape() {
         return shape;
     }
 }

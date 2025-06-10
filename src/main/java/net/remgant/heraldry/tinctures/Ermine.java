@@ -20,6 +20,7 @@ public class Ermine extends Fur {
     public void fill(Graphics2D graphics, Area area) {
         ErmineSpot ermineSpot = new ErmineSpot(spotColor, null, 1.0);
         fieldColor.fill(graphics, area);
+        Area spotArea = new Area();
         Rectangle2D ermineBounds = ermineSpot.getBounds();
         double size = Math.max(ermineBounds.getWidth(), ermineBounds.getHeight()) * 0.67;
         Rectangle2D bounds = area.getBounds2D();
@@ -33,8 +34,12 @@ public class Ermine extends Fur {
                 AffineTransform at = new AffineTransform();
                 at.concatenate(AffineTransform.getScaleInstance(0.67, 0.67));
                 at.concatenate(AffineTransform.getTranslateInstance(x,y));
-                ermineSpot.draw(graphics, at);
+                Area spot = new Area(ermineSpot.getShape());
+                spot.transform(at);
+                spotArea.add(spot);
             }
         }
+        spotArea.intersect(area);
+        spotColor.fill(graphics, spotArea);
     }
 }

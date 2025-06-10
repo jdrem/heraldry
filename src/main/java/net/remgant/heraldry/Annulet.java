@@ -20,7 +20,7 @@ public class Annulet extends Charge {
     }
 
     @Override
-    protected Shape getShape() {
+    public Shape getShape() {
         return shape;
     }
 }

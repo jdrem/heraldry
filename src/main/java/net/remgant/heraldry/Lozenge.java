@@ -26,7 +26,7 @@ public class Lozenge extends Charge {
         shape = area;
     }
     @Override
-    protected Shape getShape() {
+    public Shape getShape() {
         return shape;
     }
 }

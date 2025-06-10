@@ -12,7 +12,7 @@ public abstract class Charge implements Drawable {
     protected Shield.Position position;
     protected double scale;
 
-    protected abstract Shape getShape();
+    public abstract Shape getShape();
     protected Charge(Tincture tincture, Shield.Position position, double scale) {
         this.tincture = tincture;
         this.position = position;

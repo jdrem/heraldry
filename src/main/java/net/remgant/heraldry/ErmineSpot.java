@@ -44,7 +44,7 @@ public class ErmineSpot extends Charge {
     }
 
     @Override
-    protected Shape getShape() {
+    public Shape getShape() {
         return shape;
     }
 }
