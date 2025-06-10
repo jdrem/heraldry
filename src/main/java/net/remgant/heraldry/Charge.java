@@ -1,0 +1,48 @@
+package net.remgant.heraldry;
+
+import net.remgant.heraldry.tinctures.Tincture;
+
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
+import java.awt.geom.Rectangle2D;
+
+public abstract class Charge implements Drawable {
+    protected Tincture tincture;
+    protected Shield.Position position;
+    protected double scale;
+
+    protected abstract Shape getShape();
+    protected Charge(Tincture tincture, Shield.Position position, double scale) {
+        this.tincture = tincture;
+        this.position = position;
+        this.scale = scale;
+    }
+
+    @Override
+    public void draw(Graphics2D graphics, AffineTransform affineTransform) {
+        Area area = new Area(getShape());
+        Area shield = new Area(Shield.shieldShape);
+        if (!affineTransform.isIdentity())
+            area.transform(affineTransform);
+        if (scale != 1.0) {
+            area.transform(AffineTransform.getScaleInstance(scale, scale));
+        }
+        double x = 0.0;
+        double y = 0.0;
+        if (position != null) {
+            x = position.x() * shield.getBounds2D().getWidth();
+            y = position.y() * shield.getBounds2D().getHeight();
+        }
+        area.transform(AffineTransform.getTranslateInstance(x, y));
+        tincture.fill(graphics, area);
+    }
+
+    public Rectangle2D getBounds() {
+        if (scale == 1.0)
+            return getShape().getBounds2D();
+        Area a = new Area(getShape());
+        a.transform(AffineTransform.getScaleInstance(scale, scale));
+        return a.getBounds2D();
+    }
+}

@@ -13,7 +13,13 @@ class Shield implements Drawable, java.io.Serializable {
         CHIEF_SINISTER(0.8333, 0.15),
         FESS_DEXTER(0.1667, 0.5),
         CENTER(0.5, 0.5),
-        FESS_SINISTER(0.8333, 0.5);
+        FESS_SINISTER(0.8333, 0.5),
+        BEND_TOP_DEXTER(0.225, 0.1958),
+        BEND_TOP_SINISTER(0.775, 0.1958),
+        BEND_BOTTOM_SINISTER(0.775, 0.8),
+        BEND_BOTTOM_DEXTER(0.225, 0.8),
+        PALE_TOP(0.5, 0.1958),
+        PALE_BOTTOM(0.5, 0.8);
         double x;
         double y;
 

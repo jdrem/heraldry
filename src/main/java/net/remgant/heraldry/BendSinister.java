@@ -19,7 +19,7 @@ public class BendSinister implements Drawable {
         Area bend = new Area();
         Area b = new Area(new Rectangle2D.Float(0.0f, -30.0f, 300.0f, 60.0f));
         b.transform(AffineTransform.getScaleInstance(-1.0, 1.0));
-        b.transform(AffineTransform.getRotateInstance(-Math.PI/4.0));
+        b.transform(AffineTransform.getRotateInstance(-Math.atan2(Shield.shieldShape.getBounds().getHeight(), Shield.shieldShape.getBounds().getWidth())));
         b.transform(AffineTransform.getTranslateInstance(200.0, 0.0));
         bend.add(b);
         Area shield = new Area();

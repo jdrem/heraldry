@@ -18,12 +18,12 @@ public class Saltire implements Drawable {
     public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area saltire = new Area();
         Area a = new Area(new Rectangle2D.Float(0.0f, -30.0f, 300.0f, 60.0f));
-        a.transform(AffineTransform.getRotateInstance(Math.PI/4.0));
+        a.transform(AffineTransform.getRotateInstance(Math.atan2(Shield.shieldShape.getBounds().getHeight(), Shield.shieldShape.getBounds().getWidth())));
         saltire.add(a);
 
         Area b = new Area(new Rectangle2D.Float(0.0f, -30.0f, 300.0f, 60.0f));
         b.transform(AffineTransform.getScaleInstance(-1.0, 1.0));
-        b.transform(AffineTransform.getRotateInstance(-Math.PI/4.0));
+        b.transform(AffineTransform.getRotateInstance(-Math.atan2(Shield.shieldShape.getBounds().getHeight(), Shield.shieldShape.getBounds().getWidth())));
         b.transform(AffineTransform.getTranslateInstance(200.0, 0.0));
         saltire.add(b);
 
