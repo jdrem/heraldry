@@ -7,7 +7,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 
 public class Saltire implements Drawable {
     Tincture tincture;
@@ -16,7 +15,7 @@ public class Saltire implements Drawable {
         this.tincture = tincture;
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area saltire = new Area();
         Area a = new Area(new Rectangle2D.Float(0.0f, -30.0f, 300.0f, 60.0f));
         a.transform(AffineTransform.getRotateInstance(Math.PI/4.0));

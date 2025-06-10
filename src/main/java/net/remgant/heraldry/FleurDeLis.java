@@ -1,20 +1,20 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
-import java.awt.image.*;
 import java.awt.geom.*;
+import java.lang.management.ThreadInfo;
 
 class FleurDeLis implements Drawable, java.io.Serializable {
 
-    protected Color color;
-    protected double xpos;
-    protected double ypos;
+    protected Tincture tincture;
+    protected Shield.Position position;
     protected double scale;
 
-    public FleurDeLis(Color c, double xpos, double ypos, double scale) {
-        this.color = c;
-        this.xpos = xpos;
-        this.ypos = ypos;
+    public FleurDeLis(Tincture tincture, Shield.Position position, double scale) {
+        this.tincture = tincture;
+        this.position = position;
         this.scale = scale;
     }
 
@@ -41,13 +41,17 @@ class FleurDeLis implements Drawable, java.io.Serializable {
         fleurDeLisShape = fleur;
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area fleur = new Area(fleurDeLisShape);
-        double x = 200.0 * xpos;
-        double y = 255.0 * ypos;
+        Area shield = new Area(Shield.shieldShape);
+        if (!affineTransform.isIdentity())
+            fleur.transform(affineTransform);
+        if (scale != 1.0) {
+            fleur.transform(AffineTransform.getScaleInstance(scale, scale));
+        }
+        double x = position.x() * shield.getBounds2D().getWidth();
+        double y = position.y() * shield.getBounds2D().getHeight();
         fleur.transform(AffineTransform.getTranslateInstance(x, y));
-
-        g.setColor(color);
-        g.fill(fleur);
+        tincture.fill(g, fleur);
     }
 }

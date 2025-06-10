@@ -3,10 +3,10 @@ package net.remgant.heraldry;
 import net.remgant.heraldry.tinctures.Tincture;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 
 public class Cross implements Drawable {
     Tincture tincture;
@@ -15,7 +15,7 @@ public class Cross implements Drawable {
         this.tincture = tincture;
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area cross = new Area();
         cross.add(new Area(new Rectangle2D.Float(70.0f, 0.0f, 60.0f, 250.0f)));
         cross.add(new Area(new Rectangle2D.Float(0.0f, 95.0f, 200.0f, 60.0f)));

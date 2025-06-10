@@ -1,20 +1,18 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
-import java.awt.image.*;
 import java.awt.geom.*;
 
 class Crescent implements Drawable, java.io.Serializable {
-
-    protected Color color;
-    protected double xpos;
-    protected double ypos;
+    protected Tincture tincture;
+    protected Shield.Position position;
     protected double scale;
 
-    public Crescent(Color c, double xpos, double ypos, double scale) {
-        this.color = c;
-        this.xpos = xpos;
-        this.ypos = ypos;
+    public Crescent(Tincture tincture, Shield.Position position, double scale) {
+        this.tincture = tincture;
+        this.position = position;
         this.scale = scale;
     }
 
@@ -28,12 +26,17 @@ class Crescent implements Drawable, java.io.Serializable {
         crescentShape = crescent;
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area crescent = new Area(crescentShape);
-        double x = 200.0 * xpos;
-        double y = 255.0 * ypos;
+        Area shield = new Area(Shield.shieldShape);
+        if (!affineTransform.isIdentity())
+            crescent.transform(affineTransform);
+        if (scale != 1.0) {
+            crescent.transform(AffineTransform.getScaleInstance(scale, scale));
+        }
+        double x = position.x() * shield.getBounds2D().getWidth();
+        double y = position.y() * shield.getBounds2D().getHeight();
         crescent.transform(AffineTransform.getTranslateInstance(x, y));
-        g.setColor(color);
-        g.fill(crescent);
+        tincture.fill(g, crescent);
     }
 }

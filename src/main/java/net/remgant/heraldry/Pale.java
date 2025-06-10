@@ -3,10 +3,10 @@ package net.remgant.heraldry;
 import net.remgant.heraldry.tinctures.Tincture;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 
 public class Pale implements Drawable {
     Tincture tincture;
@@ -15,7 +15,7 @@ public class Pale implements Drawable {
         this.tincture = tincture;
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area pale = new Area();
         pale.add(new Area(new Rectangle2D.Float(70.0f, 0.0f, 60.0f, 250.0f)));
         Area shield = new Area();

@@ -7,6 +7,23 @@ import java.awt.image.*;
 import java.awt.geom.*;
 
 class Shield implements Drawable, java.io.Serializable {
+    public enum Position {
+        CHIEF_DEXTER(0.1667, 0.15),
+        CHIEF_CENTER(0.5, 0.15),
+        CHIEF_SINISTER(0.8333, 0.15),
+        FESS_DEXTER(0.1667, 0.5),
+        CENTER(0.5, 0.5),
+        FESS_SINISTER(0.8333, 0.5);
+        double x;
+        double y;
+
+        Position(double x, double y) {
+            this.x = x;
+            this.y = y;
+        }
+        double x() {return x;}
+        double y() {return y;}
+    }
     public static BufferedImage createImage() {
         // create an image
         BufferedImage image =
@@ -36,7 +53,7 @@ class Shield implements Drawable, java.io.Serializable {
         shieldShape = a;
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, AffineTransform affineTransform) {
         Rectangle2D.Float rect = new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f);
         Ellipse2D.Float circ = new Ellipse2D.Float(0.0f, 50.0f, 200.0f, 200.0f);
         Area area = new Area();

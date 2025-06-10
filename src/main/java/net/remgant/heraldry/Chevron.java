@@ -4,7 +4,6 @@ import net.remgant.heraldry.tinctures.Tincture;
 
 import java.awt.*;
 import java.awt.geom.*;
-import java.awt.image.BufferedImage;
 
 public class Chevron implements Drawable {
     Tincture tincture;
@@ -13,7 +12,7 @@ public class Chevron implements Drawable {
         this.tincture = tincture;
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area chevron = new Area();
 
         Path2D.Float path = new Path2D.Float();

@@ -1,7 +1,6 @@
 package net.remgant.heraldry;
 
 import java.awt.*;
-import java.awt.image.*;
 import java.awt.geom.*;
 
 class BorderEngrailed extends Border {
@@ -13,7 +12,7 @@ class BorderEngrailed extends Border {
         super(c, division);
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area border = new Area();
         Rectangle2D.Float outerR =
                 new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f);

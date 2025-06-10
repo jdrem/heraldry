@@ -1,7 +1,6 @@
 package net.remgant.heraldry;
 
 import java.awt.*;
-import java.awt.image.*;
 import java.awt.geom.*;
 
 class FessInvected implements Drawable, java.io.Serializable {
@@ -11,7 +10,7 @@ class FessInvected implements Drawable, java.io.Serializable {
         color = c;
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area fess = new Area();
         float top = 75.0f;
         float bot = 125.0f;

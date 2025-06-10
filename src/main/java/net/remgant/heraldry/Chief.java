@@ -3,9 +3,9 @@ package net.remgant.heraldry;
 import net.remgant.heraldry.tinctures.Tincture;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 
 public class Chief implements Drawable {
     Tincture tincture;
@@ -14,7 +14,7 @@ public class Chief implements Drawable {
         this.tincture = tincture;
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area chief = new Area();
         chief.add(new Area(new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 75.0f)));
 //        Area shield = new Area();
