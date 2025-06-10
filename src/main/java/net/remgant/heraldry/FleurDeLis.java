@@ -21,11 +21,10 @@ class FleurDeLis implements Drawable, java.io.Serializable {
     public void draw(BufferedImage image) {
         draw(image.createGraphics());
     }
-
-    public void draw(Graphics2D g) {
+    final static Shape fleurDeLisShape;
+    static {
         Ellipse2D.Float e1 = new Ellipse2D.Float(-25.0f, -10.0f, 20.0f, 20.0f);
         Ellipse2D.Float e2 = new Ellipse2D.Float(-30.0f, -5.0f, 20.0f, 20.0f);
-
         Area f1 = new Area();
         f1.add(new Area(e1));
         f1.subtract(new Area(e2));
@@ -37,21 +36,19 @@ class FleurDeLis implements Drawable, java.io.Serializable {
         f1.add(new Area(e1));
         f1.subtract(new Area(e2));
         fleur.add(f1);
-
         e1 = new Ellipse2D.Float(-5.0f, -27.5f, 10.0f, 40.0f);
         fleur.add(new Area(e1));
-
-        // e1 = new Ellipse2D.Float(-10.0f,-0.0f,20.0f,5.0f);
-        // fleur.add(new Area(e1));
         RoundRectangle2D.Float rr = new RoundRectangle2D.Float
                 (-15.0f, -0.0f, 30.0f, 5.0f, 2.0f, 2.0f);
         fleur.add(new Area(rr));
+        fleurDeLisShape = fleur;
+    }
 
+    public void draw(Graphics2D g) {
+        Area fleur = new Area(fleurDeLisShape);
         double x = 200.0 * xpos;
         double y = 255.0 * ypos;
-        AffineTransform t = new AffineTransform();
-        t.translate(x, y);
-        fleur.transform(t);
+        fleur.transform(AffineTransform.getTranslateInstance(x, y));
 
         g.setColor(color);
         g.fill(fleur);

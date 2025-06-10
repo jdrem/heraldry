@@ -32,6 +32,14 @@ class Shield implements Drawable, java.io.Serializable {
         draw(image.createGraphics());
     }
 
+    final public static Shape shieldShape;
+    static {
+        Area a = new Area();
+        a.add(new Area(new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f)));
+        a.add(new Area(new Ellipse2D.Float(0.0f, 50.0f, 200.0f, 200.0f)));
+        shieldShape = a;
+    }
+
     public void draw(Graphics2D g) {
         Rectangle2D.Float rect = new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f);
         Ellipse2D.Float circ = new Ellipse2D.Float(0.0f, 50.0f, 200.0f, 200.0f);

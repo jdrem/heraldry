@@ -18,7 +18,7 @@ public class Cross implements Drawable {
     public void draw(Graphics2D g) {
         Area cross = new Area();
         cross.add(new Area(new Rectangle2D.Float(70.0f, 0.0f, 60.0f, 250.0f)));
-        cross.add(new Area(new Rectangle2D.Float(0.0f, 70.0f, 200.0f, 60.0f)));
+        cross.add(new Area(new Rectangle2D.Float(0.0f, 95.0f, 200.0f, 60.0f)));
 
         Area shield = new Area();
         shield.add(new Area(new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f)));
