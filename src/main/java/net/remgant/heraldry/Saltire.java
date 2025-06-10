@@ -34,8 +34,4 @@ public class Saltire implements Drawable {
         saltire.intersect(shield);
         tincture.fill(g, saltire);
     }
-
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
 }

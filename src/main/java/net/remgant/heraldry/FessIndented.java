@@ -11,10 +11,6 @@ class FessIndented implements Drawable, java.io.Serializable {
         color = c;
     }
 
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
-
     public void draw(Graphics2D g) {
         Area fess = new Area();
         float top = 65.0f;

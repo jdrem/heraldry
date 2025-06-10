@@ -28,10 +28,6 @@ class Shield implements Drawable, java.io.Serializable {
         this.tincture = tincture;
     }
 
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
-
     final public static Shape shieldShape;
     static {
         Area a = new Area();

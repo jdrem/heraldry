@@ -27,9 +27,6 @@ class Crescent implements Drawable, java.io.Serializable {
         crescent.subtract(new Area(c2));
         crescentShape = crescent;
     }
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
 
     public void draw(Graphics2D g) {
         Area crescent = new Area(crescentShape);

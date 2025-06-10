@@ -18,9 +18,6 @@ class FleurDeLis implements Drawable, java.io.Serializable {
         this.scale = scale;
     }
 
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
     final static Shape fleurDeLisShape;
     static {
         Ellipse2D.Float e1 = new Ellipse2D.Float(-25.0f, -10.0f, 20.0f, 20.0f);

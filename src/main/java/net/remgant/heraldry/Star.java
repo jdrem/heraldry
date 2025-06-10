@@ -35,10 +35,6 @@ class Star implements Drawable, java.io.Serializable {
         this.scale = scale;
     }
 
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
-
     public void draw(Graphics2D g) {
         Area star = new Area(starShape);
         double x = 200.0 * xpos;

@@ -24,8 +24,4 @@ public class Pale implements Drawable {
         pale.intersect(shield);
         tincture.fill(g, pale);
     }
-
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
 }

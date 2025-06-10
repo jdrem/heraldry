@@ -32,8 +32,4 @@ public class Chevron implements Drawable {
         chevron.intersect(shield);
         tincture.fill(g, chevron);
     }
-
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
 }

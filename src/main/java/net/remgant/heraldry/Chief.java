@@ -23,7 +23,4 @@ public class Chief implements Drawable {
         tincture.fill(g, chief);
 
     }
-
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }}
+}

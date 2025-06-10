@@ -29,8 +29,4 @@ public class BendSinister implements Drawable {
         bend.intersect(shield);
         tincture.fill(g, bend);
     }
-
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
 }

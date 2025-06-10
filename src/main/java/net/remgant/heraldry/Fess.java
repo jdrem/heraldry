@@ -18,9 +18,5 @@ class Fess implements Drawable, java.io.Serializable {
     public void draw(Graphics2D g) {
         tincture.fill(g, new Area(new Rectangle2D.Float(0.0f, 95.0f, 200.0f, 60.0f)));
     }
-
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
 }
 

@@ -13,10 +13,6 @@ class BorderEngrailed extends Border {
         super(c, division);
     }
 
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
-
     public void draw(Graphics2D g) {
         Area border = new Area();
         Rectangle2D.Float outerR =

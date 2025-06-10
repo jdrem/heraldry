@@ -26,10 +26,6 @@ class Border implements Drawable, java.io.Serializable {
         this.division = division;
     }
 
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
-
     public void draw(Graphics2D g) {
         Area border = new Area();
         Rectangle2D.Float outerR =

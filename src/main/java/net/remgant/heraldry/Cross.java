@@ -26,8 +26,4 @@ public class Cross implements Drawable {
         cross.intersect(shield);
         tincture.fill(g, cross);
     }
-
-    public void draw(BufferedImage image) {
-        draw(image.createGraphics());
-    }
 }
