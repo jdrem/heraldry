@@ -17,6 +17,12 @@ public class Metal extends Tincture {
     }
 
     @Override
+    public void draw(Graphics2D graphics, Area area) {
+        graphics.setColor(color);
+        graphics.draw(area);
+    }
+
+    @Override
     public boolean isMetal() {
         return true;
     }
@@ -29,5 +35,20 @@ public class Metal extends Tincture {
     @Override
     public boolean isFur() {
         return false;
+    }
+    @Override
+    public Tincture darker() {
+        return new Color(this.color.darker());
+    }
+
+    @Override
+    public Tincture lighter() {
+        return new Color(this.color.darker());
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Metal))
+            return false;
+        return ((Metal)obj).color.equals(this.color);
     }
 }

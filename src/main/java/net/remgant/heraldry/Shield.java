@@ -65,9 +65,12 @@ class Shield implements Drawable, java.io.Serializable {
         Area area = new Area();
         area.add(new Area(rect));
         area.add(new Area(circ));
+        System.out.printf("shield: %s%n", area.getBounds2D());
+        area.transform(affineTransform);
+        System.out.printf("shield: %s%n", area.getBounds2D());
 
         g.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR, 0.0f));
-        g.fill(new Rectangle2D.Float(0, 0, 200, 250));
+        g.fill(new Rectangle2D.Float(0, 0, (int)area.getBounds2D().getWidth(), (int)area.getBounds2D().getHeight()));
         // unset transperancy
         g.setComposite(AlphaComposite.SrcOver);
         tincture.fill(g, area);

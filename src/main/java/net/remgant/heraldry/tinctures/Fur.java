@@ -19,4 +19,9 @@ public abstract class Fur extends Tincture {
     public boolean isFur() {
         return true;
     }
+
+    @Override
+    public void draw(Graphics2D graphics2D, Area area) {
+        throw new UnsupportedOperationException();
+    }
 }

@@ -5,9 +5,16 @@ import java.awt.geom.Area;
 
 public abstract class Tincture {
     public abstract void fill(Graphics2D graphics, Area area);
+    public abstract void draw(Graphics2D graphics2D, Area area);
     public abstract boolean isMetal();
     public abstract boolean isColor();
     public abstract boolean isFur();
+    public Tincture darker() {
+        throw new UnsupportedOperationException();
+    }
+    public Tincture lighter() {
+        throw new UnsupportedOperationException();
+    }
     final public static Tincture ARGENT = new Metal(java.awt.Color.WHITE);
     final public static Tincture OR = new Metal(java.awt.Color.YELLOW);
     final public static Tincture GULES = new Color(java.awt.Color.RED);

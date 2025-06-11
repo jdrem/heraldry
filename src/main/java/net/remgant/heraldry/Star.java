@@ -25,7 +25,6 @@ class Star implements Drawable, java.io.Serializable {
         }
         star.transform(AffineTransform.getScaleInstance(20.0, 20.0));
         starShape = star;
-        System.out.printf("Star: %s%n", starShape.getBounds2D());
     }
 
     public Star(Tincture tincture, Shield.Position position, double scale) {

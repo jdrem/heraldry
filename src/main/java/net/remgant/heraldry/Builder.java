@@ -3,6 +3,7 @@ package net.remgant.heraldry;
 import net.remgant.heraldry.tinctures.Tincture;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -90,6 +91,13 @@ public class Builder {
     public void build(Consumer<Graphics2D> consumer) {
         for (Drawable drawable : list) {
             drawable.draw(graphics);
+        }
+        consumer.accept(graphics);
+    }
+
+    public void build(AffineTransform affineTransform, Consumer<Graphics2D> consumer) {
+        for (Drawable drawable : list) {
+            drawable.draw(graphics, affineTransform);
         }
         consumer.accept(graphics);
     }

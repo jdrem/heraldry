@@ -92,8 +92,8 @@ public class Rose extends Charge {
         double x = 0.0;
         double y = 0.0;
         if (position != null) {
-            x = position.x() * shield.getBounds2D().getWidth();
-            y = position.y() * shield.getBounds2D().getHeight();
+            x = position.x() * shield.getBounds2D().getWidth() * affineTransform.getScaleX();
+            y = position.y() * shield.getBounds2D().getHeight() * affineTransform.getScaleY();
         }
 
         barbsArea.transform(AffineTransform.getTranslateInstance(x, y));
