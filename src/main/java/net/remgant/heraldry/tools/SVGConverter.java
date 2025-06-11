@@ -19,6 +19,7 @@ import org.w3c.dom.NodeList;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Path2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -38,7 +39,7 @@ public class SVGConverter {
     public void run() throws URISyntaxException, IOException {
         String parser = XMLResourceDescriptor.getXMLParserClassName();
         SAXSVGDocumentFactory f = new SAXSVGDocumentFactory(parser);
-        URI uri = new URI("file:///home/jdr/Projects/Heraldry/Martlet_Fourth_son.svg"); // the URI of your SVG document
+        URI uri = new URI("file:///home/jdr/Projects/Heraldry/Fleur-de-lys_Sixth_son.svg"); // the URI of your SVG document
         Document doc = f.createDocument(uri.toString());
 
 
@@ -66,26 +67,26 @@ public class SVGConverter {
             Element elt = (Element)nl.item(i);
             //I am interested in the "fill" value of the current path element
             String fillvalue = myRootSVGElement.getComputedStyle(elt, null).getPropertyValue("fill");
-            System.out.printf("Fill: %s%n", fillvalue);
+            System.out.printf("     // Fill: %s%n", fillvalue);
             String strokeValue = myRootSVGElement.getComputedStyle(elt, null).getPropertyValue("stroke");
-            System.out.printf("Stroke: %s%n", strokeValue);
+            System.out.printf("     // Stroke: %s%n", strokeValue);
             //If I want to parse the "d" attribute
             String toParse = elt.getAttribute("d");
-            System.out.printf("d: %s%n", toParse);
+//            System.out.printf("d: %s%n", toParse);
             //This string can then be fed to a PathParser if you want to create the shapes yourself
             PathParser pathParser = new PathParser();
             Path2D path = null;
             pathParser.setPathHandler(new PathHandler() {
                 @Override
                 public void startPath() throws ParseException {
-                    System.out.println("start path");
+//                    System.out.println("start path");
                     list.add(new Path2D.Double());
-                    System.out.printf("     Path2D p%d = new Path2D.Double();%n", idx.get());
+                    System.out.printf("     paths[%d] = new Path2D.Double();%n", idx.get());
                 }
 
                 @Override
                 public void endPath() throws ParseException {
-                    System.out.println("end path");
+//                    System.out.println("end path");
                     idx.incrementAndGet();
                 }
 
@@ -98,12 +99,12 @@ public class SVGConverter {
                 public void movetoAbs(float v, float v1) throws ParseException {
 //                    System.out.printf("Move abs: %f %f%n", v, v1);
                     list.getLast().moveTo(v, v1);
-                    System.out.printf("     p%d.moveTo(%f, %f);%n",idx.get(), v, v1);
+                    System.out.printf("     paths[%d].moveTo(%f, %f);%n",idx.get(), v, v1);
                 }
 
                 @Override
                 public void closePath() throws ParseException {
-                    System.out.println("close path");
+//                    System.out.println("close path");
                 }
 
                 @Override
@@ -115,7 +116,7 @@ public class SVGConverter {
                 public void linetoAbs(float v, float v1) throws ParseException {
 //                    System.out.printf("line to abs: %f %f%n", v, v1);
                     list.getLast().lineTo(v, v1);
-                    System.out.printf("     p%d.lineTo(%f, %f);%n", idx.get(), v, v1);
+                    System.out.printf("     paths[%d].lineTo(%f, %f);%n", idx.get(), v, v1);
                 }
 
                 @Override
@@ -125,7 +126,9 @@ public class SVGConverter {
 
                 @Override
                 public void linetoHorizontalAbs(float v) throws ParseException {
-                    System.out.printf("line to horiz abs: %f%n", v);
+//                    System.out.printf("line to horiz abs: %f%n", v);
+                    Point2D point = list.getLast().getCurrentPoint();
+                    System.out.printf("     paths[%d].lineTo(%f, %f);%n", idx.get(), v, point.getY());
                 }
 
                 @Override
@@ -135,7 +138,9 @@ public class SVGConverter {
 
                 @Override
                 public void linetoVerticalAbs(float v) throws ParseException {
-                    System.out.printf("line to vert abs: %f%n", v);
+//                    System.out.printf("line to vert abs: %f%n", v);
+                    Point2D point = list.getLast().getCurrentPoint();
+                    System.out.printf("     paths[%d].lineTo(%f, %f);%n", idx.get(), point.getX(), v);
                 }
 
                 @Override
@@ -147,7 +152,7 @@ public class SVGConverter {
                 public void curvetoCubicAbs(float v, float v1, float v2, float v3, float v4, float v5) throws ParseException {
 //                    System.out.printf("curve cubic abs: %f %f %f %f %f %f%n",v, v1, v2, v3, v4, v5);
                     list.getLast().curveTo(v, v1, v2, v3, v4, v5);
-                    System.out.printf("     p%d.curveTo(%f, %f, %f, %f, %f, %f);%n", idx.get(), v, v1, v2, v3, v4, v5);
+                    System.out.printf("     paths[%d].curveTo(%f, %f, %f, %f, %f, %f);%n", idx.get(), v, v1, v2, v3, v4, v5);
                 }
 
                 @Override

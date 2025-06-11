@@ -2,56 +2,149 @@ package net.remgant.heraldry;
 
 import net.remgant.heraldry.tinctures.Tincture;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.*;
-import java.lang.management.ThreadInfo;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+/*
+    Parts of this class were derived from the SVG file:
 
-class FleurDeLis implements Drawable, java.io.Serializable {
+    https://commons.wikimedia.org/wiki/File:Fleur-de-lys_Sixth_son.svg
 
-    protected Tincture tincture;
-    protected Shield.Position position;
-    protected double scale;
+    The file was created by Wikimedia user Hstoops (https://commons.wikimedia.org/wiki/User:Hstoops).
 
-    public FleurDeLis(Tincture tincture, Shield.Position position, double scale) {
-        this.tincture = tincture;
-        this.position = position;
-        this.scale = scale;
+    The file is licensed under the Creative Commons Attribution 4.0 International license.
+    (https://creativecommons.org/licenses/by/4.0/deed.en)
+ */
+class FleurDeLis extends Charge {
+    protected FleurDeLis(Tincture tincture, Shield.Position position, double scale) {
+        super(tincture, position, scale);
     }
 
-    final static Shape fleurDeLisShape;
+    private final static Shape[] shapes;
+    private final static Shape completeShape;
+
     static {
-        Ellipse2D.Float e1 = new Ellipse2D.Float(-25.0f, -10.0f, 20.0f, 20.0f);
-        Ellipse2D.Float e2 = new Ellipse2D.Float(-30.0f, -5.0f, 20.0f, 20.0f);
-        Area f1 = new Area();
-        f1.add(new Area(e1));
-        f1.subtract(new Area(e2));
-        Area fleur = new Area();
-        fleur.add(f1);
-        e1 = new Ellipse2D.Float(5.0f, -10.0f, 20.0f, 20.0f);
-        e2 = new Ellipse2D.Float(10.0f, -5.0f, 20.0f, 20.0f);
-        f1 = new Area();
-        f1.add(new Area(e1));
-        f1.subtract(new Area(e2));
-        fleur.add(f1);
-        e1 = new Ellipse2D.Float(-5.0f, -27.5f, 10.0f, 40.0f);
-        fleur.add(new Area(e1));
-        RoundRectangle2D.Float rr = new RoundRectangle2D.Float
-                (-15.0f, -0.0f, 30.0f, 5.0f, 2.0f, 2.0f);
-        fleur.add(new Area(rr));
-        fleurDeLisShape = fleur;
+        shapes = new Shape[4];
+        Path2D[] paths = new Path2D[4];
+
+        paths[0] = new Path2D.Double();
+        paths[0].moveTo(29.627300, 6.021410);
+        paths[0].curveTo(29.588900, 5.990690, 29.573601, 5.990690, 29.535200, 6.036770);
+        paths[0].curveTo(27.822599, 7.518930, 26.302099, 8.893580, 25.111700, 10.421800);
+        paths[0].curveTo(21.771099, 14.707000, 20.649900, 19.360901, 22.523701, 23.123899);
+        paths[0].curveTo(26.233000, 31.095301, 27.646000, 33.115002, 27.646000, 39.458401);
+        paths[0].lineTo(26.762899, 43.397999);
+        paths[0].curveTo(26.639999, 45.425499, 25.226900, 47.038200, 22.569799, 47.944401);
+        paths[0].curveTo(22.907700, 48.796799, 24.497400, 50.540100, 26.693701, 50.424900);
+        paths[0].curveTo(27.123800, 52.268002, 27.553900, 53.297001, 29.535200, 54.971199);
+        paths[0].curveTo(29.581301, 55.009602, 29.581301, 55.009602, 29.627300, 54.971199);
+        paths[0].curveTo(31.608700, 53.297001, 32.038700, 52.268002, 32.468800, 50.424900);
+        paths[0].curveTo(34.665199, 50.540100, 36.254799, 48.796799, 36.592701, 47.944401);
+        paths[0].curveTo(33.935600, 47.038200, 32.522598, 45.425499, 32.399700, 43.397999);
+        paths[0].lineTo(31.516500, 39.458401);
+        paths[0].curveTo(31.516500, 33.115002, 32.929600, 31.095301, 36.638802, 23.123899);
+        paths[0].curveTo(38.505001, 19.360901, 37.391399, 14.707000, 34.050800, 10.421800);
+        paths[0].curveTo(32.860500, 8.885900, 31.347601, 7.503570, 29.627300, 6.021410);
+
+        paths[1] = new Path2D.Double();
+        paths[1].moveTo(26.495501, 44.119900);
+        paths[1].curveTo(25.543301, 44.987701, 21.027700, 47.375999, 17.326099, 47.375999);
+        paths[1].curveTo(22.156601, 43.797298, 23.899799, 42.722198, 24.468100, 40.011299);
+        paths[1].curveTo(25.036400, 37.308102, 23.201000, 34.320702, 21.880100, 33.706299);
+        paths[1].curveTo(21.066099, 33.184101, 19.307400, 32.953701, 17.756201, 33.552700);
+        paths[1].curveTo(15.728700, 34.458900, 15.644300, 37.016201, 16.658001, 38.191200);
+        paths[1].curveTo(7.066150, 36.808899, 8.018420, 29.628500, 11.282200, 27.025101);
+        paths[1].curveTo(13.924000, 24.920900, 16.803900, 24.590700, 19.023300, 25.251101);
+        paths[1].curveTo(24.068800, 26.656500, 28.108299, 31.325701, 28.269501, 38.298698);
+        paths[1].curveTo(28.269501, 38.298698, 27.401699, 43.313499, 26.495501, 44.119900);
+        paths[1].lineTo(26.495501, 44.119900);
+
+        paths[2] = new Path2D.Double();
+        paths[2].moveTo(32.561100, 44.119900);
+        paths[2].curveTo(33.513401, 44.987701, 38.028999, 47.375999, 41.730499, 47.375999);
+        paths[2].curveTo(36.900101, 43.797298, 35.156799, 42.722198, 34.588501, 40.011299);
+        paths[2].curveTo(34.020199, 37.308102, 35.855598, 34.320702, 37.176498, 33.706299);
+        paths[2].curveTo(37.990601, 33.184101, 39.749199, 32.953701, 41.300499, 33.552700);
+        paths[2].curveTo(43.327900, 34.458900, 43.412399, 37.016201, 42.398701, 38.191200);
+        paths[2].curveTo(51.990501, 36.808899, 51.038200, 29.628500, 47.774399, 27.025101);
+        paths[2].curveTo(45.132599, 24.920900, 42.252800, 24.590700, 40.033401, 25.251101);
+        paths[2].curveTo(34.987900, 26.656500, 30.948400, 31.325701, 30.787100, 38.298698);
+        paths[2].curveTo(30.787100, 38.298698, 31.654900, 43.313499, 32.561100, 44.119900);
+        paths[2].lineTo(32.561100, 44.119900);
+
+        paths[3] = new Path2D.Double();
+        paths[3].moveTo(37.414600, 36.647499);
+        paths[3].lineTo(21.755899, 36.647499);
+        paths[3].lineTo(21.755899, 40.789799);
+        paths[3].lineTo(37.414600, 40.789799);
+        paths[3].lineTo(37.414600, 36.647499);
+
+        Area completeArea = new Area();
+        for (Path2D path : paths) {
+            completeArea.add(new Area(path));
+        }
+        completeShape = completeArea;
+        Rectangle2D bounds = completeArea.getBounds2D();
+        System.out.printf("Bounds: %s%n", bounds);
+        for (int i = 0; i < paths.length; i++) {
+            paths[i].transform(AffineTransform.getTranslateInstance(-bounds.getX(), -bounds.getY()));
+            paths[i].transform(AffineTransform.getTranslateInstance(-bounds.getWidth() / 2.0, -bounds.getHeight() / 2.0));
+            shapes[i] = paths[i];
+        }
     }
 
-    public void draw(Graphics2D g, AffineTransform affineTransform) {
-        Area fleur = new Area(fleurDeLisShape);
+    @Override
+    public void draw(Graphics2D graphics, AffineTransform affineTransform) {
         Area shield = new Area(Shield.shieldShape);
-        if (!affineTransform.isIdentity())
-            fleur.transform(affineTransform);
-        if (scale != 1.0) {
-            fleur.transform(AffineTransform.getScaleInstance(scale, scale));
+        for (Shape shape : shapes) {
+            Area a = new Area(shape);
+            if (!affineTransform.isIdentity()) {
+                a.transform(affineTransform);
+            }
+            if (scale != 1.0) {
+                a.transform(AffineTransform.getScaleInstance(scale, scale));
+            }
+            double x = 0.0;
+            double y = 0.0;
+            if (position != null) {
+                x = position.x() * shield.getBounds2D().getWidth() * affineTransform.getScaleX();
+                y = position.y() * shield.getBounds2D().getHeight() * affineTransform.getScaleY();
+            }
+
+            a.transform(AffineTransform.getTranslateInstance(x, y));
+
+            Tincture secondary;
+            if (tincture.equals(Tincture.SABLE) || tincture.isFur())
+                secondary = Tincture.ARGENT.darker().darker();
+            else
+                secondary = tincture.darker();
+
+            tincture.fill(graphics, a);
+            secondary.draw(graphics, a);
         }
-        double x = position.x() * shield.getBounds2D().getWidth();
-        double y = position.y() * shield.getBounds2D().getHeight();
-        fleur.transform(AffineTransform.getTranslateInstance(x, y));
-        tincture.fill(g, fleur);
+    }
+
+    @Override
+    public Shape getShape() {
+        return completeShape;
+    }
+
+    static void printIt() throws IOException {
+        for (int i=0; i<shapes.length; i++) {
+            BufferedImage bufferedImage = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+            Area a = new Area(shapes[i]);
+            a.transform(AffineTransform.getTranslateInstance(50.0, 50.0));
+            Graphics2D g = bufferedImage.createGraphics();
+            g.setColor(Color.BLACK);
+            g.fill(a);
+            ImageIO.write(bufferedImage, "PNG", new File(String.format("fleur-de-lis-layer-%02d.png", i)));
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        printIt();
     }
 }
