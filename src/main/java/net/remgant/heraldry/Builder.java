@@ -23,12 +23,38 @@ public class Builder {
     }
 
     public Builder perPale(Tincture color1, Tincture color2) {
+        list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_PALE));
         return this;
     }
 
     public Builder perFess(Tincture color1, Tincture color2) {
+        list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_FESS));
         return this;
     }
+
+    public Builder perBend(Tincture color1, Tincture color2) {
+        list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_BEND));
+        return this;
+    }
+
+    public Builder perBendSinister(Tincture color1, Tincture color2) {
+        list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_BEND_SINISTER));
+        return this;
+    }
+
+
+    public Builder perChevron(Tincture color1, Tincture color2) {
+        list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_CHEVRON));
+        return this;
+    }
+
+    public Builder perSaltire(Tincture color1, Tincture color2) {
+        list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_SALTIRE));
+        return this;
+    }
+
+
+
 
     public Builder fess(Tincture tincture) {
         list.add(new Fess(tincture));

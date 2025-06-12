@@ -19,7 +19,10 @@ class Shield implements Drawable, java.io.Serializable {
         BEND_BOTTOM_SINISTER(0.775, 0.8),
         BEND_BOTTOM_DEXTER(0.225, 0.8),
         PALE_TOP(0.5, 0.1958),
-        PALE_BOTTOM(0.5, 0.8);
+        PALE_BOTTOM(0.5, 0.8),
+        HONOR_POINT_DEXTER(0.25, 0.3),
+        HONOR_POINT_SINISTER(0.75, 0.3),
+        NAVEL_POINT(0.5, 0.7);
         double x;
         double y;
 
@@ -30,6 +33,17 @@ class Shield implements Drawable, java.io.Serializable {
         double x() {return x;}
         double y() {return y;}
     }
+
+    public enum LineOfDivision {
+        NONE,
+        PER_PALE,
+        PER_FESS,
+        PER_BEND,
+        PER_BEND_SINISTER,
+        PER_CHEVRON,
+        PER_SALTIRE
+    }
+
     public static BufferedImage createImage() {
         // create an image
         BufferedImage image =
@@ -46,9 +60,16 @@ class Shield implements Drawable, java.io.Serializable {
     }
 
     Tincture tincture;
-
+    Tincture secondTincture;
+    LineOfDivision lineOfDivision = LineOfDivision.NONE;
     public Shield(Tincture tincture) {
         this.tincture = tincture;
+    }
+
+    public Shield(Tincture tincture, Tincture secondTincture, LineOfDivision lineOfDivision) {
+        this.tincture = tincture;
+        this.secondTincture = secondTincture;
+        this.lineOfDivision = lineOfDivision;
     }
 
     final public static Shape shieldShape;
@@ -73,6 +94,89 @@ class Shield implements Drawable, java.io.Serializable {
         g.fill(new Rectangle2D.Float(0, 0, (int)area.getBounds2D().getWidth(), (int)area.getBounds2D().getHeight()));
         // unset transperancy
         g.setComposite(AlphaComposite.SrcOver);
-        tincture.fill(g, area);
+        if (lineOfDivision == LineOfDivision.PER_PALE) {
+            Area mask = new Area(new Rectangle2D.Double(0.0, 0.0, area.getBounds2D().getWidth() / 2.0, area.getBounds2D().getHeight()));
+            Area dexter = new Area(area);
+            dexter.subtract(mask);
+            mask.transform(AffineTransform.getTranslateInstance(area.getBounds2D().getWidth() / 2.0, 0.0));
+            Area sinister = new Area(area);
+            sinister.subtract(mask);
+            tincture.fill(g, sinister);
+            secondTincture.fill(g, dexter);
+        } else if (lineOfDivision == LineOfDivision.PER_FESS) {
+            Area mask = new Area(new Rectangle2D.Double(0.0, area.getBounds2D().getHeight() / 2.0, area.getBounds2D().getWidth(), area.getBounds2D().getHeight() / 2.0));
+            Area top = new Area(area);
+            top.subtract(mask);
+            mask.transform(AffineTransform.getTranslateInstance(0.0, -area.getBounds2D().getHeight() / 2.0));
+            Area bottom = new Area(area);
+            bottom.subtract(mask);
+            tincture.fill(g, top);
+            secondTincture.fill(g, bottom);
+        } else if (lineOfDivision == LineOfDivision.PER_BEND) {
+            Path2D path = new Path2D.Double();
+            path.moveTo(0.0, 0.0);
+            path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight());
+            path.lineTo(area.getBounds2D().getWidth(), 0.0);
+            path.lineTo(0.0, 0.0);
+            Area mask = new Area(path);
+            Area dexter = new Area(area);
+            dexter.subtract(mask);
+            mask.transform(AffineTransform.getRotateInstance(Math.PI));
+            mask.transform(AffineTransform.getTranslateInstance(area.getBounds2D().getWidth(), area.getBounds2D().getHeight()));
+            Area sinister = new Area(area);
+            sinister.subtract(mask);
+            tincture.fill(g, dexter);
+            secondTincture.fill(g, sinister);
+        }else if (lineOfDivision == LineOfDivision.PER_BEND_SINISTER) {
+            Path2D path = new Path2D.Double();
+            path.moveTo(area.getBounds2D().getWidth(), 0.0);
+            path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight());
+            path.lineTo(0.0, area.getBounds2D().getHeight());
+            path.lineTo(area.getBounds2D().getWidth(), 0.0);
+            Area mask = new Area(path);
+            Area dexter = new Area(area);
+            dexter.subtract(mask);
+            mask.transform(AffineTransform.getRotateInstance(Math.PI));
+            mask.transform(AffineTransform.getTranslateInstance(area.getBounds2D().getWidth(), area.getBounds2D().getHeight()));
+            Area sinister = new Area(area);
+            sinister.subtract(mask);
+            tincture.fill(g, dexter);
+            secondTincture.fill(g, sinister);
+        } else if (lineOfDivision == LineOfDivision.PER_CHEVRON) {
+            Path2D path = new Path2D.Double();
+            path.moveTo(0.0, area.getBounds2D().getHeight());
+            path.lineTo(0.0, 2.0 * area.getBounds2D().getHeight() / 3.0);
+            path.lineTo(area.getBounds2D().getWidth() / 2.0, area.getBounds2D().getHeight() / 3.0);
+            path.lineTo(area.getBounds2D().getWidth(), 2.0 * area.getBounds2D().getHeight() / 3.0);
+            path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight());
+            path.lineTo(0.0, area.getBounds2D().getHeight());
+            path.lineTo(0.0, area.getBounds2D().getHeight());
+            Area mask = new Area(path);
+            Area top = new Area(area);
+            top.subtract(mask);
+            Area bottom = new Area(area);
+            bottom.intersect(mask);
+            tincture.fill(g, top);
+            secondTincture.fill(g, bottom);
+        } else if (lineOfDivision == LineOfDivision.PER_SALTIRE) {
+            Path2D path = new Path2D.Double();
+            path.moveTo(area.getBounds2D().getWidth()/2.0, 0.0);
+            path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight()/2.0);
+            path.lineTo(0.0, area.getBounds2D().getHeight()/2.0);
+            path.lineTo(area.getBounds2D().getWidth()/2.0, 0.0);
+            Area mask = new Area();
+            mask.add(new Area(path));
+            path.transform(AffineTransform.getScaleInstance(1.0, -1.0));
+            mask.add(new Area(path));
+            mask.transform(AffineTransform.getTranslateInstance(0.0, area.getBounds2D().getHeight()/2.0));
+            Area top = new Area(area);
+            top.subtract(mask);
+            Area bottom = new Area(area);
+            bottom.intersect(mask);
+            tincture.fill(g, top);
+            secondTincture.fill(g, bottom);
+        } else {
+            tincture.fill(g, area);
+        }
     }
 }
