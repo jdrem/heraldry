@@ -53,8 +53,10 @@ public class Builder {
         return this;
     }
 
-
-
+    public Builder perCross(Tincture color1, Tincture color2) {
+        list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_CROSS));
+        return this;
+    }
 
     public Builder fess(Tincture tincture) {
         list.add(new Fess(tincture));

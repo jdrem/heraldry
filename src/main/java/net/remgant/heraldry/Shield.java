@@ -41,7 +41,7 @@ class Shield implements Drawable, java.io.Serializable {
         PER_BEND,
         PER_BEND_SINISTER,
         PER_CHEVRON,
-        PER_SALTIRE
+        PER_CROSS, PER_SALTIRE
     }
 
     public static BufferedImage createImage() {
@@ -160,15 +160,35 @@ class Shield implements Drawable, java.io.Serializable {
             secondTincture.fill(g, bottom);
         } else if (lineOfDivision == LineOfDivision.PER_SALTIRE) {
             Path2D path = new Path2D.Double();
-            path.moveTo(area.getBounds2D().getWidth()/2.0, 0.0);
-            path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight()/2.0);
-            path.lineTo(0.0, area.getBounds2D().getHeight()/2.0);
-            path.lineTo(area.getBounds2D().getWidth()/2.0, 0.0);
+            path.moveTo(area.getBounds2D().getWidth() / 2.0, 0.0);
+            path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight() / 2.0);
+            path.lineTo(0.0, area.getBounds2D().getHeight() / 2.0);
+            path.lineTo(area.getBounds2D().getWidth() / 2.0, 0.0);
             Area mask = new Area();
             mask.add(new Area(path));
             path.transform(AffineTransform.getScaleInstance(1.0, -1.0));
             mask.add(new Area(path));
-            mask.transform(AffineTransform.getTranslateInstance(0.0, area.getBounds2D().getHeight()/2.0));
+            mask.transform(AffineTransform.getTranslateInstance(0.0, area.getBounds2D().getHeight() / 2.0));
+            Area top = new Area(area);
+            top.subtract(mask);
+            Area bottom = new Area(area);
+            bottom.intersect(mask);
+            tincture.fill(g, top);
+            secondTincture.fill(g, bottom);
+        } else if (lineOfDivision == LineOfDivision.PER_CROSS) {
+            Path2D path = new Path2D.Double();
+            path.moveTo(0.0,0.0);
+            path.lineTo(area.getBounds2D().getWidth()/2.0, 0.0);
+            path.lineTo(area.getBounds2D().getWidth()/2.0, area.getBounds2D().getHeight()/2.0);
+            path.lineTo(0.0, area.getBounds2D().getHeight()/2.0);
+            path.lineTo(0.0, 0.0);
+            path.moveTo(area.getBounds2D().getWidth()/2.0, area.getBounds2D().getHeight()/2.0);
+            path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight()/2.0);
+            path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight());
+            path.lineTo(area.getBounds2D().getWidth()/2.0, area.getBounds2D().getHeight());
+            path.lineTo(area.getBounds2D().getWidth()/2.0, area.getBounds2D().getHeight()/2.0);
+            Area mask = new Area();
+            mask.add(new Area(path));
             Area top = new Area(area);
             top.subtract(mask);
             Area bottom = new Area(area);
