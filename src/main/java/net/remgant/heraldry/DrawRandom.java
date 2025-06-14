@@ -2,12 +2,10 @@ package net.remgant.heraldry;
 
 import net.remgant.heraldry.tinctures.Tincture;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
@@ -64,10 +62,27 @@ public class DrawRandom {
     );
 
     public static void main(String[] args) {
+        String imageFileType = "PNG";
+        final String destinationDir;
+        if (args.length >= 1 && (args[0].equalsIgnoreCase("PNG") || args[0].equalsIgnoreCase("SVG"))) {
+            imageFileType = args[0].toUpperCase();
+            if (args.length >= 2)
+                destinationDir = args[1];
+            else
+                destinationDir = ".";
+        }
+        else if (args.length == 1) {
+            destinationDir = args[0];
+        }
+        else {
+            destinationDir = ".";
+        }
         AtomicInteger idx = new AtomicInteger(1);
+        FileWriterFactory fileWriterFactory = new FileWriterFactory(imageFileType, new Properties());
         for (int i = 0; i < 500; i++) {
-            BufferedImage bufferedImage = new BufferedImage(200, 250, BufferedImage.TYPE_INT_ARGB);
-            Builder builder = new Builder(bufferedImage.createGraphics());
+//            FileWriter fileWriter = new PNGFileWriter(200, 250);
+            FileWriter fileWriter = fileWriterFactory.getInstance();
+            Builder builder = new Builder(fileWriter.createGraphics());
             RandomGenerator random = RandomGenerator.getDefault();
             double d = random.nextDouble();
             Tincture fieldTincture = null;
@@ -294,7 +309,7 @@ public class DrawRandom {
             }
             builder.build(g -> {
                 try {
-                    ImageIO.write(bufferedImage, "PNG", new File(String.format("runs/shield-%03d.png", idx.getAndIncrement())));
+                    fileWriter.writeToFile(String.format("%s/shield-%03d", destinationDir, idx.getAndIncrement()));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
