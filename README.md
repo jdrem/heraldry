@@ -15,6 +15,10 @@ For instance, for the basic cas of "or a fess guile":
     fileWriter.writeToFile("or-a-fess-gules.png"):
   });
 ```
+Which would produce:
+
+![Or a fess gules](images/or-a-fess-gules.svg)
+
 When placing charges on the filed, you need to specify not only the tincture, but the relative location of the field and the scaling of the charge. For "sable, three bezants in pale":
 ```Java
     Builder builder = new Buidler(fileWriter.createGraphics());
@@ -23,9 +27,13 @@ When placing charges on the filed, you need to specify not only the tincture, bu
     builder.add(new Roundel(Tincture.OR, Shield.Position.CENTER, 1.0));
     builder.add(new Roundel(Tincture.OR, Shield.Position.PALE_BOTTOM, 1.0));
     builder.build(g -> {
-       fileWriter.writeToFile("sable-three-bezants-or.png"):
+       fileWriter.writeToFile("sable-three-bezants-in-pale.png"):
     });
 ```
+This produces:
+
+![Sable three bezants or](images/sable-three-bezants-in-pale.svg)
+
 Builder also has convenience methods so you could do the first example like this instead:
 ```Java
   Builder builder = new Buidler(fileWriter.createGraphics());
