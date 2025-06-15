@@ -3,7 +3,7 @@ This repository contains some simple tools to create images of heraldic shields.
 Most to the traditional ordinaries are supported: fess, pale, chief, bend, bend sinister, saltire and cross. Several basic charges can be used: mullet, crescent,
 fleur-de-lis, martlet, roundel, annulet, heart, ermine spot and rose.
 
-To create a shield, use the __Builder__ class to construct the shield and a __FileWriter__ instance to save to a file. 
+To create a shield, use the [__Builder__](src/main/java/net/remgant/heraldry/Builder.java) class to construct the shield and a [__FileWriter__](src/main/java/net/remgant/heraldry/FileWriter.java) instance to save to a file. 
 
 For instance, for the basic cas of "or a fess guile":
 
@@ -35,3 +35,7 @@ Builder also has convenience methods so you could do the first example like this
         fileWriter.writeToFile("or-a-fess-gules.png"):
    });
 ```
+In addition to various plain fields, the various divisions of the field are availabe. 
+
+There's an example program [__DrawRandom__](src/main/java/net/remgant/heraldry/DrawRandom.java) to create a bunch of random shields. It's a good example of how to 
+contruct various types of shield but there are a few cases where it violates the color/metal rule or the field and charge don't contrast enough.
