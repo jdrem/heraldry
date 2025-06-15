@@ -1,13 +1,15 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
 import java.awt.geom.*;
 
 class FessIndented implements Drawable, java.io.Serializable {
-    Color color;
+    Tincture tincture;
 
-    public FessIndented(Color c) {
-        color = c;
+    public FessIndented(Tincture tincture) {
+        this.tincture = tincture;
     }
 
     public void draw(Graphics2D g, AffineTransform affineTransform) {
@@ -35,8 +37,7 @@ class FessIndented implements Drawable, java.io.Serializable {
             fess.subtract(a);
         }
 
-        g.setColor(color);
-        g.fill(fess);
+        tincture.fill(g, fess);
     }
 }
 

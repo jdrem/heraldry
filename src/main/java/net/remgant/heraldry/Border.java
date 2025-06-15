@@ -1,5 +1,7 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
 import java.awt.geom.*;
 
@@ -12,16 +14,16 @@ class Border implements Drawable, java.io.Serializable {
     final public static int DIV_GYRONNY = 4;
 
     protected Color[] color;
+    protected Tincture[] tinctures;
     protected int division;
 
-    public Border(Color c) {
-        color = new Color[1];
-        color[0] = c;
+    public Border(Tincture tincture) {
+        this.tinctures = new Tincture[]{tincture};
         division = DIV_NONE;
     }
 
-    public Border(Color[] c, int division) {
-        color = c;
+    public Border(Tincture[] t, int division) {
+        this.tinctures = t;
         this.division = division;
     }
 
@@ -53,27 +55,23 @@ class Border implements Drawable, java.io.Serializable {
                 mask = new Area(new Rectangle2D.Float(100.0f, 0.0f, 100.0f, 255.0f));
                 b1 = (Area) border.clone();
                 b1.subtract(mask);
-                g.setColor(color[0]);
-                g.fill(b1);
+                tinctures[0].fill(g, b1);
                 t.translate(-100.0f, 0.0f);
                 mask.transform(t);
                 b1 = (Area) border.clone();
                 b1.subtract(mask);
-                g.setColor(color[1]);
-                g.fill(b1);
+                tinctures[1].fill(g, b1);
                 break;
             case DIV_PER_FESS:
                 mask = new Area(new Rectangle2D.Float(0.0f, 127.5f, 200.0f, 127.5f));
                 b1 = (Area) border.clone();
                 b1.subtract(mask);
-                g.setColor(color[0]);
-                g.fill(b1);
+                tinctures[0].fill(g, b1);
                 t.translate(0.0f, -127.5f);
                 mask.transform(t);
                 b1 = (Area) border.clone();
                 b1.subtract(mask);
-                g.setColor(color[1]);
-                g.fill(b1);
+                tinctures[1].fill(g, b1);
                 break;
             case DIV_QUARTERLY:
                 // upper right
@@ -84,8 +82,7 @@ class Border implements Drawable, java.io.Serializable {
                 t.translate(-100.0f, 127.5f);
                 mask.transform(t);
                 b1.subtract(mask);
-                g.setColor(color[0]);
-                g.fill(b1);
+                tinctures[0].fill(g, b1);
                 t.setToIdentity();
                 // move to upper left
                 t.translate(0.0f, -127.5f);
@@ -97,8 +94,7 @@ class Border implements Drawable, java.io.Serializable {
                 t.translate(100.0f, 127.5f);
                 mask.transform(t);
                 b1.subtract(mask);
-                g.setColor(color[1]);
-                g.fill(b1);
+                tinctures[0].fill(g, b1);
                 break;
             case DIV_GYRONNY:
                 // make a triangle
@@ -141,9 +137,7 @@ class Border implements Drawable, java.io.Serializable {
 
                 b1 = (Area) border.clone();
                 b1.intersect(mask);
-                g.setColor(color[0]);
-                g.fill(b1);
-
+                tinctures[0].fill(g, b1);
                 // now flip the mask
                 t.setToIdentity();
                 t.setTransform(-1.0, 0.0, 0.0, 1.0, 0.0, 0.0);
@@ -153,14 +147,11 @@ class Border implements Drawable, java.io.Serializable {
                 mask.transform(t);
                 b1 = (Area) border.clone();
                 b1.intersect(mask);
-                g.setColor(color[1]);
-                g.fill(b1);
-
+                tinctures[0].fill(g, b1);
                 break;
             case DIV_NONE:
             default:
-                g.setColor(color[0]);
-                g.fill(border);
+                tinctures[0].fill(g, border);
                 break;
         }
     }

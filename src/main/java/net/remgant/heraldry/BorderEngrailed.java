@@ -1,15 +1,19 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
 import java.awt.geom.*;
 
 class BorderEngrailed extends Border {
-    public BorderEngrailed(Color c) {
-        super(c);
+
+    public BorderEngrailed(Tincture tincture) {
+        super(tincture);
+
     }
 
-    public BorderEngrailed(Color[] c, int division) {
-        super(c, division);
+    public BorderEngrailed(Tincture[] tinctures, int division) {
+        super(tinctures, division);
     }
 
     public void draw(Graphics2D g, AffineTransform affineTransform) {

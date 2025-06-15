@@ -1,13 +1,15 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
 import java.awt.geom.*;
 
 class FessEngrailed implements Drawable, java.io.Serializable {
-    Color color;
+    final private Tincture tincture;
 
-    public FessEngrailed(Color c) {
-        color = c;
+    public FessEngrailed(Tincture tincture) {
+        this.tincture = tincture;
     }
 
     public void draw(Graphics2D g, AffineTransform affineTransform) {
@@ -23,8 +25,7 @@ class FessEngrailed implements Drawable, java.io.Serializable {
             e.setFrame((float) i * 20.0f, bot - 10.0f, 20.0f, 20.0f);
             fess.subtract(new Area(e));
         }
-        g.setColor(color);
-        g.fill(fess);
+        tincture.fill(g, fess);
     }
 }
 

@@ -1,13 +1,15 @@
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.*;
 import java.awt.geom.*;
 
 class FessInvected implements Drawable, java.io.Serializable {
-    Color color;
+    Tincture tincture;
 
-    public FessInvected(Color c) {
-        color = c;
+    public FessInvected(Tincture tincture) {
+        this.tincture = tincture;
     }
 
     public void draw(Graphics2D g, AffineTransform affineTransform) {
@@ -24,8 +26,7 @@ class FessInvected implements Drawable, java.io.Serializable {
             fess.add(new Area(e));
         }
 
-        g.setColor(color);
-        g.fill(fess);
+        tincture.fill(g, fess);
     }
 }
 
