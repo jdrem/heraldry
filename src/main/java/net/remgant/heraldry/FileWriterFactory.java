@@ -18,6 +18,9 @@ public class FileWriterFactory {
         else if (fileWriterType.equalsIgnoreCase("PNG"))
             return new PNGFileWriter(Integer.parseInt(properties.getProperty("width", "200")),
                     Integer.parseInt(properties.getProperty("height","250")));
+        else if (fileWriterType.equalsIgnoreCase("EPS"))
+            return new EPSFileWriter(Integer.parseInt(properties.getProperty("width", "200")),
+                    Integer.parseInt(properties.getProperty("height","250")));
         throw new RuntimeException("Unkown type: "+fileWriterType);
     }
 }

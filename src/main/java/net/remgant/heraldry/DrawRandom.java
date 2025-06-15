@@ -64,7 +64,8 @@ public class DrawRandom {
     public static void main(String[] args) {
         String imageFileType = "PNG";
         final String destinationDir;
-        if (args.length >= 1 && (args[0].equalsIgnoreCase("PNG") || args[0].equalsIgnoreCase("SVG"))) {
+        if (args.length >= 1 && (args[0].equalsIgnoreCase("PNG") || args[0].equalsIgnoreCase("SVG") ||
+                args[0].equalsIgnoreCase("EPS")) ) {
             imageFileType = args[0].toUpperCase();
             if (args.length >= 2)
                 destinationDir = args[1];
