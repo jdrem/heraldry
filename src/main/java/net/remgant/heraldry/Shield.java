@@ -12,14 +12,20 @@ class Shield implements Drawable, java.io.Serializable {
         CHIEF_CENTER(0.5, 0.15),
         CHIEF_SINISTER(0.8333, 0.15),
         FESS_DEXTER(0.1667, 0.5),
+        FESS_DEXTER_MID(0.25, 0.5),
+        FESS_SINISTER_MID(0.74, 0.5),
         CENTER(0.5, 0.5),
         FESS_SINISTER(0.8333, 0.5),
         BEND_TOP_DEXTER(0.225, 0.1958),
         BEND_TOP_SINISTER(0.775, 0.1958),
         BEND_BOTTOM_SINISTER(0.775, 0.8),
         BEND_BOTTOM_DEXTER(0.225, 0.8),
+        BASE(0.5, 0.8),
         PALE_TOP(0.5, 0.1958),
         PALE_BOTTOM(0.5, 0.8),
+        PALE_TOP_MID(0.5, 0.25),
+        PALE_BOTTOM_MID(0.5, 0.75),
+        HONOR_POINT(0.5, 0.3),
         HONOR_POINT_DEXTER(0.25, 0.3),
         HONOR_POINT_SINISTER(0.75, 0.3),
         NAVEL_POINT(0.5, 0.7);
@@ -41,7 +47,8 @@ class Shield implements Drawable, java.io.Serializable {
         PER_BEND,
         PER_BEND_SINISTER,
         PER_CHEVRON,
-        PER_CROSS, PER_SALTIRE
+        PER_CROSS,
+        PER_SALTIRE;
     }
 
     public static BufferedImage createImage() {
@@ -86,9 +93,7 @@ class Shield implements Drawable, java.io.Serializable {
         Area area = new Area();
         area.add(new Area(rect));
         area.add(new Area(circ));
-        System.out.printf("shield: %s%n", area.getBounds2D());
         area.transform(affineTransform);
-        System.out.printf("shield: %s%n", area.getBounds2D());
 
         g.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR, 0.0f));
         g.fill(new Rectangle2D.Float(0, 0, (int)area.getBounds2D().getWidth(), (int)area.getBounds2D().getHeight()));

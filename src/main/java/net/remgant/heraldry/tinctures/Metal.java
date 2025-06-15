@@ -51,4 +51,9 @@ public class Metal extends Tincture {
             return false;
         return ((Metal)obj).color.equals(this.color);
     }
+
+    @Override
+    public int hashCode() {
+        return color.hashCode();
+    }
 }

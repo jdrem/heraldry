@@ -42,4 +42,17 @@ public class Ermine extends Fur {
         spotArea.intersect(area);
         spotColor.fill(graphics, spotArea);
     }
+
+    @Override
+    public int hashCode() {
+        return spotColor.hashCode() + fieldColor.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Ermine))
+            return false;
+        Ermine that = (Ermine)obj;
+        return that.spotColor.equals(this.spotColor) && that.fieldColor.equals(this.fieldColor);
+    }
 }

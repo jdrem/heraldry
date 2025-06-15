@@ -129,4 +129,9 @@ public class Builder {
         }
         consumer.accept(graphics);
     }
+
+    public Builder add(DrawRandom.MultiFunction<Tincture, Shield.Position, Double, Drawable> function, Tincture tincture, Shield.Position position, double scale) {
+        list.add(function.apply(tincture, position, scale));
+        return this;
+    }
 }
