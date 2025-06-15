@@ -3,10 +3,7 @@ package net.remgant.heraldry;
 import net.remgant.heraldry.tinctures.Tincture;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.random.RandomGenerator;
@@ -87,6 +84,8 @@ public class DrawRandom {
             RandomGenerator random = RandomGenerator.getDefault();
             double d = random.nextDouble();
             Tincture fieldTincture = null;
+            Tincture chargeTincture = null;
+            Tincture ordinaryTincture = null;
             Tincture t1 = null;
             Tincture t2 = null;
             Shield.LineOfDivision lineOfDivision = null;
@@ -132,7 +131,6 @@ public class DrawRandom {
             else if (d < 0.40) {
                 // do an ordinary
                 Function<Tincture, Drawable> func = ordinaries.get(random.nextInt(ordinaries.size()));
-                Tincture ordinaryTincture;
                 if (fieldTincture == null) {
                     ordinaryTincture = pickAnyTinctureBut(random, Set.of(t1, t2));
                 } else if (fieldTincture.isMetal())
@@ -147,7 +145,6 @@ public class DrawRandom {
                     MultiFunction<Tincture, Shield.Position, Double, Drawable> chargeFunc = charges.get(random.nextInt(charges.size()));
                     String simpleName = func.apply(ordinaryTincture).getClass().getSimpleName();
                     List<Shield.Position> positions = new ArrayList<>();
-                    Tincture chargeTincture;
                     d = random.nextDouble();
                     if (d < 0.5) {
                         chargeTincture = fieldTincture;
@@ -223,7 +220,6 @@ public class DrawRandom {
             } else if (d < 0.55) {
                 // a single charge
                 MultiFunction<Tincture, Shield.Position, Double, Drawable> func = charges.get(random.nextInt(charges.size()));
-                Tincture chargeTincture;
                 if (fieldTincture == null) {
                     chargeTincture = pickAnyTinctureBut(random, Set.of(t1, t2));
                 } else if (fieldTincture.isMetal())
@@ -234,7 +230,6 @@ public class DrawRandom {
             } else {
                 // multiple charges.
                 MultiFunction<Tincture, Shield.Position, Double, Drawable> func = charges.get(random.nextInt(charges.size()));
-                Tincture chargeTincture;
                 if (fieldTincture == null) {
                     chargeTincture = pickAnyTinctureBut(random, Set.of(t1, t2));
                 } else if (fieldTincture.isMetal())
@@ -307,6 +302,38 @@ public class DrawRandom {
                     builder.add(func, chargeTincture, p4, 1.0);
                     builder.add(func, chargeTincture, p5, 1.0);
                 }
+            }
+            d = random.nextDouble();
+            if (d < 0.025) {
+                // add a border
+                Set<Tincture> ft = new HashSet<>();
+                if (t1 != null && t2 != null) {
+                    ft.add(t1);
+                    ft.add(t2);
+                } else {
+                    ft.add(fieldTincture);
+                }
+                Tincture borderTincture = pickAnyTinctureBut(random, ft);
+                builder.add(new Border(borderTincture));
+            }
+            d = random.nextDouble();
+            if (d < 0.025) {
+                // add a border
+                Set<Tincture> ft = new HashSet<>();
+                if (t1 != null && t2 != null) {
+                    ft.add(t1);
+                    ft.add(t2);
+                } else {
+                    ft.add(fieldTincture);
+                }
+                if (chargeTincture != null ) {
+                    ft.add(chargeTincture);
+                }
+                if (ordinaryTincture != null) {
+                    ft.add(ordinaryTincture);
+                }
+                Tincture borderTincture = pickAnyTinctureBut(random, ft);
+                builder.add(new Label(borderTincture));
             }
             builder.build(g -> {
                 try {
