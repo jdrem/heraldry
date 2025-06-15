@@ -18,8 +18,8 @@ For instance, for the basic cas of "or a fess guile":
 Which would produce:
 
 <img src="images/or-a-fess-gules.svg" width="200" height="250">
-
 When placing charges on the filed, you need to specify not only the tincture, but the relative location of the field and the scaling of the charge. For "sable, three bezants in pale":
+
 ```Java
     Builder builder = new Buidler(fileWriter.createGraphics());
     builder.add(new Shield(Tincture.SABLE);
@@ -32,8 +32,7 @@ When placing charges on the filed, you need to specify not only the tincture, bu
 ```
 This produces:
 
-![Sable three bezants or](images/sable-three-bezants-in-pale.svg)
-
+<img src="images/sable-three-bezants-in-pale.svg" width="200" height="250">
 Builder also has convenience methods so you could do the first example like this instead:
 ```Java
   Builder builder = new Buidler(fileWriter.createGraphics());
