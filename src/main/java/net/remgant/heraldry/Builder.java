@@ -4,6 +4,7 @@ import net.remgant.heraldry.tinctures.Tincture;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -11,9 +12,28 @@ import java.util.function.Function;
 
 public class Builder {
     final private Graphics2D graphics;
+    final private FileWriter fileWriter;
     final private List<Drawable> list;
+
+    public Builder(FileWriter fileWriter) {
+        this.graphics = fileWriter.createGraphics();
+        this.fileWriter = fileWriter;
+        this.list = new ArrayList<>();
+    }
+
     public Builder(Graphics2D graphics) {
         this.graphics = graphics;
+        this.fileWriter = new FileWriter() {
+            @Override
+            public Graphics2D createGraphics() {
+                return graphics;
+            }
+
+            @Override
+            public void writeToFile(String fileName) throws IOException {
+
+            }
+        };
         list = new ArrayList<>();
     }
 
@@ -63,6 +83,18 @@ public class Builder {
         return this;
     }
 
+    public Builder fess(Tincture tincture, Shield.VariationOfLine variationOfLine) {
+        switch(variationOfLine) {
+            case INVECTED -> list.add(new FessInvected(tincture));
+            case ENGRAILED -> list.add(new FessEngrailed(tincture));
+            case INDENTED -> list.add(new FessIndented(tincture));
+            default -> list.add(new Fess(tincture));
+        }
+        return this;
+    }
+
+
+
     public Builder pale(Tincture tincture) {
         list.add(new Pale(tincture));
         return this;
@@ -99,10 +131,17 @@ public class Builder {
     }
 
     public Builder border(Tincture tincture) {
+        list.add(new Border(tincture));
         return this;
     }
 
-    public Builder border(Tincture tincture, LineType lineType) {
+    public Builder border(Tincture tincture, Shield.VariationOfLine variationOfLine) {
+        switch(variationOfLine) {
+            case INVECTED -> list.add(new BorderInvected(tincture));
+            case ENGRAILED -> list.add(new BorderEngrailed(tincture));
+            case INDENTED -> list.add(new BorderIndented(tincture));
+            default -> list.add(new Border(tincture));
+        }
         return this;
     }
 
@@ -114,6 +153,13 @@ public class Builder {
     public Builder add(Drawable drawable) {
         list.add(drawable);
         return this;
+    }
+
+    public void build(Consumer<FileWriter> consumer, boolean b) {
+        for (Drawable drawable : list) {
+            drawable.draw(graphics);
+        }
+        consumer.accept(fileWriter);
     }
 
     public void build(Consumer<Graphics2D> consumer) {

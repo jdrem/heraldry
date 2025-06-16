@@ -53,12 +53,11 @@ class Border implements Drawable, java.io.Serializable {
         switch (division) {
             case DIV_PER_PALE:
                 mask = new Area(new Rectangle2D.Float(100.0f, 0.0f, 100.0f, 255.0f));
-                b1 = (Area) border.clone();
+                b1 = new Area(border);
                 b1.subtract(mask);
                 tinctures[0].fill(g, b1);
-                t.translate(-100.0f, 0.0f);
-                mask.transform(t);
-                b1 = (Area) border.clone();
+                mask.transform(AffineTransform.getTranslateInstance(-100.0f, 0.0f));
+                b1 = new Area(border);
                 b1.subtract(mask);
                 tinctures[1].fill(g, b1);
                 break;
@@ -94,7 +93,7 @@ class Border implements Drawable, java.io.Serializable {
                 t.translate(100.0f, 127.5f);
                 mask.transform(t);
                 b1.subtract(mask);
-                tinctures[0].fill(g, b1);
+                tinctures[1].fill(g, b1);
                 break;
             case DIV_GYRONNY:
                 // make a triangle
@@ -153,6 +152,9 @@ class Border implements Drawable, java.io.Serializable {
             default:
                 tinctures[0].fill(g, border);
                 break;
+        }
+        if (tinctures[0].equals(Tincture.ARGENT) || tinctures[0].equals(Tincture.OR)) {
+            Tincture.SABLE.draw(g, border);
         }
     }
 
