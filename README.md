@@ -1,7 +1,12 @@
 ## Simple Heraldry Illustrator
 This repository contains some simple tools to create images of heraldic shields. Currently, you can create shields using the basic colors and metals as well as the variations fo ermine.
-Most to the traditional ordinaries are supported: fess, pale, chief, bend, bend sinister, saltire and cross. Several basic charges can be used: mullet, crescent,
-fleur-de-lis, martlet, roundel, annulet, heart, ermine spot and rose.
+Most to the traditional ordinaries are supported: fess, pale, chief, bend, bend sinister, saltire and cross:
+
+<img src="images/ordinaries.svg" width="550" height="330">
+
+Several basic charges can be used: annulet, crescent, fleur-de-lis, heart, lozenge, martlet, mullet, rose, roundel:
+
+<img src="images/charges.svg" width="675" height="350">
 
 To create a shield, use the [__Builder__](src/main/java/net/remgant/heraldry/Builder.java) class to construct the shield and a [__FileWriter__](src/main/java/net/remgant/heraldry/FileWriter.java) instance to save to a file. 
 
