@@ -324,5 +324,115 @@ public class DrawEverything {
                     }
                 });
 
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.OR)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("or.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.ARGENT)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("argent.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.GULES)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("gules.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.SABLE)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("sable.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.AZURE)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("azure.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.VERT)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("vert.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.PURPURE)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("purpure.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.ERMINE)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("ermine.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.ERMINES)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("ermines.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.ERMINOIS)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("erminois.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.PEAN)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("pean.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
     }
 }
