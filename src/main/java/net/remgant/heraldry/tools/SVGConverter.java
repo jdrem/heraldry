@@ -32,14 +32,29 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class SVGConverter {
 
+    String svgFileName;
+    public SVGConverter(String svgFileName) {
+        this.svgFileName = svgFileName;
+    }
+
+    Point2D currentPoint;
+
+    public Point2D getCurrentPoint() {
+        return currentPoint;
+    }
+
+    public void setCurrentPoint(Point2D currentPoint) {
+        this.currentPoint = currentPoint;
+    }
+
     public static void main(String args[]) throws URISyntaxException, IOException {
-        new SVGConverter().run();
+        new SVGConverter(args[0]).run();
     }
 
     public void run() throws URISyntaxException, IOException {
         String parser = XMLResourceDescriptor.getXMLParserClassName();
         SAXSVGDocumentFactory f = new SAXSVGDocumentFactory(parser);
-        URI uri = new URI("file:///home/jdr/Projects/Heraldry/Fleur-de-lys_Sixth_son.svg"); // the URI of your SVG document
+        URI uri = new URI(String.format("file://%s", svgFileName)); // the URI of your SVG document
         Document doc = f.createDocument(uri.toString());
 
 
@@ -86,119 +101,126 @@ public class SVGConverter {
 
                 @Override
                 public void endPath() throws ParseException {
-//                    System.out.println("end path");
                     idx.incrementAndGet();
                 }
 
                 @Override
                 public void movetoRel(float v, float v1) throws ParseException {
-                    System.out.printf("Move to: %f %f%n", v, v1);
+                    if (getCurrentPoint() == null) {
+                        setCurrentPoint(new Point2D.Double(v, v1));
+                    } else {
+                        setCurrentPoint(new Point2D.Double(getCurrentPoint().getX()+v, getCurrentPoint().getY()+v1));
+                    }
+                    System.out.printf("     paths[%d].moveTo(%f, %f);%n",idx.get(), getCurrentPoint().getX(), getCurrentPoint().getY());
+                    list.getLast().moveTo(getCurrentPoint().getX(), getCurrentPoint().getY());
                 }
 
                 @Override
                 public void movetoAbs(float v, float v1) throws ParseException {
-//                    System.out.printf("Move abs: %f %f%n", v, v1);
                     list.getLast().moveTo(v, v1);
+                    setCurrentPoint(new Point2D.Double(v,v1));
                     System.out.printf("     paths[%d].moveTo(%f, %f);%n",idx.get(), v, v1);
                 }
 
                 @Override
                 public void closePath() throws ParseException {
-//                    System.out.println("close path");
                 }
 
                 @Override
                 public void linetoRel(float v, float v1) throws ParseException {
-                    System.out.printf("line to rel: %f %f%n", v, v1);
-                }
+                    double cx = getCurrentPoint().getX();
+                    double cy = getCurrentPoint().getY();
+                    System.out.printf("     paths[%d].lineTo(%f, %f);%n", idx.get(), v+cx, v1+cy);
+                    setCurrentPoint(new Point2D.Double(v+cx, v1+cy));
+               }
 
                 @Override
                 public void linetoAbs(float v, float v1) throws ParseException {
-//                    System.out.printf("line to abs: %f %f%n", v, v1);
                     list.getLast().lineTo(v, v1);
                     System.out.printf("     paths[%d].lineTo(%f, %f);%n", idx.get(), v, v1);
+                    setCurrentPoint(new Point2D.Double(v, v1));
                 }
 
                 @Override
                 public void linetoHorizontalRel(float v) throws ParseException {
-                    System.out.printf("line to horiz rel: %f%n", v);
+                    throw new UnsupportedOperationException(String.format("linetoHorizontalRel %f", v));
                 }
 
                 @Override
                 public void linetoHorizontalAbs(float v) throws ParseException {
-//                    System.out.printf("line to horiz abs: %f%n", v);
-                    Point2D point = list.getLast().getCurrentPoint();
-                    System.out.printf("     paths[%d].lineTo(%f, %f);%n", idx.get(), v, point.getY());
+                    throw new UnsupportedOperationException(String.format("linetoHorizontalAbs %f", v));
+
+//                    Point2D point = list.getLast().getCurrentPoint();
+//                    System.out.printf("     paths[%d].lineTo(%f, %f);%n", idx.get(), v, point.getY());
                 }
 
                 @Override
                 public void linetoVerticalRel(float v) throws ParseException {
-                    System.out.printf("line to vertical rel: %f%n", v);
+                    throw new UnsupportedOperationException(String.format("linetoVerticalRel %f", v));
                 }
 
                 @Override
                 public void linetoVerticalAbs(float v) throws ParseException {
-//                    System.out.printf("line to vert abs: %f%n", v);
-                    Point2D point = list.getLast().getCurrentPoint();
-                    System.out.printf("     paths[%d].lineTo(%f, %f);%n", idx.get(), point.getX(), v);
+                    throw new UnsupportedOperationException(String.format("linetoVerticalAbs %f", v));
+//                    Point2D point = list.getLast().getCurrentPoint();
+//                    System.out.printf("     paths[%d].lineTo(%f, %f);%n", idx.get(), point.getX(), v);
                 }
 
                 @Override
-                public void curvetoCubicRel(float v, float v1, float v2, float v3, float v4, float v5) throws ParseException {
-                    System.out.printf("curve cubic rel: %f %f %f %f %f %f%n",v, v1, v2, v3, v4, v5);
+                public void curvetoCubicRel(float x, float y, float x1, float y1, float x2, float y2) throws ParseException {
+                    Point2D currentPoint = getCurrentPoint();
+                    double cx = currentPoint.getX();
+                    double cy = currentPoint.getY();
+                    list.getLast().curveTo(x+cx, y+cy, x1+cx, y1+cy, x2+cx, y2+cx);
+                    System.out.printf("     paths[%d].curveTo(%f, %f, %f, %f, %f, %f);%n", idx.get(), x+cx, y+cy, x1+cx, y1+cy, x2+cx, y2+cx);
+                    setCurrentPoint(new Point2D.Double(x2+cx, y2+cx));
                 }
 
                 @Override
-                public void curvetoCubicAbs(float v, float v1, float v2, float v3, float v4, float v5) throws ParseException {
-//                    System.out.printf("curve cubic abs: %f %f %f %f %f %f%n",v, v1, v2, v3, v4, v5);
-                    list.getLast().curveTo(v, v1, v2, v3, v4, v5);
-                    System.out.printf("     paths[%d].curveTo(%f, %f, %f, %f, %f, %f);%n", idx.get(), v, v1, v2, v3, v4, v5);
+                public void curvetoCubicAbs(float x, float y, float x1, float y1, float x2, float y2) throws ParseException {
+                    list.getLast().curveTo(x, y, x1, y1, x2, y2);
+                    System.out.printf("     paths[%d].curveTo(%f, %f, %f, %f, %f, %f);%n", idx.get(), x, y, x1, y1, x2, y2);
+                    setCurrentPoint(new Point2D.Double(x2, y2));
                 }
 
                 @Override
                 public void curvetoCubicSmoothRel(float v, float v1, float v2, float v3) throws ParseException {
-                    System.out.printf("Curve Cubic Smooth rel: %f %f %f %f%n", v, v1, v2, v3);
+                    throw new UnsupportedOperationException(String.format("curvetoCubicSmoothRel %f %f %f %f", v, v1, v2, v3));
                 }
 
                 @Override
                 public void curvetoCubicSmoothAbs(float v, float v1, float v2, float v3) throws ParseException {
-                    System.out.printf("Curve Cubic Smooth abs: %f %f %f %f%n", v, v1, v2, v3);
-
+                    throw new UnsupportedOperationException(String.format("curvetoCubicSmoothAbs %f %f %f %f", v, v1, v2, v3));
                 }
 
                 @Override
                 public void curvetoQuadraticRel(float v, float v1, float v2, float v3) throws ParseException {
-                    System.out.printf("Curve Quadratic rel: %f %f %f %f%n", v, v1, v2, v3);
-
+                    throw new UnsupportedOperationException(String.format("curvetoQuadraticRel %f %f %f %f", v, v1, v2, v3));
                 }
 
                 @Override
                 public void curvetoQuadraticAbs(float v, float v1, float v2, float v3) throws ParseException {
-                    System.out.printf("Curve Quadratic abs: %f %f %f %f%n", v, v1, v2, v3);
-
+                    throw new UnsupportedOperationException(String.format("curvetoQuadraticAbs %f %f %f %f", v, v1, v2, v3));
                 }
 
                 @Override
                 public void curvetoQuadraticSmoothRel(float v, float v1) throws ParseException {
-                    System.out.printf("Curve Quadratic smooth rel: %f %f %f %f%n", v, v1);
-
+                    throw new UnsupportedOperationException(String.format("curvetoQuadraticSmoothRel %f %f", v, v1));
                 }
 
                 @Override
                 public void curvetoQuadraticSmoothAbs(float v, float v1) throws ParseException {
-                    System.out.printf("Curve Quadratic smooth abs: %f %f %f %f%n", v, v1);
-
+                    throw new UnsupportedOperationException(String.format("curvetoQuadraticSmoothAbs %f %f", v, v1));
                 }
 
                 @Override
                 public void arcRel(float v, float v1, float v2, boolean b, boolean b1, float v3, float v4) throws ParseException {
-                    System.out.printf("Arc rel: %f %f %b %b %f %f%n", v, v1, v2,b, b1, v3);
-
+                    throw new UnsupportedOperationException(String.format("arcRel %f %f %f %b %b %f %f", v, v1, v2, v, v1, v3, v4));
                 }
 
                 @Override
                 public void arcAbs(float v, float v1, float v2, boolean b, boolean b1, float v3, float v4) throws ParseException {
-                    System.out.printf("Arc abs: %f %f %b %b %f %f%n", v, v1, v2,b, b1, v3);
+                    throw new UnsupportedOperationException(String.format("arcAbs %f %f %f %b %b %f %f", v, v1, v2, v, v1, v3, v4));
                 }
             });
             pathParser.parse(toParse);

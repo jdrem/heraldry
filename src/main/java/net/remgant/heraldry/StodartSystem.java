@@ -21,7 +21,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -34,7 +34,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -47,7 +47,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
         builder.fieldOf(Tincture.ARGENT)
@@ -59,7 +59,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
         builder.fieldOf(Tincture.ARGENT)
@@ -71,7 +71,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
 
         fileWriter = fileWriterFactory.getInstance();
@@ -84,7 +84,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -96,7 +96,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
 
         fileWriter = fileWriterFactory.getInstance();
@@ -109,7 +109,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -122,7 +122,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -135,7 +135,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -148,7 +148,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
 
         fileWriter = fileWriterFactory.getInstance();
@@ -162,7 +162,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
 
         fileWriter = fileWriterFactory.getInstance();
@@ -176,7 +176,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -189,7 +189,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
 
         fileWriter = fileWriterFactory.getInstance();
@@ -203,7 +203,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -216,7 +216,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -229,7 +229,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -242,7 +242,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
 
         fileWriter = fileWriterFactory.getInstance();
@@ -256,7 +256,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -270,7 +270,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -284,7 +284,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -298,7 +298,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -312,7 +312,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
 
 
@@ -327,7 +327,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
         fileWriter = fileWriterFactory.getInstance();
         builder = new Builder(fileWriter);
@@ -340,7 +340,7 @@ public class StodartSystem {
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
-                }, true);
+                });
 
     }
 }

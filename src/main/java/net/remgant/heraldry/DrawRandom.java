@@ -80,7 +80,7 @@ public class DrawRandom {
         for (int i = 0; i < 500; i++) {
 //            FileWriter fileWriter = new PNGFileWriter(200, 250);
             FileWriter fileWriter = fileWriterFactory.getInstance();
-            Builder builder = new Builder(fileWriter.createGraphics());
+            Builder builder = new Builder(fileWriter);
             RandomGenerator random = RandomGenerator.getDefault();
             double d = random.nextDouble();
             Tincture fieldTincture = null;
@@ -335,9 +335,9 @@ public class DrawRandom {
                 Tincture borderTincture = pickAnyTinctureBut(random, ft);
                 builder.add(new Label(borderTincture));
             }
-            builder.build(g -> {
+            builder.build(fw -> {
                 try {
-                    fileWriter.writeToFile(String.format("%s/shield-%03d", destinationDir, idx.getAndIncrement()));
+                    fw.writeToFile(String.format("%s/shield-%03d", destinationDir, idx.getAndIncrement()));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

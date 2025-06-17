@@ -2,95 +2,101 @@ package net.remgant.heraldry;
 
 import net.remgant.heraldry.tinctures.Tincture;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.util.Properties;
 
 public class DrawEverything {
-        public static void main(String[] args) {
-            BufferedImage bufferedImage = new BufferedImage(200, 250, BufferedImage.TYPE_INT_ARGB);
-            Builder builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf(Tincture.OR)
+    public static void main(String[] args) {
+        FileWriterFactory fileWriterFactory = new FileWriterFactory("SVG", new Properties());
+
+        Builder builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.OR)
                 .fess(Tincture.SABLE)
-                    .build(g -> {
-                        try {
-                            ImageIO.write(bufferedImage, "PNG", new File("fess.png"));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("fess.svg");
+                    } catch (IOException e) {
+                        throw new UncheckedIOException(e);
+                    }
+                });
 
-            builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf(Tincture.OR)
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.OR)
                 .pale(Tincture.SABLE)
-                    .build(g -> {
-                        try {
-                            ImageIO.write(bufferedImage, "PNG", new File("pale.png"));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("pale.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
 
-            builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf(Tincture.OR)
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.OR)
                 .chief(Tincture.SABLE)
-                    .build(g -> {
-                        try {
-                            ImageIO.write(bufferedImage, "PNG", new File("chief.png"));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });           builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf(Tincture.OR)
-                .cross(Tincture.SABLE)
-                    .build(g -> {
-                        try {
-                            ImageIO.write(bufferedImage, "PNG", new File("cross.png"));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
-            builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf(Tincture.OR)
-                .bend(Tincture.SABLE)
-                    .build(g -> {
-                        try {
-                            ImageIO.write(bufferedImage, "PNG", new File("bend.png"));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
-            builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf(Tincture.OR)
-                .bendSinister(Tincture.SABLE)
-                    .build(g -> {
-                        try {
-                            ImageIO.write(bufferedImage, "PNG", new File("bend-sinister.png"));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
-            builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf(Tincture.OR)
-                .saltire(Tincture.SABLE)
-                    .build(g -> {
-                        try {
-                            ImageIO.write(bufferedImage, "PNG", new File("saltire.png"));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
-            builder = new Builder(bufferedImage.createGraphics());
-            builder.fieldOf(Tincture.OR)
-                    .chevron(Tincture.SABLE)
-                    .build(g -> {
-                        try {
-                            ImageIO.write(bufferedImage, "PNG", new File("chevron.png"));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("chief.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
 
-        }
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.OR)
+                .cross(Tincture.SABLE)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("cross.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.OR)
+                .bend(Tincture.SABLE)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("bend.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.OR)
+                .bendSinister(Tincture.SABLE)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("bend-sinister.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.OR)
+                .saltire(Tincture.SABLE)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("saltire.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+        builder = new Builder(fileWriterFactory.getInstance());
+        builder.fieldOf(Tincture.OR)
+                .chevron(Tincture.SABLE)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("chevron.svg");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+    }
 }
