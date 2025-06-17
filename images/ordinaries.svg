@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1100"
+   height="660"
+   viewBox="0 0 291.04166 174.625"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
+   sodipodi:docname="ordinaries.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="0.7"
+     inkscape:cx="876.42857"
+     inkscape:cy="560.71429"
+     inkscape:window-width="1920"
+     inkscape:window-height="973"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.26458332"
+       spacingy="0.26458333"
+       empcolor="#0000ff"
+       empopacity="0.25098039"
+       color="#0000ff"
+       opacity="0.1254902"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="alphaCompositeClear"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood1" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite1"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge2">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode1" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode2" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="filter4"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood2" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite2"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge4">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode3" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode4" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="alphaCompositeClear-1"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood1-0" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite1-0"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge2-6">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode1-4" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode2-4" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="filter4-4"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood2-7" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite2-2"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge4-1">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode3-7" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode4-9" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="alphaCompositeClear-2"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood1-1" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite1-5"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge2-9">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode1-9" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode2-1" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="filter4-0"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood2-5" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite2-3"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge4-2">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode3-1" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode4-97" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="alphaCompositeClear-3"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood1-3" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite1-6"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge2-90">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode1-48" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode2-5" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="filter4-3"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood2-8" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite2-0"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge4-9">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode3-2" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode4-3" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="alphaCompositeClear-8"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood1-5" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite1-50"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge2-1">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode1-2" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode2-6" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="filter4-6"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood2-2" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite2-5"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge4-26">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode3-9" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode4-1" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="alphaCompositeClear-9"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood1-4" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite1-4"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge2-60">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode1-7" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode2-43" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="filter4-02"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood2-26" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite2-9"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge4-0">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode3-3" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode4-5" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="alphaCompositeClear-13"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood1-02" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite1-9"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge2-609">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode1-3" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode2-54" />
+      </feMerge>
+    </filter>
+    <filter
+       width="1"
+       x="0"
+       height="1"
+       y="0"
+       id="filter4-31"
+       filterUnits="objectBoundingBox">
+      <feFlood
+         result="flood"
+         id="feFlood2-9" />
+      <feComposite
+         k2="0"
+         in2="BackgroundImage"
+         operator="arithmetic"
+         result="composite"
+         in="SourceGraphic"
+         id="feComposite2-1"
+         k1="0"
+         k3="0"
+         k4="0" />
+      <feMerge
+         id="feMerge4-09">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode3-4" />
+        <feMergeNode
+           in="composite"
+           id="feMergeNode4-56" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g4"
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:new"
+       transform="matrix(0.26458333,0,0,0.26458333,16.857738,15.572616)">
+      <defs
+         id="defs4">
+        <filter
+           width="1"
+           x="0"
+           height="1"
+           y="0"
+           id="filter6"
+           filterUnits="objectBoundingBox">
+          <feFlood
+             result="flood"
+             id="feFlood3" />
+          <feComposite
+             k2="0"
+             in2="BackgroundImage"
+             operator="arithmetic"
+             result="composite"
+             in="SourceGraphic"
+             id="feComposite3"
+             k1="0"
+             k3="0"
+             k4="0" />
+          <feMerge
+             id="feMerge6">
+            <feMergeNode
+               in="flood"
+               id="feMergeNode5" />
+            <feMergeNode
+               in="composite"
+               id="feMergeNode6" />
+          </feMerge>
+        </filter>
+      </defs>
+      <g
+         id="g3">
+        <rect
+           x="0"
+           y="0"
+           width="200"
+           style="opacity:0;stroke:none;filter:url(#alphaCompositeClear)"
+           height="250"
+           id="rect2" />
+        <path
+           d="m 0,0 v 155 h 0.1228 c 2.6052,52.9056 46.3254,95 99.8772,95 53.5518,0 97.272,-42.0944 99.8772,-95 H 200 V 0 Z"
+           style="fill:#ffff00;stroke:none"
+           id="path2" />
+        <path
+           style="stroke:none"
+           d="M 0,0 V 75 H 200 V 0 Z"
+           id="path3" />
+      </g>
+    </g>
+    <g
+       id="g4-7"
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:new"
+       transform="matrix(0.26458333,0,0,0.26458333,86.405357,15.572616)">
+      <defs
+         id="defs4-3">
+        <filter
+           width="1"
+           x="0"
+           height="1"
+           y="0"
+           id="filter8"
+           filterUnits="objectBoundingBox">
+          <feFlood
+             result="flood"
+             id="feFlood6" />
+          <feComposite
+             k2="0"
+             in2="BackgroundImage"
+             operator="arithmetic"
+             result="composite"
+             in="SourceGraphic"
+             id="feComposite6"
+             k1="0"
+             k3="0"
+             k4="0" />
+          <feMerge
+             id="feMerge8">
+            <feMergeNode
+               in="flood"
+               id="feMergeNode7" />
+            <feMergeNode
+               in="composite"
+               id="feMergeNode8" />
+          </feMerge>
+        </filter>
+      </defs>
+      <g
+         id="g3-5">
+        <rect
+           x="0"
+           y="0"
+           width="200"
+           style="opacity:0;stroke:none;filter:url(#alphaCompositeClear-1)"
+           height="250"
+           id="rect2-6" />
+        <path
+           d="m 0,0 v 155 h 0.1228 c 2.6052,52.9056 46.3254,95 99.8772,95 53.5518,0 97.272,-42.0944 99.8772,-95 H 200 V 0 Z"
+           style="fill:#ffff00;stroke:none"
+           id="path2-8" />
+        <path
+           style="stroke:none"
+           d="m 0,95 v 60 H 200 V 95 Z"
+           id="path3-9" />
+      </g>
+    </g>
+    <g
+       id="g4-2"
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:new"
+       transform="matrix(0.26458333,0,0,0.26458333,154.81905,15.194639)">
+      <defs
+         id="defs4-1">
+        <filter
+           width="1"
+           x="0"
+           height="1"
+           y="0"
+           id="filter10"
+           filterUnits="objectBoundingBox">
+          <feFlood
+             result="flood"
+             id="feFlood8" />
+          <feComposite
+             k2="0"
+             in2="BackgroundImage"
+             operator="arithmetic"
+             result="composite"
+             in="SourceGraphic"
+             id="feComposite8"
+             k1="0"
+             k3="0"
+             k4="0" />
+          <feMerge
+             id="feMerge10">
+            <feMergeNode
+               in="flood"
+               id="feMergeNode9" />
+            <feMergeNode
+               in="composite"
+               id="feMergeNode10" />
+          </feMerge>
+        </filter>
+      </defs>
+      <g
+         id="g3-6">
+        <rect
+           x="0"
+           y="0"
+           width="200"
+           style="opacity:0;stroke:none;filter:url(#alphaCompositeClear-2)"
+           height="250"
+           id="rect2-8" />
+        <path
+           d="m 0,0 v 155 h 0.1228 c 2.6052,52.9056 46.3254,95 99.8772,95 53.5518,0 97.272,-42.0944 99.8772,-95 H 200 V 0 Z"
+           style="fill:#ffff00;stroke:none"
+           id="path2-2" />
+        <path
+           style="stroke:none"
+           d="m 70,0 v 245.422 0 c 9.4704,2.9745 19.5479,4.578 30,4.578 10.4521,0 20.5296,-1.6035 30,-4.578 v 0 V 0 Z"
+           id="path3-0" />
+      </g>
+    </g>
+    <g
+       id="g4-29"
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:new"
+       transform="matrix(0.26458333,0,0,0.26458333,222.3256,15.950592)">
+      <defs
+         id="defs4-7">
+        <filter
+           width="1"
+           x="0"
+           height="1"
+           y="0"
+           id="filter12"
+           filterUnits="objectBoundingBox">
+          <feFlood
+             result="flood"
+             id="feFlood10" />
+          <feComposite
+             k2="0"
+             in2="BackgroundImage"
+             operator="arithmetic"
+             result="composite"
+             in="SourceGraphic"
+             id="feComposite10"
+             k1="0"
+             k3="0"
+             k4="0" />
+          <feMerge
+             id="feMerge12">
+            <feMergeNode
+               in="flood"
+               id="feMergeNode11" />
+            <feMergeNode
+               in="composite"
+               id="feMergeNode12" />
+          </feMerge>
+        </filter>
+      </defs>
+      <g
+         id="g3-1">
+        <rect
+           x="0"
+           y="0"
+           width="200"
+           style="opacity:0;stroke:none;filter:url(#alphaCompositeClear-3)"
+           height="250"
+           id="rect2-87" />
+        <path
+           d="m 0,0 v 155 h 0.1228 c 2.6052,52.9056 46.3254,95 99.8772,95 53.5518,0 97.272,-42.0944 99.8772,-95 H 200 V 0 Z"
+           style="fill:#ffff00;stroke:none"
+           id="path2-4" />
+        <path
+           style="stroke:none"
+           d="m 0,0 v 48.0234 l 150.5992,188.249 v 0 c 17.8087,-10.4675 32.0902,-26.2917 40.6304,-45.2589 v 0 L 38.4187,0 Z"
+           id="path3-1" />
+      </g>
+    </g>
+    <g
+       id="g4-8"
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:new"
+       transform="matrix(0.26458333,0,0,0.26458333,49.968457,95.703568)">
+      <defs
+         id="defs4-5">
+        <filter
+           width="1"
+           x="0"
+           height="1"
+           y="0"
+           id="filter14"
+           filterUnits="objectBoundingBox">
+          <feFlood
+             result="flood"
+             id="feFlood12" />
+          <feComposite
+             k2="0"
+             in2="BackgroundImage"
+             operator="arithmetic"
+             result="composite"
+             in="SourceGraphic"
+             id="feComposite12"
+             k1="0"
+             k3="0"
+             k4="0" />
+          <feMerge
+             id="feMerge14">
+            <feMergeNode
+               in="flood"
+               id="feMergeNode13" />
+            <feMergeNode
+               in="composite"
+               id="feMergeNode14" />
+          </feMerge>
+        </filter>
+      </defs>
+      <g
+         id="g3-3">
+        <rect
+           x="0"
+           y="0"
+           width="200"
+           style="opacity:0;stroke:none;filter:url(#alphaCompositeClear-8)"
+           height="250"
+           id="rect2-3" />
+        <path
+           d="m 0,0 v 155 h 0.1228 c 2.6052,52.9056 46.3254,95 99.8772,95 53.5518,0 97.272,-42.0944 99.8772,-95 H 200 V 0 Z"
+           style="fill:#ffff00;stroke:none"
+           id="path2-1" />
+        <path
+           style="stroke:none"
+           d="M 161.5813,0 8.7704,191.0135 v 0 c 8.5402,18.9672 22.8217,34.7914 40.6304,45.2589 v 0 L 200,48.0234 V 0 Z"
+           id="path3-5" />
+      </g>
+    </g>
+    <g
+       id="g4-9"
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:new"
+       transform="matrix(0.26458333,0,0,0.26458333,121.78393,95.325592)">
+      <defs
+         id="defs4-0">
+        <filter
+           width="1"
+           x="0"
+           height="1"
+           y="0"
+           id="filter16"
+           filterUnits="objectBoundingBox">
+          <feFlood
+             result="flood"
+             id="feFlood14" />
+          <feComposite
+             k2="0"
+             in2="BackgroundImage"
+             operator="arithmetic"
+             result="composite"
+             in="SourceGraphic"
+             id="feComposite14"
+             k1="0"
+             k3="0"
+             k4="0" />
+          <feMerge
+             id="feMerge16">
+            <feMergeNode
+               in="flood"
+               id="feMergeNode15" />
+            <feMergeNode
+               in="composite"
+               id="feMergeNode16" />
+          </feMerge>
+        </filter>
+      </defs>
+      <g
+         id="g3-58">
+        <rect
+           x="0"
+           y="0"
+           width="200"
+           style="opacity:0;stroke:none;filter:url(#alphaCompositeClear-9)"
+           height="250"
+           id="rect2-7" />
+        <path
+           d="m 0,0 v 155 h 0.1228 c 2.6052,52.9056 46.3254,95 99.8772,95 53.5518,0 97.272,-42.0944 99.8772,-95 H 200 V 0 Z"
+           style="fill:#ffff00;stroke:none"
+           id="path2-17" />
+        <path
+           style="stroke:none"
+           d="m 0,0 v 48.0234 0 L 61.5813,125 v 0 L 8.7704,191.0135 v 0 c 8.5402,18.9672 22.8217,34.7914 40.6304,45.2589 v 0 L 100,173.0234 l 50.5992,63.249 v 0 c 17.8087,-10.4675 32.0902,-26.2917 40.6304,-45.2589 v 0 L 138.4187,125 200,48.0234 V 0 H 161.5813 L 100,76.9766 v 0 L 38.4187,0 Z"
+           id="path3-06" />
+      </g>
+    </g>
+    <g
+       id="g4-6"
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:new"
+       transform="matrix(0.26458333,0,0,0.26458333,191.33154,94.947616)">
+      <defs
+         id="defs4-4">
+        <filter
+           width="1"
+           x="0"
+           height="1"
+           y="0"
+           id="filter18"
+           filterUnits="objectBoundingBox">
+          <feFlood
+             result="flood"
+             id="feFlood16" />
+          <feComposite
+             k2="0"
+             in2="BackgroundImage"
+             operator="arithmetic"
+             result="composite"
+             in="SourceGraphic"
+             id="feComposite16"
+             k1="0"
+             k3="0"
+             k4="0" />
+          <feMerge
+             id="feMerge18">
+            <feMergeNode
+               in="flood"
+               id="feMergeNode17" />
+            <feMergeNode
+               in="composite"
+               id="feMergeNode18" />
+          </feMerge>
+        </filter>
+      </defs>
+      <g
+         id="g3-2">
+        <rect
+           x="0"
+           y="0"
+           width="200"
+           style="opacity:0;stroke:none;filter:url(#alphaCompositeClear-13)"
+           height="250"
+           id="rect2-5" />
+        <path
+           d="m 0,0 v 155 h 0.1228 c 2.6052,52.9056 46.3254,95 99.8772,95 53.5518,0 97.272,-42.0944 99.8772,-95 H 200 V 0 Z"
+           style="fill:#ffff00;stroke:none"
+           id="path2-9" />
+        <path
+           style="stroke:none"
+           d="M 70,0 V 95 H 0 v 60 h 70 v 90.422 0 c 9.4704,2.9745 19.5479,4.578 30,4.578 10.4521,0 20.5296,-1.6035 30,-4.578 v 0 V 155 h 70 V 95 H 130 V 0 Z"
+           id="path3-17" />
+      </g>
+    </g>
+  </g>
+</svg>
