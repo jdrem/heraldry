@@ -9,7 +9,9 @@ import java.awt.geom.*;
 class Shield implements Drawable, java.io.Serializable {
     public enum Position {
         CHIEF_DEXTER(0.1667, 0.15),
+        CHIEF_MID_DEXTER(0.333, 0.15),
         CHIEF_CENTER(0.5, 0.15),
+        CHIEF_MID_SINISTER(0.667, 0.15),
         CHIEF_SINISTER(0.8333, 0.15),
         FESS_DEXTER(0.1667, 0.5),
         FESS_DEXTER_MID(0.25, 0.5),
@@ -49,6 +51,12 @@ class Shield implements Drawable, java.io.Serializable {
         PER_CHEVRON,
         PER_CROSS,
         PER_SALTIRE;
+    }
+
+    public enum VariationOfLine {
+        ENGRAILED,
+        INVECTED,
+        INDENTED
     }
 
     public static BufferedImage createImage() {
@@ -202,6 +210,11 @@ class Shield implements Drawable, java.io.Serializable {
             secondTincture.fill(g, bottom);
         } else {
             tincture.fill(g, area);
+        }
+        if (tincture.equals(Tincture.ARGENT) || tincture.equals(Tincture.ERMINE) ||
+                (secondTincture != null && secondTincture.equals(Tincture.ARGENT) ||
+                        (secondTincture != null && secondTincture.equals(Tincture.ERMINE)))) {
+            Tincture.SABLE.draw(g, area);
         }
     }
 }

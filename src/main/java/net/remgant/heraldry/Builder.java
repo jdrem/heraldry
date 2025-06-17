@@ -155,26 +155,20 @@ public class Builder {
         return this;
     }
 
-    public void build(Consumer<FileWriter> consumer, boolean b) {
+    public void build(Consumer<FileWriter> consumer) {
         for (Drawable drawable : list) {
             drawable.draw(graphics);
         }
         consumer.accept(fileWriter);
     }
 
-    public void build(Consumer<Graphics2D> consumer) {
-        for (Drawable drawable : list) {
-            drawable.draw(graphics);
-        }
-        consumer.accept(graphics);
-    }
-
-    public void build(AffineTransform affineTransform, Consumer<Graphics2D> consumer) {
+    public void build(AffineTransform affineTransform, Consumer<FileWriter> consumer) {
         for (Drawable drawable : list) {
             drawable.draw(graphics, affineTransform);
         }
-        consumer.accept(graphics);
+        consumer.accept(fileWriter);
     }
+
 
     public Builder add(DrawRandom.MultiFunction<Tincture, Shield.Position, Double, Drawable> function, Tincture tincture, Shield.Position position, double scale) {
         list.add(function.apply(tincture, position, scale));
