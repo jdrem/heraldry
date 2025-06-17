@@ -14,8 +14,8 @@ class FessInvected implements Drawable, java.io.Serializable {
 
     public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area fess = new Area();
-        float top = 75.0f;
-        float bot = 125.0f;
+        float top = 95.0f;
+        float bot = 145.0f;
         fess.add(new Area(new Rectangle2D.Float(0.0f, top, 200.0f, bot - top)));
 
         Ellipse2D.Float e = new Ellipse2D.Float();

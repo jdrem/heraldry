@@ -178,6 +178,18 @@ public class StodartSystem {
                     }
                 }, true);
 
+        fileWriter = fileWriterFactory.getInstance();
+        builder = new Builder(fileWriter);
+        builder.fieldOf(Tincture.ARGENT)
+                .fess(Tincture.SABLE, Shield.VariationOfLine.INVECTED)
+                .border(Tincture.OR)
+                .build(fw -> {
+                    try {
+                        fw.writeToFile("stodart-13a.svg");
+                    } catch (IOException e) {
+                        throw new UncheckedIOException(e);
+                    }
+                }, true);
 
 
         fileWriter = fileWriterFactory.getInstance();

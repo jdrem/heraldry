@@ -14,8 +14,8 @@ class FessIndented implements Drawable, java.io.Serializable {
 
     public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area fess = new Area();
-        float top = 65.0f;
-        float bot = 135.0f;
+        float top = 90.0f;
+        float bot = 160.0f;
         fess.add(new Area(new Rectangle2D.Float(0.0f, top, 200.0f, bot - top)));
         Rectangle2D.Float r = new Rectangle2D.Float();
         Area a;
