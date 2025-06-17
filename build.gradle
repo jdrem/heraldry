@@ -17,19 +17,11 @@ ext {
 }
 
 dependencies {
-    implementation "org.apache.xmlgraphics:batik-util:${batikVersion}"
-    implementation "org.apache.xmlgraphics:batik-dom:${batikVersion}"
-    implementation "org.apache.xmlgraphics:batik-svg-dom:${batikVersion}"
     implementation "org.apache.xmlgraphics:batik-svggen:${batikVersion}"
-    implementation "org.apache.xmlgraphics:batik-awt-util:${batikVersion}"
-    implementation  "org.apache.xmlgraphics:batik-anim:${batikVersion}"
     implementation  "org.apache.xmlgraphics:batik-bridge:${batikVersion}"
 
-    runtimeOnly  "org.apache.xmlgraphics:batik-css:${batikVersion}"
-    runtimeOnly  "org.apache.xmlgraphics:batik-ext:${batikVersion}"
-    runtimeOnly  "org.apache.xmlgraphics:batik-xml:${batikVersion}"
-    runtimeOnly  "org.apache.xmlgraphics:batik-parser:${batikVersion}"
-    runtimeOnly  "org.apache.xmlgraphics:batik-css:${batikVersion}"
+    implementation 'org.apache.xmlgraphics:xmlgraphics-commons:2.9'
+
     testImplementation("junit:junit:4.13.2")
 }
 
