@@ -1,8 +1,20 @@
 ## Simple Heraldry Illustrator
-This repository contains some simple tools to create images of heraldic shields. Currently, you can create shields using the basic colors and metals as well as the variations fo ermine.
+This repository contains some simple tools to create images of heraldic shields. 
+
+# Metals, Colors and Furs
+
+Currently, you can create shields using the basic colors and metals as well as the variations fo ermine.
+
+<img src="images/metals-colors-furs.svg" width="680" height="500">
+
+# Ordinaries, Subordinaries and Charges
+
 Most to the traditional ordinaries are supported: fess, pale, chief, bend, bend sinister, saltire and cross:
 
 <img src="images/ordinaries.svg" width="550" height="330">
+
+Two of the subordinaries are available: the border and the label. The border is available in several variartions and can be divided for different tincutes. Useful for
+differencing (see Stodart System).
 
 Several basic charges can be used: annulet, crescent, fleur-de-lis, heart, lozenge, martlet, mullet, rose, roundel:
 
@@ -11,6 +23,8 @@ Several basic charges can be used: annulet, crescent, fleur-de-lis, heart, lozen
 Multiple charges can be arranged in a variety of ways:
 
 <img src="images/arrangement-of-charges.svg" width="550" height="350">
+
+# How to Build Shields
 
 To create a shield, use the [__Builder__](src/main/java/net/remgant/heraldry/Builder.java) class to construct the shield and a [__FileWriter__](src/main/java/net/remgant/heraldry/FileWriter.java) instance to save to a file. 
 
@@ -57,6 +71,8 @@ Builder also has convenience methods so you could do the first example like this
 ```
 In addition to various plain fields, the various divisions of the field are availabe. 
 
+# Demo Programs
+
 There are two demo programs.
 
 First there is [__DrawRandom__](src/main/java/net/remgant/heraldry/DrawRandom.java) which creates a bunch of random shields. It's a good example of how to 
@@ -64,3 +80,5 @@ contruct various types of shield but there are a few cases where it violates the
 
 Second is [__DrawEverything__](src/main/java/net/remgant/heraldry/DrawEverything.java) which generates examples of most of the ordinaries and charges. It was used to 
 generate the sample images above.
+
+# The Stodart System
