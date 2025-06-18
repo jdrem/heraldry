@@ -1,13 +1,18 @@
-package net.remgant.heraldry;
+/*
+  Copyright 2025 Jeffrey D. Remillard <jdr@remgant.net>
 
-import net.remgant.heraldry.tinctures.Tincture;
+  This file is part of the Remgant Heraldry Library hosted at https://github.com/jdrem/heraldry.
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+  The Remgant Heraldry Library is free software: you can redistribute it and/or modify it under the terms of the GNU General Public
+  License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any
+  later version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along with this program. If not,
+  see <https://www.gnu.org/licenses/>.
+ */
 /*
     Parts of this class were derived from the SVG file:
 
@@ -18,6 +23,17 @@ import java.io.IOException;
     The file is licensed under the Creative Commons Attribution 4.0 International license.
     (https://creativecommons.org/licenses/by/4.0/deed.en)
  */
+package net.remgant.heraldry;
+
+import net.remgant.heraldry.tinctures.Tincture;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.geom.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 class FleurDeLis extends Charge {
     protected FleurDeLis(Tincture tincture, Shield.Position position, double scale) {
         super(tincture, position, scale);
