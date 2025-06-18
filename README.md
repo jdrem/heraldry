@@ -93,3 +93,18 @@ The correct precedence of border colors has argent for the third son. The rule i
 The shields were created in by the [__StodarySystem__](src/main/java/net/remgant/heraldry/StodarSystem.java] class.
 
 <img src="images/stodart-system.svg" width="1000"  height="600">
+
+### Image Sources
+
+Most of the designs were done by me using the Java AWT toolkit. 
+
+The [Martlet](src/main/java/net/remgant/heraldry/Martlet.java), [Rose](src/main/java/net/remgant/heraldry/Rose.java) and 
+[Fleur-de-Lis](src/main/java/net/remgant/heraldry/FleurDeLis.java) charges were derived from SVG files created by Wikiemedia user [Hstoops](https://commons.wikimedia.org/wiki/User:Hstoops).
+
+The files are:
+
+* https://commons.wikimedia.org/wiki/File:Martlet_Fourth_son.svg
+* https://commons.wikimedia.org/wiki/File:Fleur-de-lys_Sixth_son.svg
+* https://commons.wikimedia.org/wiki/File:Rose_Seventh_son.svg
+
+These files is licensed under the [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/deed.en).
