@@ -14,7 +14,8 @@ You should have received a copy of the GNU General Public License along with thi
 see <https://www.gnu.org/licenses/>.
 -->
 
-## Simple Heraldry Illustrator
+## Remgant Heraldry Library
+
 This repository contains some simple tools to create images of heraldic shields. 
 
 ### Metals, Colors and Furs
