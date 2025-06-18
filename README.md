@@ -14,7 +14,7 @@ Most to the traditional ordinaries are supported: fess, pale, chief, bend, bend 
 <img src="images/ordinaries.svg" width="550" height="330">
 
 Two of the subordinaries are available: the border and the label. The border is available in several variartions and can be divided for different tincutes. Useful for
-differencing (see Stodart System).
+differencing (see [Stodart System](#the-stodart-system)).
 
 Several basic charges can be used: annulet, crescent, fleur-de-lis, heart, lozenge, martlet, mullet, rose, roundel:
 
@@ -82,5 +82,14 @@ Second is [__DrawEverything__](src/main/java/net/remgant/heraldry/DrawEverything
 generate the sample images above.
 
 ### The Stodart System
+
+One of my original goals was to recreate the well known diagram of the Stodart system for differencing arms in Scotland. I created invected, engrailed and indented versions of the fess and border. The border can also partitioned by color in a variety of ways. 
+
+I've never been able to track down the origin of the diagram although I've seen variations in many places. I've also never tracked the orginal document by Stodart or really any sort of written description. In any case, it's likely
+this is more of a guideline than any sort of formal rule. Presumably, the heralds have considerable discretion on what to actuall do. This chart was take from [Innes of Learney's _Scots Heraldry_](https://lccn.loc.gov/56004200).
+
+The correct precedence of border colors has argent for the third son. The rule is that if the border matches the field, the border should be checked with another tinccutre, usally the tincture of the ordinary or principal charge. Like most of the sources I'm skipping argent for simplicity's sake.
+
+The shields were created in by the [__StodarySystem__](src/main/java/net/remgant/heraldry/StodarSystem.java] class.
 
 <img src="images/stodart-system.svg" width="1000"  height="600">
