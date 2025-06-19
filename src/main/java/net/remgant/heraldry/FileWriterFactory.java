@@ -23,7 +23,8 @@ public class FileWriterFactory {
     public FileWriterFactory(String fileWriterType, Properties properties) {
         this.fileWriterType = fileWriterType;
         this.properties = properties;
-        if (!(fileWriterType.equalsIgnoreCase("SVG") || fileWriterType.equalsIgnoreCase("PNG")))
+        if (!(fileWriterType.equalsIgnoreCase("SVG") || fileWriterType.equalsIgnoreCase("PNG") ||
+                fileWriterType.equalsIgnoreCase("EPS")))
             throw new RuntimeException("Unkown type: "+fileWriterType);
     }
 
