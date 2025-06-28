@@ -32,6 +32,7 @@ public class DrawRandom {
     static Function<Tincture, Drawable> fess = Fess::new;
     static Function<Tincture, Drawable> pale = Pale::new;
     static Function<Tincture, Drawable> saltire = Saltire::new;
+    static Function<Tincture, Drawable> flanches = Flanches::new;
 
     final static List<Function<Tincture, Drawable>> ordinaries = List.of(
             bend,
@@ -41,7 +42,8 @@ public class DrawRandom {
             cross,
             fess,
             pale,
-            saltire
+            saltire,
+            flanches
     );
 
     @FunctionalInterface
@@ -59,6 +61,9 @@ public class DrawRandom {
     final static MultiFunction<Tincture, Shield.Position, Double, Drawable> rose = Rose::new;
     final static MultiFunction<Tincture, Shield.Position, Double, Drawable> roundel = Roundel::new;
     final static MultiFunction<Tincture, Shield.Position, Double, Drawable> star = Star::new;
+    final static MultiFunction<Tincture, Shield.Position, Double, Drawable> mascle = Mascle::new;
+    final static MultiFunction<Tincture, Shield.Position, Double, Drawable> escutcheon = Escutcheon::new;
+
 
     final static List<MultiFunction<Tincture, Shield.Position, Double, Drawable>> charges = List.of(
             annulet,
@@ -70,7 +75,9 @@ public class DrawRandom {
             martlet,
             rose,
             roundel,
-            star
+            star,
+            mascle,
+            escutcheon
     );
 
     public static void main(String[] args) {
