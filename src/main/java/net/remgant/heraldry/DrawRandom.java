@@ -46,11 +46,6 @@ public class DrawRandom {
             flanches
     );
 
-    @FunctionalInterface
-    public interface MultiFunction<A, B, C, D> {
-        D apply(A a, B b, C c);
-    }
-
     final static MultiFunction<Tincture, Shield.Position, Double, Drawable> annulet = Annulet::new;
     final static MultiFunction<Tincture, Shield.Position, Double, Drawable> crescent = Crescent::new;
     final static MultiFunction<Tincture, Shield.Position, Double, Drawable> ermineSpot = ErmineSpot::new;
@@ -100,7 +95,6 @@ public class DrawRandom {
         AtomicInteger idx = new AtomicInteger(1);
         FileWriterFactory fileWriterFactory = new FileWriterFactory(imageFileType, new Properties());
         for (int i = 0; i < 500; i++) {
-//            FileWriter fileWriter = new PNGFileWriter(200, 250);
             FileWriter fileWriter = fileWriterFactory.getInstance();
             Builder builder = new Builder(fileWriter);
             RandomGenerator random = RandomGenerator.getDefault();
@@ -114,9 +108,9 @@ public class DrawRandom {
             if (d < 0.15) {
                 // split the field
                 t1 = pickAnyTincture(random);
-                t2 = t1;
-                while (t2.equals(t1))
-                    t2 = pickAnyTincture(random);
+                t2 = pickAnyTinctureBut(random, Set.of(t1));
+//                while (t2.equals(t1))
+//                    t2 = pickAnyTincture(random);
                 int ii = random.nextInt(Shield.LineOfDivision.values().length);
                 lineOfDivision = Shield.LineOfDivision.values()[ii];
                 builder.add(new Shield(t1, t2, lineOfDivision));
@@ -153,9 +147,9 @@ public class DrawRandom {
             else if (d < 0.40) {
                 // do an ordinary
                 Function<Tincture, Drawable> func = ordinaries.get(random.nextInt(ordinaries.size()));
-                if (fieldTincture == null) {
+                if (fieldTincture == null && t1 != null && t2 != null) {
                     ordinaryTincture = pickAnyTinctureBut(random, Set.of(t1, t2));
-                } else if (fieldTincture.isMetal())
+                } else if (fieldTincture != null && fieldTincture.isMetal())
                     ordinaryTincture = pickNonMetal(random);
                 else
                     ordinaryTincture = pickNonColor(random);

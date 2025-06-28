@@ -185,7 +185,7 @@ public class Builder {
     }
 
 
-    public Builder add(DrawRandom.MultiFunction<Tincture, Shield.Position, Double, Drawable> function, Tincture tincture, Shield.Position position, double scale) {
+    public Builder add(MultiFunction<Tincture, Shield.Position, Double, Drawable> function, Tincture tincture, Shield.Position position, double scale) {
         list.add(function.apply(tincture, position, scale));
         return this;
     }
