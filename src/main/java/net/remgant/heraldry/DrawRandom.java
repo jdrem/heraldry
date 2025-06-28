@@ -17,11 +17,18 @@ package net.remgant.heraldry;
 
 import net.remgant.heraldry.tinctures.Tincture;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.random.RandomGenerator;
+
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
 public class DrawRandom {
     static Function<Tincture, Drawable> bend = Bend::new;
@@ -82,9 +89,13 @@ public class DrawRandom {
                 args[0].equalsIgnoreCase("EPS")) ) {
             imageFileType = args[0].toUpperCase();
             if (args.length >= 2)
-                destinationDir = args[1];
+                destinationDir = args[1] + FileSystems.getDefault().getSeparator() + ISO_LOCAL_DATE_TIME.format(LocalDateTime.now());
             else
-                destinationDir = ".";
+                destinationDir = "." + FileSystems.getDefault().getSeparator() + ISO_LOCAL_DATE_TIME.format(LocalDateTime.now());
+            if (!(new File(destinationDir)).exists()) {
+                if (!(new File(destinationDir).mkdirs()))
+                    throw new RuntimeException("can't create destination dir");
+            }
         }
         else if (args.length == 1) {
             destinationDir = args[0];
@@ -172,66 +183,9 @@ public class DrawRandom {
                         else
                             chargeTincture = pickAnyTinctureBut(random, Set.of(fieldTincture, ordinaryTincture));
                     }
-                    switch (simpleName) {
-                        case "Fess":
-                            positions = List.of(
-                                    Shield.Position.FESS_DEXTER,
-                                    Shield.Position.CENTER,
-                                    Shield.Position.FESS_SINISTER
-                            );
-                            break;
-                        case "Chief":
-                            positions = List.of(
-                                    Shield.Position.CHIEF_DEXTER,
-                                    Shield.Position.CHIEF_CENTER,
-                                    Shield.Position.CHIEF_SINISTER
-                            );
-                            break;
-                        case "Pale":
-                            positions = List.of(
-                                    Shield.Position.PALE_TOP,
-                                    Shield.Position.CENTER,
-                                    Shield.Position.PALE_BOTTOM
-                            );
-                            break;
-                        case "Bend":
-                            positions = List.of(
-                                    Shield.Position.BEND_TOP_DEXTER,
-                                    Shield.Position.CENTER,
-                                    Shield.Position.BEND_BOTTOM_SINISTER
-                            );
-                            break;
-                        case "BendSinister":
-                            positions = List.of(
-                                    Shield.Position.BEND_TOP_SINISTER,
-                                    Shield.Position.CENTER,
-                                    Shield.Position.BEND_BOTTOM_DEXTER
-                            );
-                            break;
-                        case "Cross":
-                            positions = List.of(
-                                    Shield.Position.PALE_TOP,
-                                    Shield.Position.CENTER,
-                                    Shield.Position.PALE_BOTTOM,
-                                    Shield.Position.FESS_DEXTER,
-                                    Shield.Position.FESS_SINISTER
-                            );
-                            break;
-                        case "Saltire":
-                            positions = List.of(
-                                    Shield.Position.BEND_TOP_SINISTER,
-                                    Shield.Position.CENTER,
-                                    Shield.Position.BEND_BOTTOM_DEXTER,
-                                    Shield.Position.BEND_TOP_DEXTER,
-                                    Shield.Position.BEND_BOTTOM_SINISTER
-                            );
-                            break;
-                        case "Checron":
-                        default:
-                            positions = List.of();
-                    }
-                    for (Shield.Position pos : positions)
-                        builder.add(chargeFunc, chargeTincture, pos, 1.0);
+                    Shield.ArrangementOfCharges arrangementOfCharges = Shield.ArrangementOfCharges.map.get(simpleName);
+                    if (arrangementOfCharges != null)
+                        builder.add(chargeFunc, chargeTincture, arrangementOfCharges);
                 }
             } else if (d < 0.55) {
                 // a single charge
@@ -252,72 +206,9 @@ public class DrawRandom {
                     chargeTincture = pickNonMetal(random);
                 else
                     chargeTincture = pickNonColor(random);
-                int ii = random.nextInt(8);
-                Shield.Position p1;
-                Shield.Position p2;
-                Shield.Position p3;
-                Shield.Position p4 = null;
-                Shield.Position p5 = null;
-                switch (ii) {
-                    case 1:
-                        // in fess
-                        p1 = Shield.Position.FESS_DEXTER;
-                        p2 = Shield.Position.CENTER;
-                        p3 = Shield.Position.FESS_SINISTER;
-                        break;
-                    case 2:
-                        // in pale
-                        p1 = Shield.Position.PALE_TOP;
-                        p2 = Shield.Position.CENTER;
-                        p3 = Shield.Position.PALE_BOTTOM;
-                        break;
-                    case 3:
-                        // in chief
-                        p1 = Shield.Position.CHIEF_DEXTER;
-                        p2 = Shield.Position.CHIEF_CENTER;
-                        p3 = Shield.Position.CHIEF_SINISTER;
-                        break;
-                    case 4:
-                        // bend
-                        p1 = Shield.Position.BEND_TOP_DEXTER;
-                        p2 = Shield.Position.CENTER;
-                        p3 = Shield.Position.BEND_BOTTOM_SINISTER;
-                        break;
-                    case 5:
-                        // bend sinister
-                        p1 = Shield.Position.BEND_TOP_SINISTER;
-                        p2 = Shield.Position.CENTER;
-                        p3 = Shield.Position.BEND_BOTTOM_DEXTER;
-                        break;
-                    case 6:
-                        // saltire
-                        p1 = Shield.Position.BEND_TOP_SINISTER;
-                        p2 = Shield.Position.CENTER;
-                        p3 = Shield.Position.BEND_BOTTOM_DEXTER;
-                        p4 = Shield.Position.BEND_TOP_DEXTER;
-                        p5 = Shield.Position.BEND_BOTTOM_SINISTER;
-                        break;
-                    case 7:
-                        // in cross
-                        p1 = Shield.Position.PALE_TOP;
-                        p2 = Shield.Position.CENTER;
-                        p3 = Shield.Position.PALE_BOTTOM;
-                        p4 = Shield.Position.FESS_DEXTER;
-                        p5 = Shield.Position.FESS_SINISTER;
-                        break;
-                    default:
-                        // default
-                        p1 = Shield.Position.HONOR_POINT_DEXTER;
-                        p2 = Shield.Position.NAVEL_POINT;
-                        p3 = Shield.Position.HONOR_POINT_SINISTER;
-                }
-                builder.add(func, chargeTincture, p1, 1.0);
-                builder.add(func, chargeTincture, p2, 1.0);
-                builder.add(func, chargeTincture, p3, 1.0);
-                if (ii >= 6) {
-                    builder.add(func, chargeTincture, p4, 1.0);
-                    builder.add(func, chargeTincture, p5, 1.0);
-                }
+                int ii = random.nextInt(Shield.ArrangementOfCharges.allArrangements.length);
+
+                builder.add(func, chargeTincture, Shield.ArrangementOfCharges.allArrangements[ii]);
             }
             d = random.nextDouble();
             if (d < 0.025) {

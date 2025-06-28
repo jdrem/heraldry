@@ -189,4 +189,11 @@ public class Builder {
         list.add(function.apply(tincture, position, scale));
         return this;
     }
+
+    public Builder add(MultiFunction<Tincture, Shield.Position, Double, Drawable> function, Tincture tincture, Shield.ArrangementOfCharges arrangementOfCharges) {
+        for (Shield.Position position : arrangementOfCharges.getPositions()) {
+            list.add(function.apply(tincture, position, 1.0));
+        }
+        return this;
+    }
 }
