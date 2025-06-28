@@ -37,4 +37,9 @@ public class Label implements Drawable {
         label.add(new Area(new Rectangle2D.Float(140.0f, 55.0f, 30.0f, 30.0f)));
         tincture.fill(g, label);
     }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
+    }
 }

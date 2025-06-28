@@ -249,6 +249,7 @@ public class DrawRandom {
                     throw new RuntimeException(e);
                 }
             });
+            System.out.printf("shield-%03d: %s%n", idx.get()-1, builder.getDescription());
         }
     }
 
@@ -261,7 +262,6 @@ public class DrawRandom {
     private static Tincture pickAnyTincture(RandomGenerator random) {
         double d = random.nextDouble();
         Tincture t = pickAnyTincture(d);
-        System.out.printf("%f %s%n", d, t);
         return t;
     }
 

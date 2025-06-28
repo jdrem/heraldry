@@ -43,4 +43,9 @@ public class BendSinister implements Drawable {
         bend.intersect(shield);
         tincture.fill(g, bend);
     }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
+    }
 }

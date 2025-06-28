@@ -38,4 +38,9 @@ public class Chief implements Drawable {
         tincture.fill(g, chief);
 
     }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
+    }
 }

@@ -60,4 +60,14 @@ public abstract class Charge implements Drawable {
         a.transform(AffineTransform.getScaleInstance(scale, scale));
         return a.getBounds2D();
     }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
+    }
+
+//    @Override
+//    public String description() {
+//        return getClass().getSimpleName() + " " + tincture.toString();
+//    }
 }

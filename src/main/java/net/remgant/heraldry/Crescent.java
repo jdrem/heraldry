@@ -20,15 +20,10 @@ import net.remgant.heraldry.tinctures.Tincture;
 import java.awt.*;
 import java.awt.geom.*;
 
-class Crescent implements Drawable, java.io.Serializable {
-    protected Tincture tincture;
-    protected Shield.Position position;
-    protected double scale;
+class Crescent extends Charge {
 
     public Crescent(Tincture tincture, Shield.Position position, double scale) {
-        this.tincture = tincture;
-        this.position = position;
-        this.scale = scale;
+        super(tincture, position, scale);
     }
 
     final static Shape crescentShape;
@@ -53,5 +48,10 @@ class Crescent implements Drawable, java.io.Serializable {
         double y = position.y() * shield.getBounds2D().getHeight();
         crescent.transform(AffineTransform.getTranslateInstance(x, y));
         tincture.fill(g, crescent);
+    }
+
+    @Override
+    public Shape getShape() {
+        return crescentShape;
     }
 }

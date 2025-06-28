@@ -62,4 +62,9 @@ public class ErmineSpot extends Charge {
     public Shape getShape() {
         return shape;
     }
+
+    @Override
+    public String defArticle() {
+        return "an";
+    }
 }

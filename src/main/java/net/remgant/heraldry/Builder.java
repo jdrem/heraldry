@@ -24,16 +24,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Builder {
     final private Graphics2D graphics;
     final private FileWriter fileWriter;
     final private List<Drawable> list;
+    final private List<String> description;
 
     public Builder(FileWriter fileWriter) {
         this.graphics = fileWriter.createGraphics();
         this.fileWriter = fileWriter;
         this.list = new ArrayList<>();
+        this.description = new ArrayList<>();
     }
 
     public Builder(Graphics2D graphics) {
@@ -50,51 +53,64 @@ public class Builder {
             }
         };
         list = new ArrayList<>();
+        this.description = new ArrayList<>();
     }
 
     public Builder fieldOf(Tincture tincture) {
         list.add(new Shield(tincture));
+        description.add(tincture.toString());
         return this;
     }
 
     public Builder perPale(Tincture color1, Tincture color2) {
         list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_PALE));
+        description.add(String.format("per pale %s and %s",color1.toString(), color2.toString()));
         return this;
     }
 
     public Builder perFess(Tincture color1, Tincture color2) {
         list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_FESS));
+        description.add(String.format("per fess %s and %s",color1.toString(), color2.toString()));
+
         return this;
     }
 
     public Builder perBend(Tincture color1, Tincture color2) {
         list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_BEND));
+        description.add(String.format("per bend %s and %s",color1.toString(), color2.toString()));
+
         return this;
     }
 
     public Builder perBendSinister(Tincture color1, Tincture color2) {
         list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_BEND_SINISTER));
+        description.add(String.format("per bend sinister %s and %s",color1.toString(), color2.toString()));
         return this;
     }
 
 
     public Builder perChevron(Tincture color1, Tincture color2) {
         list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_CHEVRON));
+        description.add(String.format("per chevron %s and %s",color1.toString(), color2.toString()));
         return this;
     }
 
     public Builder perSaltire(Tincture color1, Tincture color2) {
         list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_SALTIRE));
+        description.add(String.format("per saltire %s and %s",color1.toString(), color2.toString()));
+
         return this;
     }
 
     public Builder perCross(Tincture color1, Tincture color2) {
         list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_CROSS));
+        description.add(String.format("per cross %s and %s",color1.toString(), color2.toString()));
         return this;
     }
 
     public Builder fess(Tincture tincture) {
         list.add(new Fess(tincture));
+        description.add(String.format("a fess %s", tincture));
         return this;
     }
 
@@ -112,11 +128,15 @@ public class Builder {
 
     public Builder pale(Tincture tincture) {
         list.add(new Pale(tincture));
+        description.add(String.format("a pale %s", tincture));
+
         return this;
     }
 
     public Builder chief(Tincture tincture) {
         list.add(new Chief(tincture));
+        description.add(String.format("a chief %s", tincture));
+
         return this;
     }
 
@@ -161,12 +181,18 @@ public class Builder {
     }
 
     public Builder add(Function<Tincture,Drawable> function, Tincture tincture) {
-        list.add(function.apply(tincture));
+        Drawable thisDrawable = function.apply(tincture);
+        list.add(thisDrawable);
+        description.add(String.format("%s %s", thisDrawable.defArticle(), thisDrawable.description()));
         return this;
     }
 
     public Builder add(Drawable drawable) {
         list.add(drawable);
+        if (drawable instanceof Shield)
+            description.add(drawable.description());
+        else
+            description.add(String.format("%s %s", drawable.defArticle(), drawable.description()));
         return this;
     }
 
@@ -186,14 +212,32 @@ public class Builder {
 
 
     public Builder add(MultiFunction<Tincture, Shield.Position, Double, Drawable> function, Tincture tincture, Shield.Position position, double scale) {
-        list.add(function.apply(tincture, position, scale));
+        Drawable thisDrawable = function.apply(tincture, position, scale);
+        list.add(thisDrawable);
+        description.add(String.format("%s %s %s", thisDrawable.defArticle(), thisDrawable.name(), tincture.toString().toLowerCase()));
         return this;
     }
 
+    String[] numberAsText = new String[]{"zero", "one", "two", "three", "four", "five", "six", "seven", "eight"};
     public Builder add(MultiFunction<Tincture, Shield.Position, Double, Drawable> function, Tincture tincture, Shield.ArrangementOfCharges arrangementOfCharges) {
         for (Shield.Position position : arrangementOfCharges.getPositions()) {
             list.add(function.apply(tincture, position, 1.0));
         }
+        if (arrangementOfCharges.getPositions().length <= 8) {
+            description.add(String.format("%s %s %s",
+                    numberAsText[arrangementOfCharges.getPositions().length],
+                    function.apply(tincture, Shield.Position.CENTER, 1.0).namePlural(),
+                    tincture.toString().toLowerCase()));
+        } else {
+            description.add(String.format("%d %s %s",
+                    arrangementOfCharges.getPositions().length,
+                    function.apply(tincture, Shield.Position.CENTER, 1.0).namePlural(),
+                    tincture.toString().toLowerCase()));
+        }
         return this;
+    }
+
+    public String getDescription() {
+        return String.join(", ", description);
     }
 }

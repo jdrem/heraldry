@@ -148,6 +148,16 @@ class FleurDeLis extends Charge {
         return completeShape;
     }
 
+    @Override
+    public String name() {
+        return "fleur-de-lis";
+    }
+
+    @Override
+    public String namePlural() {
+        return "fleur-de-lis";
+    }
+
     static void printIt() throws IOException {
         for (int i=0; i<shapes.length; i++) {
             BufferedImage bufferedImage = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
