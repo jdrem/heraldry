@@ -42,4 +42,14 @@ public class Flanches implements Drawable {
 
         tincture.fill(graphics, flanches);
     }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
+    }
+
+    @Override
+    public String defArticle() {
+        return "";
+    }
 }

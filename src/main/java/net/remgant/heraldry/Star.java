@@ -20,10 +20,8 @@ import net.remgant.heraldry.tinctures.Tincture;
 import java.awt.*;
 import java.awt.geom.*;
 
-class Star implements Drawable, java.io.Serializable {
-    protected Tincture tincture;
-    protected Shield.Position position;
-    protected double scale;
+class Star extends Charge {
+
     final static Shape starShape;
     static {
         Path2D.Float path = new Path2D.Float();
@@ -42,10 +40,13 @@ class Star implements Drawable, java.io.Serializable {
         starShape = star;
     }
 
+    @Override
+    public Shape getShape() {
+        return starShape;
+    }
+
     public Star(Tincture tincture, Shield.Position position, double scale) {
-        this.tincture = tincture;
-        this.position = position;
-        this.scale = scale;
+        super(tincture, position, scale);
     }
 
     public void draw(Graphics2D g, AffineTransform affineTransform) {

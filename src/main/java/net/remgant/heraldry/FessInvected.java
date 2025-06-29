@@ -20,7 +20,7 @@ import net.remgant.heraldry.tinctures.Tincture;
 import java.awt.*;
 import java.awt.geom.*;
 
-class FessInvected implements Drawable, java.io.Serializable {
+class FessInvected implements Drawable {
     Tincture tincture;
 
     public FessInvected(Tincture tincture) {
@@ -42,6 +42,11 @@ class FessInvected implements Drawable, java.io.Serializable {
         }
 
         tincture.fill(g, fess);
+    }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
     }
 }
 

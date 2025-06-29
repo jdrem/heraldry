@@ -173,4 +173,9 @@ class Border implements Drawable, java.io.Serializable {
         }
     }
 
+    public Tincture getTincture() {
+        return tinctures[0];
+    }
+
+
 }

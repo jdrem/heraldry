@@ -48,4 +48,9 @@ public class Saltire implements Drawable {
         saltire.intersect(shield);
         tincture.fill(g, saltire);
     }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
+    }
 }

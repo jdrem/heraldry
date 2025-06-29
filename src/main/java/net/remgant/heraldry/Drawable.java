@@ -15,16 +15,48 @@
  */
 package net.remgant.heraldry;
 
+import net.remgant.heraldry.tinctures.Tincture;
+
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
 public interface Drawable {
     void draw(Graphics2D graphics, AffineTransform affineTransform);
+    Tincture getTincture();
 
     default void draw(Graphics2D graphics) {
         draw(graphics, new AffineTransform());
     }
     default void draw(java.awt.image.BufferedImage image) {
         draw(image.createGraphics(), new AffineTransform());
+    }
+
+    default String description() {
+        return name() + " " + getTincture().toString().toLowerCase();
+    }
+
+    default String name() {
+        String s = getClass().getSimpleName();
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                sb.append(" ");
+                sb.append(Character.toLowerCase(c));
+            } else {
+                sb.append(c);
+            }
+        }
+        if (sb.charAt(0) == ' ' ) {
+            return sb.substring(1);
+        }
+        return sb.toString();
+    }
+
+    default String namePlural() {
+        return name() + "s";
+    }
+
+    default String defArticle() {
+        return "a";
     }
 }

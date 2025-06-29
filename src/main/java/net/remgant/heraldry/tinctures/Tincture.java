@@ -58,7 +58,7 @@ public abstract class Tincture {
         }
         if (this instanceof Metal) {
             Metal m = (Metal)this;
-            if (m.equals(java.awt.Color.WHITE))
+            if (m.color.equals(java.awt.Color.WHITE))
                 return "ARGENT";
             return "OR";
         }
@@ -73,6 +73,7 @@ public abstract class Tincture {
                 return "ERMINES";
             return "PEAN";
         }
-        return "UNKOWN";
+        throw new RuntimeException("unkown tincture: "+this.getClass().getName());
+//        return "UNKOWN";
     }
 }

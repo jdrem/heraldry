@@ -41,4 +41,9 @@ public class Cross implements Drawable {
         cross.intersect(shield);
         tincture.fill(g, cross);
     }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
+    }
 }

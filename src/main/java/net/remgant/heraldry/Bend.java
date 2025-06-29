@@ -41,4 +41,9 @@ public class Bend implements Drawable {
         bend.intersect(new Area(Shield.shieldShape));
         tincture.fill(g, bend);
     }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
+    }
 }

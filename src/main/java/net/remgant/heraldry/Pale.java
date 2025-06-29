@@ -39,4 +39,9 @@ public class Pale implements Drawable {
         pale.intersect(shield);
         tincture.fill(g, pale);
     }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
+    }
 }

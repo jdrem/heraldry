@@ -46,4 +46,9 @@ public class Chevron implements Drawable {
         chevron.intersect(shield);
         tincture.fill(g, chevron);
     }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
+    }
 }

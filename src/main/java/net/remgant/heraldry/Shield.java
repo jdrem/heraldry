@@ -20,8 +20,11 @@ import net.remgant.heraldry.tinctures.Tincture;
 import java.awt.*;
 import java.awt.image.*;
 import java.awt.geom.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
-class Shield implements Drawable, java.io.Serializable {
+class Shield implements Drawable {
     public enum Position {
         CHIEF_DEXTER(0.1667, 0.15),
         CHIEF_MID_DEXTER(0.333, 0.15),
@@ -74,6 +77,48 @@ class Shield implements Drawable, java.io.Serializable {
         INDENTED
     }
 
+    public static class ArrangementOfCharges {
+        final private Position[] positions;
+
+        public ArrangementOfCharges(Position[] positions) {
+            this.positions = positions;
+        }
+
+        public Position[] getPositions() {
+            return positions;
+        }
+
+        final public static ArrangementOfCharges IN_FESS =
+                new ArrangementOfCharges(new Position[]{Position.FESS_DEXTER, Position.CENTER, Position.FESS_SINISTER});
+        final public static ArrangementOfCharges IN_PALE =
+                new ArrangementOfCharges(new Position[]{Position.PALE_TOP, Position.CENTER, Position.PALE_BOTTOM});
+        final public static ArrangementOfCharges IN_CHIEF =
+                new ArrangementOfCharges(new Position[]{Position.CHIEF_DEXTER, Position.CHIEF_CENTER, Position.CHIEF_SINISTER});
+        final public static ArrangementOfCharges IN_BEND =
+                new ArrangementOfCharges(new Position[]{Position.BEND_TOP_DEXTER,  Position.CENTER, Position.BEND_BOTTOM_SINISTER});
+        final public static ArrangementOfCharges IN_BEND_SINISTER =
+                new ArrangementOfCharges(new Position[]{ Position.BEND_TOP_SINISTER, Position.CENTER, Position.BEND_BOTTOM_DEXTER});
+        final public static ArrangementOfCharges IN_SALTIRE =
+                new ArrangementOfCharges(new Position[]{Position.BEND_TOP_SINISTER, Position.CENTER, Position.BEND_BOTTOM_DEXTER, Position.BEND_TOP_DEXTER, Position.BEND_BOTTOM_SINISTER});
+        final public static ArrangementOfCharges IN_CROSS =
+                new ArrangementOfCharges(new Position[]{Position.PALE_TOP, Position.CENTER, Position.PALE_BOTTOM, Position.FESS_DEXTER, Position.FESS_SINISTER});
+        final public static ArrangementOfCharges DEFAULT =
+                new ArrangementOfCharges(new Position[]{Position.HONOR_POINT_DEXTER,  Position.NAVEL_POINT, Position.HONOR_POINT_SINISTER   });
+        final public static ArrangementOfCharges[] allArrangements = {IN_FESS, IN_PALE, IN_CHIEF, IN_BEND, IN_BEND_SINISTER, IN_SALTIRE, IN_CROSS, DEFAULT};
+        final public static Map<String, ArrangementOfCharges> map;
+        static {
+            Map<String,ArrangementOfCharges> m  = new HashMap<>();
+            m.put(Fess.class.getSimpleName(), IN_FESS);
+            m.put(Pale.class.getSimpleName(), IN_PALE);
+            m.put(Chief.class.getSimpleName(), IN_CHIEF);
+            m.put(Bend.class.getSimpleName(), IN_BEND);
+            m.put(BendSinister.class.getSimpleName(), IN_BEND_SINISTER);
+            m.put(Saltire.class.getSimpleName(), IN_SALTIRE);
+            m.put(Cross.class.getSimpleName(), IN_CROSS);
+            map = Collections.unmodifiableMap(m);
+        }
+    }
+
     public static BufferedImage createImage() {
         // create an image
         BufferedImage image =
@@ -108,6 +153,13 @@ class Shield implements Drawable, java.io.Serializable {
         a.add(new Area(new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f)));
         a.add(new Area(new Ellipse2D.Float(0.0f, 50.0f, 200.0f, 200.0f)));
         shieldShape = a;
+    }
+
+    @Override
+    public String description() {
+       if (secondTincture == null)
+           return tincture.toString().toLowerCase();
+       return String.format("%s %s and %s", lineOfDivision.name().toLowerCase().replace("_", " "), tincture.toString().toLowerCase(), secondTincture.toString().toLowerCase());
     }
 
     public void draw(Graphics2D g, AffineTransform affineTransform) {
@@ -231,5 +283,12 @@ class Shield implements Drawable, java.io.Serializable {
                         (secondTincture != null && secondTincture.equals(Tincture.ERMINE)))) {
             Tincture.SABLE.draw(g, area);
         }
+
+
+    }
+
+    @Override
+    public Tincture getTincture() {
+        return tincture;
     }
 }
