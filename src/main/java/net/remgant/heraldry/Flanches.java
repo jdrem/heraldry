@@ -39,7 +39,8 @@ public class Flanches implements Drawable {
         flanches.add(arc1);
         flanches.add(arc2);
         flanches.intersect(shield);
-
+        if (!affineTransform.isIdentity())
+            flanches.transform(affineTransform);
         tincture.fill(graphics, flanches);
     }
 

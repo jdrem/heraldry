@@ -37,6 +37,8 @@ public class Pale implements Drawable {
         shield.add(new Area(new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f)));
         shield.add(new Area(new Ellipse2D.Float(0.0f, 50.0f, 200.0f, 200.0f)));
         pale.intersect(shield);
+        if (!affineTransform.isIdentity())
+            pale.transform(affineTransform);
         tincture.fill(g, pale);
     }
 

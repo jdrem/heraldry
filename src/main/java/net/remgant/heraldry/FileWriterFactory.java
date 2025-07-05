@@ -30,7 +30,8 @@ public class FileWriterFactory {
 
     public FileWriter getInstance() {
         if (fileWriterType.equalsIgnoreCase("SVG"))
-            return new SVGFileWriter();
+            return new SVGFileWriter(Integer.parseInt(properties.getProperty("width", "200")),
+                    Integer.parseInt(properties.getProperty("height","250")));
         else if (fileWriterType.equalsIgnoreCase("PNG"))
             return new PNGFileWriter(Integer.parseInt(properties.getProperty("width", "200")),
                     Integer.parseInt(properties.getProperty("height","250")));

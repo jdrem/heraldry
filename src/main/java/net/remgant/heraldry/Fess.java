@@ -29,7 +29,10 @@ class Fess implements Drawable, java.io.Serializable {
     }
 
     public void draw(Graphics2D g, AffineTransform affineTransform) {
-        tincture.fill(g, new Area(new Rectangle2D.Float(0.0f, 95.0f, 200.0f, 60.0f)));
+        Area fess =  new Area(new Rectangle2D.Float(0.0f, 95.0f, 200.0f, 60.0f));
+        if (!affineTransform.isIdentity())
+            fess.transform(affineTransform);
+        tincture.fill(g, fess);
     }
 
     @Override

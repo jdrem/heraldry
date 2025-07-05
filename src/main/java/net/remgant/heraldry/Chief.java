@@ -32,9 +32,8 @@ public class Chief implements Drawable {
     public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area chief = new Area();
         chief.add(new Area(new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 75.0f)));
-//        Area shield = new Area();
-//        shield.add(new Area(new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f)));
-//        shield.add(new Area(new Ellipse2D.Float(0.0f, 50.0f, 200.0f, 200.0f)));
+        if (!affineTransform.isIdentity())
+            chief.transform(affineTransform);
         tincture.fill(g, chief);
 
     }

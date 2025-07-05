@@ -22,6 +22,7 @@ import java.awt.geom.AffineTransform;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -196,6 +197,13 @@ public class Builder {
         return this;
     }
 
+    public void build(BiConsumer<Graphics2D, String> consumer) {
+        for (Drawable drawable : list) {
+            drawable.draw(graphics);
+        }
+        consumer.accept(graphics, "");
+    }
+
     public void build(Consumer<FileWriter> consumer) {
         for (Drawable drawable : list) {
             drawable.draw(graphics);
@@ -239,5 +247,10 @@ public class Builder {
 
     public String getDescription() {
         return String.join(", ", description);
+    }
+
+    public void reset() {
+        this.list.clear();
+        this.description.clear();
     }
 }
