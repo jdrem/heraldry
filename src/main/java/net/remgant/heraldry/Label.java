@@ -35,6 +35,8 @@ public class Label implements Drawable {
         label.add(new Area(new Rectangle2D.Float(30.0f, 55.0f, 30.0f, 30.0f)));
         label.add(new Area(new Rectangle2D.Float(85.0f, 55.0f, 30.0f, 30.0f)));
         label.add(new Area(new Rectangle2D.Float(140.0f, 55.0f, 30.0f, 30.0f)));
+        if (!affineTransform.isIdentity())
+            label.transform(affineTransform);
         tincture.fill(g, label);
     }
 

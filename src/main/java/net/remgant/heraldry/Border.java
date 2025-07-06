@@ -57,6 +57,8 @@ class Border implements Drawable, java.io.Serializable {
                 new Ellipse2D.Float(15.0f, 50.0f, 170.0f, 180.0f);
         border.subtract(new Area(innerR));
         border.subtract(new Area(innerC));
+        if (!affineTransform.isIdentity())
+            border.transform(affineTransform);
         paintBorder(g, border);
     }
 

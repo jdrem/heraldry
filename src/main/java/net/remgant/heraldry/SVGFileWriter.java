@@ -39,6 +39,16 @@ public class SVGFileWriter implements FileWriter {
         // Create an instance of the SVG Generator.
         svgGenerator = new SVGGraphics2D(document);
     }
+
+    public SVGFileWriter(int width, int height) {
+        DOMImplementation domImpl = GenericDOMImplementation.getDOMImplementation();
+        // Create an instance of org.w3c.dom.Document.
+        String svgNS = "http://www.w3.org/2000/svg";
+        Document document = domImpl.createDocument(svgNS, "svg", null);
+        // Create an instance of the SVG Generator.
+        svgGenerator = new SVGGraphics2D(document);
+        svgGenerator.setSVGCanvasSize(new Dimension(width, height));
+    }
     @Override
     public Graphics2D createGraphics() {
         return svgGenerator;

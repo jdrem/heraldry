@@ -38,8 +38,6 @@ public abstract class Charge implements Drawable {
     public void draw(Graphics2D graphics, AffineTransform affineTransform) {
         Area area = new Area(getShape());
         Area shield = new Area(Shield.shieldShape);
-        if (!affineTransform.isIdentity())
-            area.transform(affineTransform);
         if (scale != 1.0) {
             area.transform(AffineTransform.getScaleInstance(scale, scale));
         }
@@ -50,6 +48,8 @@ public abstract class Charge implements Drawable {
             y = position.y() * shield.getBounds2D().getHeight() * affineTransform.getScaleY();
         }
         area.transform(AffineTransform.getTranslateInstance(x, y));
+        if (!affineTransform.isIdentity())
+            area.transform(affineTransform);
         tincture.fill(graphics, area);
     }
 

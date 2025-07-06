@@ -46,6 +46,8 @@ public class Saltire implements Drawable {
         shield.add(new Area(new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f)));
         shield.add(new Area(new Ellipse2D.Float(0.0f, 50.0f, 200.0f, 200.0f)));
         saltire.intersect(shield);
+        if (!affineTransform.isIdentity())
+            saltire.transform(affineTransform);
         tincture.fill(g, saltire);
     }
 
