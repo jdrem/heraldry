@@ -41,6 +41,7 @@ public abstract class Tincture {
     final public static Tincture ERMINES = new Ermine(Tincture.SABLE, Tincture.ARGENT);
     final public static Tincture ERMINOIS= new Ermine(Tincture.OR, Tincture.SABLE);
     final public static Tincture PEAN = new Ermine(Tincture.SABLE, Tincture.OR);
+    final public static Tincture VAIR = new Vair(Tincture.ARGENT, Tincture.AZURE);
 
     @Override
     public String toString() {
@@ -61,6 +62,12 @@ public abstract class Tincture {
             if (m.color.equals(java.awt.Color.WHITE))
                 return "ARGENT";
             return "OR";
+        }
+        if (this instanceof Vair) {
+            Vair v = (Vair)this;
+            if (v.firstTincture.equals(Tincture.ARGENT) && v.secondTincture.equals(Tincture.AZURE))
+                return "VAIR";
+            return String.format("VAIR of %s and %s", v.firstTincture, v.secondTincture);
         }
         Ermine e = (Ermine)this;
         if (e.spotColor.isColor() && e.fieldColor.isMetal()) {
