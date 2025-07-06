@@ -227,6 +227,8 @@ public abstract class DrawRandom {
             return Tincture.AZURE;
         if (d < 0.90)
             return Tincture.PURPURE;
+        if (d < 0.92)
+            return Tincture.VAIR;
         if (d < 0.97)
             return Tincture.ERMINE;
         if (d < 0.98)
@@ -254,6 +256,8 @@ public abstract class DrawRandom {
                 t = Tincture.AZURE;
             else if (d < 0.90)
                 t = Tincture.PURPURE;
+            else if (d < 0.92)
+                t = Tincture.VAIR;
             else if (d < 0.97)
                 t = Tincture.ERMINE;
             else if (d < 0.98)
@@ -291,6 +295,8 @@ public abstract class DrawRandom {
             return Tincture.VERT;
         if (d < 0.95)
             return Tincture.PURPURE;
+        if (d < 0.96)
+            return Tincture.VAIR;
         if (d < 0.98)
             return Tincture.ERMINE;
         if (d < 0.99)
@@ -312,6 +318,8 @@ public abstract class DrawRandom {
             return Tincture.ERMINES;
         if (d < 0.99)
             return Tincture.ERMINOIS;
+        if (d < 0.995)
+            return Tincture.VAIR;
         return Tincture.PEAN;
     }
 }
