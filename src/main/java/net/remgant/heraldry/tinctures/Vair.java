@@ -35,6 +35,8 @@ public class Vair extends Fur {
             for (int j=0; j < 8; j++) {
                 AffineTransform at = AffineTransform.getTranslateInstance((double)i * width, (double)j * height);
                 Area a = new Area(path);
+                if (j % 2 != 0)
+                    a.transform(AffineTransform.getTranslateInstance(-width/2.0, 0.0));
                 a.transform(at);
                 vairArea.add(a);
             }
