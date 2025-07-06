@@ -54,6 +54,10 @@ public class Ermine extends Fur {
                 spotArea.add(spot);
             }
         }
+        if (bounds.getX() != 0.0 || bounds.getY() != 0.0) {
+            AffineTransform at = AffineTransform.getTranslateInstance(bounds.getX(), bounds.getY());
+            spotArea.transform(at);
+        }
         spotArea.intersect(area);
         spotColor.fill(graphics, spotArea);
     }
