@@ -168,7 +168,7 @@ class Shield implements Drawable {
         Area area = new Area();
         area.add(new Area(rect));
         area.add(new Area(circ));
-        area.transform(affineTransform);
+//        area.transform(affineTransform);
 
         g.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR, 0.0f));
         g.fill(new Rectangle2D.Float(0, 0, (int)area.getBounds2D().getWidth(), (int)area.getBounds2D().getHeight()));
@@ -181,6 +181,10 @@ class Shield implements Drawable {
             mask.transform(AffineTransform.getTranslateInstance(area.getBounds2D().getWidth() / 2.0, 0.0));
             Area sinister = new Area(area);
             sinister.subtract(mask);
+            if (!affineTransform.isIdentity()) {
+                sinister.transform(affineTransform);
+                dexter.transform(affineTransform);
+            }
             tincture.fill(g, sinister);
             secondTincture.fill(g, dexter);
         } else if (lineOfDivision == LineOfDivision.PER_FESS) {
@@ -190,6 +194,10 @@ class Shield implements Drawable {
             mask.transform(AffineTransform.getTranslateInstance(0.0, -area.getBounds2D().getHeight() / 2.0));
             Area bottom = new Area(area);
             bottom.subtract(mask);
+            if (!affineTransform.isIdentity()) {
+                top.transform(affineTransform);
+                bottom.transform(affineTransform);
+            }
             tincture.fill(g, top);
             secondTincture.fill(g, bottom);
         } else if (lineOfDivision == LineOfDivision.PER_BEND) {
@@ -205,6 +213,10 @@ class Shield implements Drawable {
             mask.transform(AffineTransform.getTranslateInstance(area.getBounds2D().getWidth(), area.getBounds2D().getHeight()));
             Area sinister = new Area(area);
             sinister.subtract(mask);
+            if (!affineTransform.isIdentity()) {
+                sinister.transform(affineTransform);
+                dexter.transform(affineTransform);
+            }
             tincture.fill(g, dexter);
             secondTincture.fill(g, sinister);
         }else if (lineOfDivision == LineOfDivision.PER_BEND_SINISTER) {
@@ -220,6 +232,10 @@ class Shield implements Drawable {
             mask.transform(AffineTransform.getTranslateInstance(area.getBounds2D().getWidth(), area.getBounds2D().getHeight()));
             Area sinister = new Area(area);
             sinister.subtract(mask);
+            if (!affineTransform.isIdentity()) {
+                sinister.transform(affineTransform);
+                dexter.transform(affineTransform);
+            }
             tincture.fill(g, dexter);
             secondTincture.fill(g, sinister);
         } else if (lineOfDivision == LineOfDivision.PER_CHEVRON) {
@@ -236,6 +252,10 @@ class Shield implements Drawable {
             top.subtract(mask);
             Area bottom = new Area(area);
             bottom.intersect(mask);
+            if (!affineTransform.isIdentity()) {
+                top.transform(affineTransform);
+                bottom.transform(affineTransform);
+            }
             tincture.fill(g, top);
             secondTincture.fill(g, bottom);
         } else if (lineOfDivision == LineOfDivision.PER_SALTIRE) {
@@ -253,6 +273,10 @@ class Shield implements Drawable {
             top.subtract(mask);
             Area bottom = new Area(area);
             bottom.intersect(mask);
+            if (!affineTransform.isIdentity()) {
+                top.transform(affineTransform);
+                bottom.transform(affineTransform);
+            }
             tincture.fill(g, top);
             secondTincture.fill(g, bottom);
         } else if (lineOfDivision == LineOfDivision.PER_CROSS) {
@@ -273,9 +297,16 @@ class Shield implements Drawable {
             top.subtract(mask);
             Area bottom = new Area(area);
             bottom.intersect(mask);
+            if (!affineTransform.isIdentity()) {
+                top.transform(affineTransform);
+                bottom.transform(affineTransform);
+            }
             tincture.fill(g, top);
             secondTincture.fill(g, bottom);
         } else {
+            if (!affineTransform.isIdentity()) {
+                area.transform(affineTransform);
+            }
             tincture.fill(g, area);
         }
         if (tincture.equals(Tincture.ARGENT) || tincture.equals(Tincture.ERMINE) ||
@@ -283,8 +314,6 @@ class Shield implements Drawable {
                         (secondTincture != null && secondTincture.equals(Tincture.ERMINE)))) {
             Tincture.SABLE.draw(g, area);
         }
-
-
     }
 
     @Override
