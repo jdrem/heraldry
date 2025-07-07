@@ -23,6 +23,7 @@ import java.awt.geom.*;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 class Shield implements Drawable {
     public enum Position {
@@ -161,6 +162,8 @@ class Shield implements Drawable {
            return tincture.toString().toLowerCase();
        return String.format("%s %s and %s", lineOfDivision.name().toLowerCase().replace("_", " "), tincture.toString().toLowerCase(), secondTincture.toString().toLowerCase());
     }
+
+    final static private Set<Tincture> needBorderTinctures = Set.of(Tincture.ARGENT, Tincture.ERMINE, Tincture.VAIR);
 
     public void draw(Graphics2D g, AffineTransform affineTransform) {
         Rectangle2D.Float rect = new Rectangle2D.Float(0.0f, 0.0f, 200.0f, 155.0f);
@@ -309,9 +312,12 @@ class Shield implements Drawable {
             }
             tincture.fill(g, area);
         }
-        if (tincture.equals(Tincture.ARGENT) || tincture.equals(Tincture.ERMINE) ||
-                (secondTincture != null && secondTincture.equals(Tincture.ARGENT) ||
-                        (secondTincture != null && secondTincture.equals(Tincture.ERMINE)))) {
+
+        if (needBorderTinctures.contains(tincture) || (secondTincture != null && needBorderTinctures.contains(secondTincture))) {
+            // the area may have already been transformed, need to check if it needs to and if it already has been
+            if (!affineTransform.isIdentity() && area.getBounds2D().getX() == 0.0 && area.getBounds2D().getY() == 0.0) {
+                area.transform(affineTransform);
+            }
             Tincture.SABLE.draw(g, area);
         }
     }
