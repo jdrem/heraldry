@@ -20,7 +20,7 @@ This repository contains some simple tools to create images of heraldic shields.
 
 ### Metals, Colors and Furs
 
-Currently, you can create shields using the basic colors and metals as well as the variations fo ermine.
+Currently, you can create shields using the basic colors and metals, the variations of ermine, and vair.
 
 <img src="images/metals-colors-furs.svg" width="680" height="500">
 
@@ -90,12 +90,18 @@ In addition to various plain fields, the various divisions of the field are avai
 
 ### Demo Programs
 
-There are two demo programs.
+There are three demo programs.
 
-First there is [__DrawRandom__](src/main/java/net/remgant/heraldry/DrawRandom.java) which creates a bunch of random shields. It's a good example of how to 
+First there is [__DrawRandomMultieImage__](src/main/java/net/remgant/heraldry/DrawRandomMultiImage.java) which creates a bunch of random shields and writes them
+to individual files. 
+
+Next is [__DrawRandomSinglePage__](src/main/java/net/remgant/heraldry/DrawRandomSingleImage.java) which creates a bunch of random shields and puts them in a grid
+in a single image.
+
+Botr are good examples of how to 
 contruct various types of shield but there are a few cases where it violates the color/metal rule or the field and charge don't contrast enough.
 
-Second is [__DrawEverything__](src/main/java/net/remgant/heraldry/DrawEverything.java) which generates examples of most of the ordinaries and charges. It was used to 
+Last is [__DrawEverything__](src/main/java/net/remgant/heraldry/DrawEverything.java) which generates examples of most of the ordinaries and charges. It was used to 
 generate the sample images above.
 
 ### The Stodart System
