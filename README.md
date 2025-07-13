@@ -113,7 +113,7 @@ this is more of a guideline than any sort of formal rule. Presumably, the herald
 
 The correct precedence of border colors has argent for the third son. The rule is that if the border matches the field, the border should be checked with another tinccutre, usally the tincture of the ordinary or principal charge. Like most of the sources I'm skipping argent for simplicity's sake.
 
-The shields were created in by the [__StodarySystem__](src/main/java/net/remgant/heraldry/StodarSystem.java] class.
+The shields were created in by the [__StodarySystem__](src/main/java/net/remgant/heraldry/StodartSystem.java) class.
 
 <img src="images/stodart-system.svg" width="1000"  height="600">
 
