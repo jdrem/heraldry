@@ -33,6 +33,11 @@ Most to the traditional ordinaries are supported: fess, pale, chief, bend, bend 
 Two of the subordinaries are available: the border and the label. The border is available in several variartions and can be divided for different tincutes. Useful for
 differencing (see [Stodart System](#the-stodart-system)).
 
+The basic lines of division are availabe: per pale, per fess, per bend and bend sinsiter,
+per chevron, per cross, per saltire and gyronny.
+
+<img src="images/lines-of-division.svg" width="500" height="310">
+
 Several basic charges can be used: annulet, crescent, fleur-de-lis, heart, lozenge, martlet, mullet, rose, roundel:
 
 <img src="images/charges.svg" width="675" height="350">
