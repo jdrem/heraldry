@@ -69,7 +69,8 @@ class Shield implements Drawable {
         PER_BEND_SINISTER,
         PER_CHEVRON,
         PER_CROSS,
-        PER_SALTIRE;
+        PER_SALTIRE,
+        GYRONNY;
     }
 
     public enum VariationOfLine {
@@ -284,16 +285,16 @@ class Shield implements Drawable {
             secondTincture.fill(g, bottom);
         } else if (lineOfDivision == LineOfDivision.PER_CROSS) {
             Path2D path = new Path2D.Double();
-            path.moveTo(0.0,0.0);
-            path.lineTo(area.getBounds2D().getWidth()/2.0, 0.0);
-            path.lineTo(area.getBounds2D().getWidth()/2.0, area.getBounds2D().getHeight()/2.0);
-            path.lineTo(0.0, area.getBounds2D().getHeight()/2.0);
+            path.moveTo(0.0, 0.0);
+            path.lineTo(area.getBounds2D().getWidth() / 2.0, 0.0);
+            path.lineTo(area.getBounds2D().getWidth() / 2.0, area.getBounds2D().getHeight() / 2.0);
+            path.lineTo(0.0, area.getBounds2D().getHeight() / 2.0);
             path.lineTo(0.0, 0.0);
-            path.moveTo(area.getBounds2D().getWidth()/2.0, area.getBounds2D().getHeight()/2.0);
-            path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight()/2.0);
+            path.moveTo(area.getBounds2D().getWidth() / 2.0, area.getBounds2D().getHeight() / 2.0);
+            path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight() / 2.0);
             path.lineTo(area.getBounds2D().getWidth(), area.getBounds2D().getHeight());
-            path.lineTo(area.getBounds2D().getWidth()/2.0, area.getBounds2D().getHeight());
-            path.lineTo(area.getBounds2D().getWidth()/2.0, area.getBounds2D().getHeight()/2.0);
+            path.lineTo(area.getBounds2D().getWidth() / 2.0, area.getBounds2D().getHeight());
+            path.lineTo(area.getBounds2D().getWidth() / 2.0, area.getBounds2D().getHeight() / 2.0);
             Area mask = new Area();
             mask.add(new Area(path));
             Area top = new Area(area);
@@ -306,6 +307,46 @@ class Shield implements Drawable {
             }
             tincture.fill(g, top);
             secondTincture.fill(g, bottom);
+        } else if (lineOfDivision == LineOfDivision.GYRONNY) {
+            Path2D path = new Path2D.Double();
+            path.moveTo(0.0, 0.0);
+            path.lineTo(100.0, 125.0);
+            path.lineTo(0.0, 125.0);
+            path.lineTo(0.0, 0.0);
+            Area a1 = new Area(path);
+            path.reset();
+            path.moveTo(100.0, 0.0);
+            path.lineTo(200.0, 0.0);
+            path.lineTo(100.0, 125.0);
+            path.lineTo(100.0, 0.0);
+            Area a2 = new Area(path);
+            path.reset();
+            path.moveTo(100.0, 125.0);
+            path.lineTo(200.0, 125.0);
+            path.lineTo(200.0, 250.0);
+            path.lineTo(100.0, 125.0);
+            Area a3 = new Area(path);
+            path.reset();
+            path.moveTo(100.0, 125.0);
+            path.lineTo(100.0, 250.0);
+            path.lineTo(0.0, 250.0);
+            path.lineTo(100.0, 125.0);
+            Area a4 = new Area(path);
+            Area g1 = new Area();
+            g1.add(a1);
+            g1.add(a2);
+            g1.add(a3);
+            g1.add(a4);
+            g1.intersect(new Area(Shield.shieldShape));
+            Area g2 = new Area();
+            g2.add(new Area(Shield.shieldShape));
+            g2.subtract(g1);
+            if (!affineTransform.isIdentity()) {
+                g1.transform(affineTransform);
+                g2.transform(affineTransform);
+            }
+            tincture.fill(g, g2);
+            secondTincture.fill(g, g1);
         } else {
             if (!affineTransform.isIdentity()) {
                 area.transform(affineTransform);
