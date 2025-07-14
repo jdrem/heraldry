@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class Builder {
     final private Graphics2D graphics;
@@ -106,6 +105,12 @@ public class Builder {
     public Builder perCross(Tincture color1, Tincture color2) {
         list.add(new Shield(color1, color2, Shield.LineOfDivision.PER_CROSS));
         description.add(String.format("per cross %s and %s",color1.toString(), color2.toString()));
+        return this;
+    }
+
+    public Builder gyronnyOf(Tincture color1, Tincture color2) {
+        list.add(new Shield(color1, color2, Shield.LineOfDivision.GYRONNY));
+        description.add(String.format("gyrony of %s and %s",color1.toString(), color2.toString()));
         return this;
     }
 
