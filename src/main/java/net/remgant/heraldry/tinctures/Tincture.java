@@ -42,45 +42,4 @@ public abstract class Tincture {
     final public static Tincture ERMINOIS= new Ermine(Tincture.OR, Tincture.SABLE);
     final public static Tincture PEAN = new Ermine(Tincture.SABLE, Tincture.OR);
     final public static Tincture VAIR = new Vair(Tincture.ARGENT, Tincture.AZURE);
-
-    @Override
-    public String toString() {
-        if (this instanceof Color) {
-            Color c = (Color)this;
-            if (c.color.equals(java.awt.Color.RED))
-                return "GULES";
-            if (c.color.equals(java.awt.Color.BLACK))
-                return "SABLE";
-            if (c.color.equals(java.awt.Color.BLUE))
-                return "AZURE";
-            if (c.color.equals(java.awt.Color.GREEN))
-                return "VERT";
-            return  "PURPURE";
-        }
-        if (this instanceof Metal) {
-            Metal m = (Metal)this;
-            if (m.color.equals(java.awt.Color.WHITE))
-                return "ARGENT";
-            return "OR";
-        }
-        if (this instanceof Vair) {
-            Vair v = (Vair)this;
-            if (v.firstTincture.equals(Tincture.ARGENT) && v.secondTincture.equals(Tincture.AZURE))
-                return "VAIR";
-            return String.format("VAIR of %s and %s", v.firstTincture, v.secondTincture);
-        }
-        Ermine e = (Ermine)this;
-        if (e.spotColor.isColor() && e.fieldColor.isMetal()) {
-            if (((Metal)e.fieldColor).color.equals(java.awt.Color.WHITE))
-                return "ERMINE";
-            return "ERMINOIS";
-        }
-        if (e.spotColor.isMetal() && e.fieldColor.isColor()) {
-            if (((Metal)e.spotColor).color.equals(java.awt.Color.WHITE))
-                return "ERMINES";
-            return "PEAN";
-        }
-        throw new RuntimeException("unkown tincture: "+this.getClass().getName());
-//        return "UNKOWN";
-    }
 }

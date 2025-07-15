@@ -60,10 +60,17 @@ public class Metal extends Tincture {
     public Tincture lighter() {
         return new Color(this.color.darker());
     }
+
+    @Override
+    public String toString() {
+        if (color.equals(java.awt.Color.WHITE))
+            return "ARGENT";
+        return "OR";
+    }
+
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Metal))
-            return false;
+        if (obj == null || getClass() != obj.getClass()) return false;
         return ((Metal)obj).color.equals(this.color);
     }
 

@@ -5,6 +5,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
+import java.util.Objects;
 
 public class Vair extends Fur {
     final Tincture firstTincture;
@@ -47,5 +48,24 @@ public class Vair extends Fur {
         }
         vairArea.intersect(area);
         secondTincture.fill(graphics, vairArea);
+    }
+
+    @Override
+    public String toString() {
+        if (firstTincture.equals(Tincture.ARGENT) && secondTincture.equals(Tincture.AZURE))
+            return "VAIR";
+        return String.format("VAIR of %s and %s", firstTincture, secondTincture);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Vair vair = (Vair) o;
+        return Objects.equals(firstTincture, vair.firstTincture) && Objects.equals(secondTincture, vair.secondTincture);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash("VAIR", firstTincture, secondTincture);
     }
 }
