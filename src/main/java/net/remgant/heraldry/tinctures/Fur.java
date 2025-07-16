@@ -18,7 +18,7 @@ package net.remgant.heraldry.tinctures;
 import java.awt.*;
 import java.awt.geom.Area;
 
-public abstract class Fur extends Tincture {
+public abstract class Fur implements Tincture {
 
     @Override
     public boolean isMetal() {

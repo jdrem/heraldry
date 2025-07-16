@@ -18,7 +18,7 @@ package net.remgant.heraldry.tinctures;
 import java.awt.*;
 import java.awt.geom.Area;
 
-public class Metal extends Tincture {
+public class Metal implements Tincture {
     java.awt.Color color;
 
     Metal(java.awt.Color color) {
