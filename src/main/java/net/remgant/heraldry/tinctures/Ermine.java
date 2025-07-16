@@ -21,6 +21,7 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
+import java.util.Objects;
 
 public class Ermine extends Fur {
     Tincture spotColor;
@@ -63,15 +64,27 @@ public class Ermine extends Fur {
     }
 
     @Override
+    public String toString() {
+        if (spotColor.equals(SABLE) && fieldColor.equals(ARGENT))
+            return "ERMINE";
+        if (spotColor.equals(ARGENT) && fieldColor.equals(SABLE))
+            return "ERMINES";
+        if (spotColor.equals(SABLE) && fieldColor.equals(OR))
+            return "ERMINOIS";
+        if (spotColor.equals(OR) && fieldColor.equals(SABLE))
+            return "PEAN";
+        return String.format("%s ermined %s", fieldColor, spotColor);
+    }
+
+    @Override
     public int hashCode() {
-        return spotColor.hashCode() + fieldColor.hashCode();
+        return Objects.hash("ERMINE", fieldColor, spotColor);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Ermine))
-            return false;
-        Ermine that = (Ermine)obj;
-        return that.spotColor.equals(this.spotColor) && that.fieldColor.equals(this.fieldColor);
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Ermine ermine = (Ermine)obj;
+        return Objects.equals(fieldColor, ermine.fieldColor) && Objects.equals(spotColor, ermine.spotColor);
     }
 }

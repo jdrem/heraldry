@@ -62,14 +62,26 @@ public class Color extends Tincture {
     }
 
     @Override
+    public String toString() {
+        if (color.equals(java.awt.Color.RED))
+            return "GULES";
+        if (color.equals(java.awt.Color.BLACK))
+            return "SABLE";
+        if (color.equals(java.awt.Color.BLUE))
+            return "AZURE";
+        if (color.equals(java.awt.Color.GREEN))
+            return "VERT";
+        return  "PURPURE";
+    }
+
+    @Override
     public int hashCode() {
         return color.hashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Color))
-            return false;
+        if (obj == null || getClass() != obj.getClass()) return false;
         return ((Color)obj).color.equals(this.color);
     }
 }
