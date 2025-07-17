@@ -235,9 +235,6 @@ public class Rose extends Charge {
         Area shield = new Area(Shield.shieldShape);
         for (int i=0; i<shapes.length; i++) {
             Area a = new Area(shapes[i]);
-            if (!affineTransform.isIdentity()) {
-                a.transform(affineTransform);
-            }
             if (scale != 1.0) {
                 a.transform(AffineTransform.getScaleInstance(scale, scale));
             }
@@ -249,7 +246,9 @@ public class Rose extends Charge {
             }
 
             a.transform(AffineTransform.getTranslateInstance(x, y));
-
+            if (!affineTransform.isIdentity()) {
+                a.transform(affineTransform);
+            }
             Tincture secondary;
             if (tincture.equals(Tincture.SABLE) || tincture.isFur())
                 secondary = Tincture.ARGENT.darker().darker();

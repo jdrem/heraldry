@@ -117,9 +117,9 @@ class FleurDeLis extends Charge {
         Area shield = new Area(Shield.shieldShape);
         for (Shape shape : shapes) {
             Area a = new Area(shape);
-            if (!affineTransform.isIdentity()) {
-                a.transform(affineTransform);
-            }
+//            if (!affineTransform.isIdentity()) {
+//                a.transform(affineTransform);
+//            }
             if (scale != 1.0) {
                 a.transform(AffineTransform.getScaleInstance(scale, scale));
             }
@@ -131,7 +131,9 @@ class FleurDeLis extends Charge {
             }
 
             a.transform(AffineTransform.getTranslateInstance(x, y));
-
+            if (!affineTransform.isIdentity()) {
+                a.transform(affineTransform);
+            }
             Tincture secondary;
             if (tincture.equals(Tincture.SABLE) || tincture.isFur())
                 secondary = Tincture.ARGENT.darker().darker();
