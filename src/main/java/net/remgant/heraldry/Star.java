@@ -52,8 +52,6 @@ class Star extends Charge {
     public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area star = new Area(starShape);
         Area shield = new Area(Shield.shieldShape);
-        if (!affineTransform.isIdentity())
-            star.transform(affineTransform);
         if (scale != 1.0) {
             star.transform(AffineTransform.getScaleInstance(scale, scale));
         }
@@ -61,6 +59,8 @@ class Star extends Charge {
         double y = position.y() * shield.getBounds2D().getHeight();
 
         star.transform(AffineTransform.getTranslateInstance(x, y));
+        if (!affineTransform.isIdentity())
+            star.transform(affineTransform);
         tincture.fill(g, star);
     }
 }

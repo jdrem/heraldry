@@ -39,14 +39,14 @@ class Crescent extends Charge {
     public void draw(Graphics2D g, AffineTransform affineTransform) {
         Area crescent = new Area(crescentShape);
         Area shield = new Area(Shield.shieldShape);
-        if (!affineTransform.isIdentity())
-            crescent.transform(affineTransform);
         if (scale != 1.0) {
             crescent.transform(AffineTransform.getScaleInstance(scale, scale));
         }
         double x = position.x() * shield.getBounds2D().getWidth();
         double y = position.y() * shield.getBounds2D().getHeight();
         crescent.transform(AffineTransform.getTranslateInstance(x, y));
+        if (!affineTransform.isIdentity())
+            crescent.transform(affineTransform);
         tincture.fill(g, crescent);
     }
 
