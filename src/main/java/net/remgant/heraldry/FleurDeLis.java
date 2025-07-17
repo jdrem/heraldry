@@ -117,9 +117,6 @@ class FleurDeLis extends Charge {
         Area shield = new Area(Shield.shieldShape);
         for (Shape shape : shapes) {
             Area a = new Area(shape);
-//            if (!affineTransform.isIdentity()) {
-//                a.transform(affineTransform);
-//            }
             if (scale != 1.0) {
                 a.transform(AffineTransform.getScaleInstance(scale, scale));
             }
