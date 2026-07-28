@@ -24,23 +24,20 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    batikVersion = 1.19
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
 }
 
 dependencies {
-    implementation "org.apache.xmlgraphics:batik-svggen:${batikVersion}"
-    implementation  "org.apache.xmlgraphics:batik-bridge:${batikVersion}"
-
-    implementation 'org.apache.xmlgraphics:xmlgraphics-commons:2.9'
-
-    testImplementation("junit:junit:4.13.2")
+    implementation libs.bundles.org.apache.xmlgraphics
+    testImplementation libs.junit.junit
 }
 
 group = 'net.remgant'
 version = '1.0-SNAPSHOT'
 description = 'heraldry'
-java.sourceCompatibility = JavaVersion.VERSION_21
 
 publishing {
     publications {
