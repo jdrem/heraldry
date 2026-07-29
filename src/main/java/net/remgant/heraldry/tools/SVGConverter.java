@@ -214,8 +214,10 @@ public class SVGConverter {
                 }
 
                 @Override
-                public void curvetoQuadraticAbs(float v, float v1, float v2, float v3) throws ParseException {
-                    throw new UnsupportedOperationException(String.format("curvetoQuadraticAbs %f %f %f %f", v, v1, v2, v3));
+                public void curvetoQuadraticAbs(float x1, float y1, float x2, float y2) throws ParseException {
+                    list.getLast().quadTo(x1, y1, x2, y2);
+                    System.out.printf("     paths[%d].quadTo(%f, %f, %f, %f);%n", idx.get(), x1, y1, x2, y2);
+                    setCurrentPoint(new Point2D.Double(x2, y2));
                 }
 
                 @Override
