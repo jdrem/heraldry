@@ -2,12 +2,14 @@
 junit = "4.13.2"
 orgApacheXmlgraphicsBatik = "1.19"
 orgApacheXmlgraphicsCommons = "2.11"
+orgSedjaImageioWebpImageio = "0.1.6"
 
 [libraries]
 junit-junit = { module = "junit:junit", version.ref = "junit" }
 org-apache-xmlgraphics-batik-svggen = { module = "org.apache.xmlgraphics:batik-svggen", version.ref = "orgApacheXmlgraphicsBatik" }
 org-apache-xmlgraphics-batik-bridge = {module = "org.apache.xmlgraphics:batik-bridge", version.ref = "orgApacheXmlgraphicsBatik"}
 org-apache-xmlgraphics-commons = { module = "org.apache.xmlgraphics:xmlgraphics-commons", version.ref = "orgApacheXmlgraphicsCommons" }
+org-sedja-imageio-webp-imageio = {module = "org.sejda.imageio:webp-imageio", version.ref="orgSedjaImageioWebpImageio"}
 
 [bundles]
 org-apache-xmlgraphics =  ["org-apache-xmlgraphics-batik-svggen", "org-apache-xmlgraphics-batik-bridge","org-apache-xmlgraphics-commons"]
