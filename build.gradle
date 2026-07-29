@@ -33,11 +33,16 @@ java {
 dependencies {
     implementation libs.bundles.org.apache.xmlgraphics
     testImplementation libs.junit.junit
+    implementation libs.org.sedja.imageio.webp.imageio
 }
 
 group = 'net.remgant'
 version = '1.0-SNAPSHOT'
 description = 'heraldry'
+
+tasks.named('test') {
+    useJUnit()
+}
 
 publishing {
     publications {
