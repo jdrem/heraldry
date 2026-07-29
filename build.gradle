@@ -33,7 +33,7 @@ java {
 dependencies {
     implementation libs.bundles.org.apache.xmlgraphics
     testImplementation libs.junit.junit
-    runtimeOnly libs.org.sedja.imageio.webp.imageio
+    implementation libs.org.sedja.imageio.webp.imageio
 }
 
 group = 'net.remgant'

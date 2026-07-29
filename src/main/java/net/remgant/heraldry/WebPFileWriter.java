@@ -15,18 +15,36 @@
  */
 package net.remgant.heraldry;
 
+import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.FileImageOutputStream;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.regex.Pattern;
+import com.luciad.imageio.webp.WebPWriteParam;
 
 public class WebPFileWriter implements FileWriter {
     final private BufferedImage bufferedImage;
+    final private boolean lossless;
+    final private float compressionQuality;
+
     public WebPFileWriter(int width, int height) {
-        bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        this.bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        this.lossless = true;
+        this.compressionQuality = 0.75f;
     }
+
+    public WebPFileWriter(int width, int height, boolean lossless, float compressionQuality) {
+        this.bufferedImage =  new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        this.lossless = lossless;
+        this.compressionQuality = compressionQuality;
+    }
+
     @Override
     public Graphics2D createGraphics() {
         return bufferedImage.createGraphics();
@@ -35,12 +53,21 @@ public class WebPFileWriter implements FileWriter {
     final static Pattern webpExtPattern = Pattern.compile("(?i).*\\.webp");
     @Override
     public void writeToFile(String fileName) throws IOException {
-        boolean success;
-        if (webpExtPattern.matcher(fileName).matches())
-            success = ImageIO.write(bufferedImage, "WebP", new File(fileName));
-        else
-            success = ImageIO.write(bufferedImage, "WebP", new File(fileName+".webp"));
-        if (!success)
+        Iterator<ImageWriter> iterator = ImageIO.getImageWritersByMIMEType("image/webp");
+        if (!iterator.hasNext())
             throw new IOException("Cannot find writer for WebP");
+        ImageWriter writer = iterator.next();
+        WebPWriteParam writeParam = new WebPWriteParam(writer.getLocale());
+        if (lossless) {
+            writeParam.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+            writeParam.setCompressionType(writeParam.getCompressionTypes()[WebPWriteParam.LOSSLESS_COMPRESSION]);
+        }
+        writeParam.setCompressionQuality(compressionQuality);
+
+        if (webpExtPattern.matcher(fileName).matches())
+            writer.setOutput(new FileImageOutputStream(new File(fileName)));
+        else
+            writer.setOutput(new FileImageOutputStream(new File(fileName+".webp")));
+        writer.write(null, new IIOImage(this.bufferedImage, null, null), writeParam);
     }
 }
