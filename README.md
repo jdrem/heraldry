@@ -30,10 +30,10 @@ Most to the traditional ordinaries are supported: fess, pale, chief, bend, bend 
 
 <img src="images/ordinaries.svg" width="550" height="330">
 
-Two of the subordinaries are available: the border and the label. The border is available in several variartions and can be divided for different tincutes. Useful for
+Two of the subordinaries are available: the border and the label. The border is available in several variations and can be divided for different tinctures. Useful for
 differencing (see [Stodart System](#the-stodart-system)).
 
-The basic lines of division are availabe: per pale, per fess, per bend and bend sinsiter,
+The basic lines of division are availabe: per pale, per fess, per bend and bend sinister,
 per chevron, per cross, per saltire and gyronny.
 
 <img src="images/lines-of-division.svg" width="500" height="310">
@@ -91,20 +91,20 @@ Builder also has convenience methods so you could do the first example like this
         fw.writeToFile("or-a-fess-gules.png"):
    });
 ```
-In addition to various plain fields, the various divisions of the field are availabe. 
+In addition to various plain fields, the various divisions of the field are available. 
 
 ### Demo Programs
 
 There are three demo programs.
 
-First there is [__DrawRandomMultieImage__](src/main/java/net/remgant/heraldry/DrawRandomMultiImage.java) which creates a bunch of random shields and writes them
+First there is [__DrawRandomMultiImage__](src/main/java/net/remgant/heraldry/DrawRandomMultiImage.java) which creates a bunch of random shields and writes them
 to individual files. 
 
 Next is [__DrawRandomSinglePage__](src/main/java/net/remgant/heraldry/DrawRandomSingleImage.java) which creates a bunch of random shields and puts them in a grid
 in a single image.
 
-Botr are good examples of how to 
-contruct various types of shield but there are a few cases where it violates the color/metal rule or the field and charge don't contrast enough.
+Both are good examples of how to 
+construct various types of shield but there are a few cases where it violates the color/metal rule or the field and charge don't contrast enough.
 
 Last is [__DrawEverything__](src/main/java/net/remgant/heraldry/DrawEverything.java) which generates examples of most of the ordinaries and charges. It was used to 
 generate the sample images above.
@@ -113,12 +113,12 @@ generate the sample images above.
 
 One of my original goals was to recreate the well known diagram of the Stodart system for differencing arms in Scotland. I created invected, engrailed and indented versions of the fess and border. The border can also partitioned by color in a variety of ways. 
 
-I've never been able to track down the origin of the diagram although I've seen variations in many places. I've also never tracked the orginal document by Stodart or really any sort of written description. In any case, it's likely
-this is more of a guideline than any sort of formal rule. Presumably, the heralds have considerable discretion on what to actuall do. This chart was take from [Innes of Learney's _Scots Heraldry_](https://lccn.loc.gov/56004200).
+I've never been able to track down the origin of the diagram although I've seen variations in many places. I've also never tracked the original document by Stodart or really any sort of written description. In any case, it's likely
+this is more of a guideline than any sort of formal rule. Presumably, the heralds have considerable discretion on what to actually do. This chart was take from [Innes of Learney's _Scots Heraldry_](https://lccn.loc.gov/56004200).
 
-The correct precedence of border colors has argent for the third son. The rule is that if the border matches the field, the border should be checked with another tinccutre, usally the tincture of the ordinary or principal charge. Like most of the sources I'm skipping argent for simplicity's sake.
+The correct precedence of border colors has argent for the third son. The rule is that if the border matches the field, the border should be checked with another tincture, usually the tincture of the ordinary or principal charge. Like most of the sources I'm skipping argent for simplicity's sake.
 
-The shields were created in by the [__StodarySystem__](src/main/java/net/remgant/heraldry/StodartSystem.java) class.
+The shields were created in by the [__StodartSystem__](src/main/java/net/remgant/heraldry/StodartSystem.java) class.
 
 <img src="images/stodart-system.svg" width="1000"  height="600">
 
@@ -127,7 +127,7 @@ The shields were created in by the [__StodarySystem__](src/main/java/net/remgant
 Most of the designs were done by me using the Java AWT toolkit. 
 
 The [Martlet](src/main/java/net/remgant/heraldry/Martlet.java), [Rose](src/main/java/net/remgant/heraldry/Rose.java) and 
-[Fleur-de-Lis](src/main/java/net/remgant/heraldry/FleurDeLis.java) charges were derived from SVG files created by Wikiemedia user [Hstoops](https://commons.wikimedia.org/wiki/User:Hstoops).
+[Fleur-de-Lis](src/main/java/net/remgant/heraldry/FleurDeLis.java) charges were derived from SVG files created by Wikimedia user [Hstoops](https://commons.wikimedia.org/wiki/User:Hstoops).
 
 The files are:
 
@@ -135,4 +135,4 @@ The files are:
 * https://commons.wikimedia.org/wiki/File:Fleur-de-lys_Sixth_son.svg
 * https://commons.wikimedia.org/wiki/File:Rose_Seventh_son.svg
 
-These files is licensed under the [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/deed.en).
+These files are licensed under the [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/deed.en).
