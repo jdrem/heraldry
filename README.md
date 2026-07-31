@@ -93,6 +93,17 @@ Builder also has convenience methods so you could do the first example like this
 ```
 In addition to various plain fields, the various divisions of the field are available. 
 
+### Output File Types
+
+There are four output formats available: PNG, SVG, WebP and EPS.
+
+|Format|            Writer Class            | Example                                                             |
+|:----:|:----------------------------------:|:--------------------------------------------------------------------|
+|PNG| net.remgant.heraldry.PNGFileWriter | <img src="images/output-format-demo.png" width="100" height="125">  |
+|SVG| net.remgant.heraldry.SVGFileWriter | <img src="images/output-format-demo.svg" width="100" height="125">  |
+|WebP|net.remgant.heraldry.WebPFileWriter| <img src="images/output-format-demo.webp" width="100" height="125"> |
+|EPS| net.remgant.heraldry.EPSFileWriter | [Download EPS file](images/output-format-demo.eps)                  |
+
 ### Demo Programs
 
 There are three demo programs.
